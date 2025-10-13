@@ -43,18 +43,18 @@ export function Navbar() {
         >
           [h] home
         </Link>
+         <Link
+          href="/projects"
+          className="hover:text-accent transition-colors duration-200"
+        >
+          [p] projects
+        </Link>
         <Link
           href="/blog"
           prefetch={true}
           className="hover:text-accent transition-colors duration-200"
         >
           [b] blog
-        </Link>
-        <Link
-          href="/projects"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [p] projects
         </Link>
       </div>
     </nav>
