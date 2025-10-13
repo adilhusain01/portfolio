@@ -4,89 +4,66 @@ import { Metadata } from "next"
 
 const projects = [
   {
-    title: "create-t3-app",
+    title: "taas",
     description:
-      "cli tool to bootstrap full-stack type-safe next.js applications",
-    role: "creator and maintainer",
-    period: "jun 2022 - present",
+      "TAAS (Trust-as-a-Service) Protocol enables trustless rental agreements where security deposits are automatically staked to generate yield during the rental term. The protocol ensures both landlords and tenants benefit from a transparent, automated escrow system.",
+    role: "blockchain developer",
+    period: "october 2025",
     achievements: [
-      "grew project to 24k+ github stars",
-      "wrote education blog posts with over 100k views",
-      "maintained comprehensive, up-to-date documentation",
+      "won $1.5k as 3rd prize in the stablecoin track of alphaton bounty in token2049 origins singapore hackathon",
     ],
     technologies: [
-      "typescript",
-      "next.js",
-      "trpc",
-      "prisma",
+      "javascript",
+      "react.js",
+      "alphaton chain",
       "tailwind css",
-      "auth.js",
     ],
-    href: "https://create.t3.gg",
+    href: "https://taas-nine.vercel.app",
   },
   {
-    title: "mini-git",
-    description: "a simplified implementation of git built from scratch",
-    role: "creator",
-    period: "jul 2024",
+    title: "somany",
+    description: "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
+    role: "blockchain developer",
+    period: "september 2025",
     achievements: [
-      "successfully implemented core git commands",
-      "implemented efficient blob storage and compression",
-      "learned about git's internal object model and data structures like merkle trees",
+      "won $1.5k as 2nd prize in somnia defi mini hackathon",
     ],
-    technologies: ["go", "sha-1"],
-    href: "https://github.com/nexxeln/mini-git",
+    technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
+    href: "https://somany-nine.vercel.app",
   },
   {
-    title: "license-generator",
-    description: "cli tool to create licenses for your projects",
-    role: "creator and maintainer",
-    period: "mar 2022 - present",
+    title: "catch goofy",
+    description: "a fun bird crash game, with high‑stakes betting and adrenaline‑charged experience.",
+    role: "developer",
+    period: "august 2025",
     achievements: [
-      "grew project to over 3.2k downloads",
-      "built a robust cli interface with fuzzy search",
-      "added support for all github licenses with auto-filling",
+        "won $200 as 2nd prize in somnia mini games hackathon",
     ],
-    technologies: ["rust", "github api"],
-    href: "https://github.com/nexxeln/license-generator",
+    technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
+    href: "https://catch-goofy.vercel.app",
   },
   {
-    title: "spotify-voice-control",
-    description: "voice control for spotify through the terminal",
-    role: "creator",
-    period: "feb 2022",
+    title: "concept bridge",
+    description: "it's a Web3 learning platform that uses AI and blockchain to turn complex topics into interactive knowledge graphs, offering a gamified, visual, and rewarding learning experience.",
+    role: "creator and developer",
+    period: "january 2025",
     achievements: [
-      "integrated spotify web api for seamless, real-time music control",
-      "built voice command system for comprehensive music control including playback, search, and playlist management",
+      "won 14th prize in hack for humanity 2025 hackathon",
     ],
-    technologies: ["python", "spotify api"],
-    href: "https://github.com/nexxeln/spotify-voice-control",
+    technologies: ["javascript", "sepolia chain", "react.js", "tailwind css", "mongodb", "aws bedrock"],
+    href: "https://concept-bridge.vercel.app",
   },
   {
-    title: "text2regex",
+    title: "vibe",
     description:
-      "convert natural language text into validated regular expressions",
-    role: "creator",
-    period: "jul 2024",
+      "quiz platform with rewards and memories. earn TRX & NFTs with every answer. vibe with web3",
+    role: "developer",
+    period: "november 2024",
     achievements: [
-      "implemented a self-correcting llm-powered regex generator",
-      "built a easy-to-use cli to generate regex patterns",
+     "won $8k as 4rth prize in artistry track in the TRON grand hackathon - hackatron season 7",
     ],
-    technologies: ["typescript", "openai"],
-    href: "https://github.com/nexxeln/text2regex",
-  },
-  {
-    title: "fp_",
-    description: "a functional programming library for typescript",
-    role: "creator",
-    period: "feb 2023",
-    achievements: [
-      "implemented a comprehensive set of functional programming constructs",
-      "wrote documentation and examples to help developers understand and use the library",
-      "published to deno package registry",
-    ],
-    technologies: ["typescript"],
-    href: "https://github.com/nexxeln/fp",
+    technologies: ["javascript", "tron chain", "react.js", "tailwind css", "mongodb", "google gemini"],
+    href: "https://vibeee.vercel.app",
   },
 ]
 
@@ -99,9 +76,7 @@ export default function ProjectsPage() {
       </h1>
 
       <p className="text-gray-400 mb-12 leading-relaxed">
-        here are some of the projects i&apos;ve worked on. i love building tools
-        that make developers&apos; lives easier and exploring new technologies
-        along the way.
+        here are some of the projects i&apos;ve worked on. i like the challenges in the hackathons so some of these are focussed for the best use cases in the web3 world.
       </p>
 
       <div className="space-y-12">
@@ -119,7 +94,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://www.nexxel.dev/og/home?title=projects",
+        url: "https://adilhusain.me/og/home?title=projects",
       },
     ],
   },

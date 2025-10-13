@@ -4,52 +4,29 @@ import { BlogSection } from "@/components/blog-section"
 import { LinksSection } from "@/components/links-section"
 
 const workItems: Item[] = [
-  {
-    title: "mocha",
-    role: "co-founder and cto",
-    period: "jul 2025 - present",
-    description: "building an ai native email client designed for speed and ease of use",
-    href: "https://mocha.email",
-  },
-  {
-    title: "ENS labs",
-    role: "software engineer",
-    period: "feb 2025 - jul 2025",
+   {
+    title: "techbug",
+    role: "backend developer",
+    period: "july 2024 - november 2024",
     description:
-      "helped migrate ensjs to namechain and optimized ci for the manager app",
-    href: "https://ens.domains",
-  },
-  {
-    title: "leapflow",
-    role: "co-founder and cto",
-    period: "may 2024 - jun 2025",
-    description:
-      "headed engineering to develop ai agents that automate repetitive workflows in existing software",
-    href: "https://leapflow.tech",
-  },
-  {
-    title: "dimension",
-    role: "full-stack engineer",
-    period: "nov 2023 - jan 2024",
-    description:
-      "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-    href: "https://dimension.dev",
+      "worked on some sites during the internship period. Gained experience in backend development and database management. it was a nice little fun journey",
+    href: "https://www.linkedin.com/company/techbug-official",
   },
 ]
 
 const projectItems = [
   {
-    title: "create-t3-app",
-    role: "creator and maintainer",
+    title: "taas",
+    role: "developer",
     description:
-      "open-source project for initializing full-stack next.js apps. 24k+ stars, 200+ contributors",
-    href: "https://create.t3.gg",
+      "TAAS (Trust-as-a-Service) Protocol enables trustless rental agreements where security deposits are automatically staked to generate yield during the rental term. The protocol ensures both landlords and tenants benefit from a transparent, automated escrow system.",
+    href: "https://taas-nine.vercel.app",
   },
   {
-    title: "mini-git",
-    role: "creator",
-    description: "simplified version of git from scratch",
-    href: "https://github.com/nexxeln/mini-git",
+    title: "somany",
+    role: "blockchain developer",
+    description: "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
+    href: "https://somany-nine.vercel.app",
   },
 ]
 
