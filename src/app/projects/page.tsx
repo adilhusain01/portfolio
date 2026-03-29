@@ -4,6 +4,24 @@ import { Metadata } from "next"
 
 const projects = [
   {
+    title: "neverpay",
+    description: "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",
+    role: "developer",
+    period: "february 2026",
+    achievements: [],
+    technologies: ["next.js", "solidity", "aaveV3", "li.fi", "gemini", "tailwind css", "base sepolia"],
+    href: "https://never-pay.vercel.app",
+  },
+  {
+    title: "clawpay",
+    description: "Developed secure autonomous payment layer for AI agents enabling purchases on any Visa/Mastercard website using single-use virtual cards backed by USDC in on-chain escrow on Arbitrum Sepolia, eliminating merchant opt-in, persistent card exposure, and human intervention while keeping full user control of funds.",
+    role: "developer",
+    period: "february 2026",
+    achievements: [],
+    technologies: ["react.js", "fastapi", "solidity", "lithic api", "tailwind css", "openclaw"],
+    href: "https://claw-pay.vercel.app",
+  },
+  {
     title: "taas",
     description:
       "TAAS (Trust-as-a-Service) Protocol enables trustless rental agreements where security deposits are automatically staked to generate yield during the rental term. The protocol ensures both landlords and tenants benefit from a transparent, automated escrow system.",
@@ -64,6 +82,15 @@ const projects = [
     ],
     technologies: ["javascript", "tron chain", "react.js", "tailwind css", "mongodb", "google gemini"],
     href: "https://vibeee.vercel.app",
+  },
+  {
+    title: "air",
+    description: "Constructed a real-time chat application using Google Gemini API for AI-powered message suggestions, image descriptions, and sentiment analysis.",
+    role: "developer",
+    period: "april 2024",
+    achievements: [],
+    technologies: ["react.js", "django", "sqlite", "websocket", "tailwind css", "gemini api"],
+    href: "https://github.com/adilhusain01/AIR",
   },
 ]
 

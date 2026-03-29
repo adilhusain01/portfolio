@@ -27,6 +27,9 @@ export function Navbar() {
         case "p":
           router.push("/projects")
           break
+        case "r":
+          router.push("/resume")
+          break
       }
     }
 
@@ -55,6 +58,12 @@ export function Navbar() {
           className="hover:text-accent transition-colors duration-200"
         >
           [b] blog
+        </Link>
+        <Link
+          href="/resume"
+          className="hover:text-accent transition-colors duration-200"
+        >
+          [r] resume
         </Link>
       </div>
     </nav>

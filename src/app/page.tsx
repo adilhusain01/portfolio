@@ -6,15 +6,29 @@ import { LinksSection } from "@/components/links-section"
 const workItems: Item[] = [
    {
     title: "techbug",
-    role: "backend developer",
-    period: "july 2024 - november 2024",
+    role: "full stack developer intern",
+    period: "july 2024 - october 2024",
     description:
-      "worked on some sites during the internship period. Gained experience in backend development and database management. it was a nice little fun journey",
+      "Engineered CMS dashboard increasing content update efficiency by 50%. Enforced JWT-based authorization, reducing unauthorized access by 90%. Improved app performance by 65% through optimized pagination. Developed an automated email system for notifications.",
     href: "https://www.linkedin.com/company/techbug-official",
   },
 ]
 
 const projectItems = [
+  {
+    title: "neverpay",
+    role: "developer",
+    description:
+      "A DeFi-powered AI platform where users deposit USDC to earn perpetual credits from Aave V3 yield farming for platform services like AI API access.",
+    href: "https://never-pay.vercel.app",
+  },
+  {
+    title: "clawpay",
+    role: "developer",
+    description:
+      "A secure autonomous payment layer for AI agents enabling purchases on any Visa/Mastercard website using single-use virtual cards backed by on-chain escrow.",
+    href: "https://claw-pay.vercel.app",
+  },
   {
     title: "taas",
     role: "developer",
