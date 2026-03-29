@@ -21,7 +21,7 @@ export function LinksSection() {
             href={link.href}
             target={link.href.startsWith("http") ? "_blank" : undefined}
             rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="text-gray-400 hover:text-accent transition-colors duration-200"
+            className="text-gray-400 hover:text-accent transition-colors duration-200 underline underline-offset-4 decoration-gray-700 hover:decoration-accent"
           >
             {link.title}
           </Link>

@@ -33,19 +33,21 @@ function CustomLink({
   href,
   ...props
 }: React.ComponentProps<typeof Link> & { href: string }) {
+  const commonClasses = "underline underline-offset-4 decoration-gray-700 hover:decoration-accent transition-colors"
+  
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className={commonClasses} {...props}>
         {props.children}
       </Link>
     )
   }
 
   if (href.startsWith("#")) {
-    return <a {...props} />
+    return <a className={commonClasses} {...props} />
   }
 
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...props} />
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={commonClasses} {...props} />
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
