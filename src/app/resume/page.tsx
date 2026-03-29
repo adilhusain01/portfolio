@@ -47,7 +47,7 @@ export default function ResumePage() {
           <div className="mb-4">
             <div className="flex justify-between items-baseline mb-1">
               <h4 className="font-semibold text-white flex items-center gap-2">
-                <a href="https://www.linkedin.com/company/techbug-official" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">Full Stack Developer Intern</a>
+                <a href="https://www.linkedin.com/company/techbug-official" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">Full Stack Developer Intern</a>
                 <span className="font-normal text-gray-400">| Techbug</span>
               </h4>
               <span className="text-xs text-gray-500">Jul 2024 - Oct 2024</span>
@@ -70,7 +70,7 @@ export default function ResumePage() {
             <div>
               <div className="flex justify-between items-baseline mb-1">
                 <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://never-pay.vercel.app" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">NeverPay</a>
+                  <a href="https://never-pay.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">NeverPay</a>
                   <span className="font-normal text-xs text-gray-400">NextJs, Solidity, AaveV3, LI.FI, Gemini, TailwindCSS</span>
                 </h4>
                 <span className="text-xs text-gray-500">Feb 2026</span>
@@ -83,7 +83,7 @@ export default function ResumePage() {
             <div>
               <div className="flex justify-between items-baseline mb-1">
                 <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://claw-pay.vercel.app" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">ClawPay</a>
+                  <a href="https://claw-pay.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">ClawPay</a>
                   <span className="font-normal text-xs text-gray-400">ReactJs, FastAPI, Solidity, Lithic API, TailwindCSS, OpenClaw</span>
                 </h4>
                 <span className="text-xs text-gray-500">Feb 2026</span>
@@ -96,7 +96,7 @@ export default function ResumePage() {
             <div>
               <div className="flex justify-between items-baseline mb-1">
                 <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://taas-nine.vercel.app" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">TAAS</a>
+                  <a href="https://taas-nine.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">TAAS</a>
                   <span className="font-normal text-xs text-gray-400">ReactJs, Solidity, TailwindCSS</span>
                 </h4>
                 <span className="text-xs text-gray-500">Oct 2025</span>
@@ -109,7 +109,7 @@ export default function ResumePage() {
             <div>
               <div className="flex justify-between items-baseline mb-1">
                 <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://vibeee.vercel.app" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">VIBE</a>
+                  <a href="https://vibeee.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">VIBE</a>
                   <span className="font-normal text-xs text-gray-400">ReactJs, NodeJs, TailwindCSS, MongoDB, AWS Bedrock</span>
                 </h4>
                 <span className="text-xs text-gray-500">Nov 2024</span>
@@ -123,7 +123,7 @@ export default function ResumePage() {
             <div>
               <div className="flex justify-between items-baseline mb-1">
                 <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://github.com/adilhusain01/AIR" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors hover:underline">AIR</a>
+                  <a href="https://github.com/adilhusain01/AIR" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">AIR</a>
                   <span className="font-normal text-xs text-gray-400">ReactJs, Django, SQLite, WebSocket, TailwindCSS, Gemini API</span>
                 </h4>
                 <span className="text-xs text-gray-500">Apr 2024</span>
