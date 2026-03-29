@@ -4,7 +4,7 @@ const links = [
   { title: "email", href: "mailto:husainadil202@gmail.com" },
   { title: "x.com", href: "https://x.com/0xAdilHusain" },
   { title: "github", href: "https://github.com/adilhusain01" },
-  { title: "linkedin", href: "https://www.linkedin.com/in/adil-husain" },
+  { title: "linkedin", href: "https://linkedin.com/in/adilhusain01" },
   { title: "book a call", href: "https://cal.com/adilhusain" },
 ]
 
@@ -19,6 +19,8 @@ export function LinksSection() {
           <Link
             key={index}
             href={link.href}
+            target={link.href.startsWith("http") ? "_blank" : undefined}
+            rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
             className="text-gray-400 hover:text-accent transition-colors duration-200"
           >
             {link.title}
