@@ -35,7 +35,7 @@ export default function ResumePage() {
           <div className="flex gap-4 text-sm text-accent underline underline-offset-4">
             <a href="mailto:husainadil202@gmail.com" className="hover:text-white transition-colors">husainadil202@gmail.com</a>
             <a href="https://github.com/adilhusain01" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
-            <a href="https://linkedin.com/in/adilhusain01" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/adil-husain" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
           </div>
         </section>
 

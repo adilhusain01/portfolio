@@ -19,6 +19,11 @@ export function Navbar() {
         return
       }
 
+      // Ignore if modifier keys are pressed (e.g., Cmd+R for refresh)
+      if (event.metaKey || event.ctrlKey || event.altKey) {
+        return
+      }
+
       switch (event.key.toLowerCase()) {
         case "h":
           router.push("/")
@@ -86,7 +91,7 @@ export function Navbar() {
           <Twitter className="w-4 h-4" />
         </Link>
         <Link
-          href="https://linkedin.com/in/adilhusain01"
+          href="https://www.linkedin.com/in/adil-husain"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-accent transition-colors duration-200"

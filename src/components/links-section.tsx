@@ -4,7 +4,7 @@ const links = [
   { title: "email", href: "mailto:husainadil202@gmail.com" },
   { title: "x.com", href: "https://x.com/0xAdilHusain" },
   { title: "github", href: "https://github.com/adilhusain01" },
-  { title: "linkedin", href: "https://linkedin.com/in/adilhusain01" },
+  { title: "linkedin", href: "https://www.linkedin.com/in/adil-husain" },
   { title: "book a call", href: "https://cal.com/adilhusain" },
 ]
 
