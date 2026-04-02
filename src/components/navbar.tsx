@@ -3,6 +3,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
+import { Github, Twitter, Linkedin, Mail } from "lucide-react"
+
 export function Navbar() {
   const router = useRouter()
 
@@ -46,7 +48,7 @@ export function Navbar() {
         >
           [h] home
         </Link>
-         <Link
+        <Link
           href="/projects"
           className="hover:text-accent transition-colors duration-200"
         >
@@ -64,6 +66,38 @@ export function Navbar() {
           className="hover:text-accent transition-colors duration-200"
         >
           [r] resume
+        </Link>
+      </div>
+      <div className="flex items-center space-x-4">
+        <Link
+          href="https://github.com/adilhusain01"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-accent transition-colors duration-200"
+        >
+          <Github className="w-4 h-4" />
+        </Link>
+        <Link
+          href="https://x.com/0xAdilHusain"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-accent transition-colors duration-200"
+        >
+          <Twitter className="w-4 h-4" />
+        </Link>
+        <Link
+          href="https://linkedin.com/in/adilhusain01"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-accent transition-colors duration-200"
+        >
+          <Linkedin className="w-4 h-4" />
+        </Link>
+        <Link
+          href="mailto:husainadil202@gmail.com"
+          className="text-gray-400 hover:text-accent transition-colors duration-200"
+        >
+          <Mail className="w-4 h-4" />
         </Link>
       </div>
     </nav>
