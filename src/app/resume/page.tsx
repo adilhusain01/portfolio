@@ -21,15 +21,15 @@ function TimelineItem({
   active?: boolean
 }) {
   return (
-    <div className="relative pl-8 md:pl-0">
-      <div className="md:hidden absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#0d1117] border border-gray-600" />
+    <div className="relative pl-8 md:pl-0 group">
+      <div className="md:hidden absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#0d1117] border border-gray-600 group-last:hidden" />
       <div className="md:grid md:grid-cols-5 md:gap-8 items-start">
         <div className="md:col-span-1 border-b md:border-b-0 border-gray-800/50 pb-2 md:pb-0 mb-4 md:mb-0 md:text-right">
           <div className="text-sm font-mono text-gray-400 md:mt-1.5">
             {date}
           </div>
         </div>
-        <div className="md:col-span-4 relative md:border-l border-gray-800 md:pl-10 pb-20 md:pb-40 last:pb-0 last:border-transparent">
+        <div className="md:col-span-4 relative md:border-l border-gray-800 md:pl-10 pb-16 md:pb-32 group-last:pb-0 group-last:border-transparent">
           {/* Timeline Node */}
           <div
             className={`hidden md:block absolute -left-[6.5px] top-1.5 w-3 h-3 rounded-full border-2 ${active ? "bg-accent border-accent shadow-[0_0_10px_rgba(0,229,255,0.5)]" : "bg-[#0d1117] border-gray-600"}`}
