@@ -1,31 +1,5 @@
 export const projects = [
   {
-    title: "enterprise node.js scaling to aws eks",
-    description:
-      "A comprehensive architectural journey transforming a single-threaded Node.js server into a highly available, auto-scaling enterprise system. Broke through local hardware limits using PM2, containerized via Docker, and orchestrated dynamic horizontal scaling using Kubernetes (HPA) on AWS EKS.",
-    role: "devops engineer",
-    period: "april 2026",
-    achievements: [
-      "Halved execution time and slashed HTTP timeouts by 85% under a 5,000-request load.",
-      "Dynamically scaled to 20 Pods under 3 seconds employing zero-throttle c5.xlarge AWS compute nodes.",
-    ],
-    technologies: ["node.js", "pm2", "docker", "kubernetes", "aws eks"],
-    github: "https://github.com/adilhusain01/Clustering",
-  },
-  {
-    title: "high-performance node.js: multithreading & rust",
-    description:
-      "Engineered an extensive comparison benchmarking CPU-bound operations in Node.js. Evaluated naïve unpooled worker threads, established stable Piscina thread pooling, and built a blisteringly fast Rust Microservice (Axum/Rayon) culminating in a decoupled BullMQ/Redis Event-Driven Task Queue.",
-    role: "system architect",
-    period: "april 2026",
-    achievements: [
-      "Achieved 150,000+ gateway requests with ~15k req/sec throughput and 6ms latency using async Rust workers.",
-      "Outperformed native Node.js mathematical processing speed internally by nearly 5x via compiled bare-metal optimization."
-    ],
-    technologies: ["node.js", "rust", "axum", "piscina", "rayon", "redis", "bullmq"],
-    github: "https://github.com/adilhusain01/Multithreading",
-  },
-  {
     title: "neverpay",
     description:
       "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",

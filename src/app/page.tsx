@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Item, SectionList } from "@/components/section-list"
 import { BlogSection } from "@/components/blog-section"
 import { projects } from "@/lib/projects"
+import { systemDesign } from "@/lib/system-design"
 import { ProjectCard } from "@/components/project-card"
 import Link from "next/link"
 
@@ -32,7 +33,21 @@ export default function HomePage() {
         style={{ animationDelay: "200ms", animationFillMode: "both" }}
       >
         <h2 className="text-xl font-bold mb-6 text-white">
-          <span className="text-accent mr-2">*</span> featured architectures
+          <span className="text-accent mr-2">*</span> system design
+        </h2>
+        <div className="space-y-6">
+          {systemDesign.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="my-14 animate-fade-in-up"
+        style={{ animationDelay: "300ms", animationFillMode: "both" }}
+      >
+        <h2 className="text-xl font-bold mb-6 text-white">
+          <span className="text-accent mr-2">*</span> latest projects
         </h2>
         <div className="space-y-6">
           {topProjects.map((project) => (
@@ -44,9 +59,7 @@ export default function HomePage() {
             href="/projects"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
           >
-            <span className="transition-colors">
-              compile all projects
-            </span>
+            <span className="transition-colors">compile all projects</span>
             <span className="ml-2 group-hover:translate-x-1 transition-transform">
               →
             </span>

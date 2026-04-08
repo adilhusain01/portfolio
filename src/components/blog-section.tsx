@@ -5,7 +5,7 @@ import { getPosts } from "@/lib/blog"
 const posts = getPosts()
   .sort(
     (a, b) =>
-      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
   )
   .slice(0, 4)
 
