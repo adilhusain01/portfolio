@@ -3,6 +3,77 @@ import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
 import { Mermaid } from "./mermaid"
+import { CopyButton } from "./copy-button"
+
+// NEW COMPONENTS
+function TerminalWindow({ children, title = "zsh" }: { children: React.ReactNode, title?: string }) {
+  return (
+    <div className="rounded-xl overflow-hidden border border-gray-800 bg-[#0d1117] my-8 shadow-2xl">
+      {/* Mac window header */}
+      <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-gray-800">
+        <div className="flex space-x-2 mr-4">
+          <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+        </div>
+        <div className="text-xs font-mono text-gray-400 select-none flex-1 text-center font-semibold">
+          {title}
+        </div>
+      </div>
+      {/* Terminal Body */}
+      <div className="p-4 overflow-x-auto text-sm font-mono text-green-400 [&_pre]:!bg-transparent [&_pre]:!m-0 [&_code]:!p-0">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function CodeDiff({ before, after }: { before: string, after: string }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 relative not-prose">
+      <div className="bg-[#1e1e2e] border border-red-900/50 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
+        <div className="bg-red-950/40 text-red-400 text-xs px-4 py-2 border-b border-red-900/50 font-bold tracking-wider uppercase">
+          Before Focus
+        </div>
+        <pre className="p-4 text-sm font-mono overflow-auto flex-1 text-gray-300 whitespace-pre-wrap"><code className="language-javascript">{before}</code></pre>
+      </div>
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-gray-800 rounded-full border border-gray-700 items-center justify-center text-accent font-bold">
+        ➔
+      </div>
+      <div className="bg-[#1e1e2e] border border-green-900/50 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
+        <div className="bg-green-950/40 text-green-400 text-xs px-4 py-2 border-b border-green-900/50 font-bold tracking-wider uppercase">
+          Optimized Focus
+        </div>
+        <pre className="p-4 text-sm font-mono overflow-auto flex-1 text-gray-300 whitespace-pre-wrap"><code className="language-javascript">{after}</code></pre>
+      </div>
+    </div>
+  )
+}
+
+function TechBadge({ text, bg = "bg-gray-800" }: { text: string, bg?: string }) {
+  return (
+    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest glowing-badge mx-1 align-middle`}>
+      {text}
+    </span>
+  )
+}
+
+function KeyTakeaway({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-black border-2 border-accent/30 p-8 my-10 shadow-[0_0_15px_rgba(0,229,255,0.15)] group hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] transition-all">
+      <div className="absolute top-0 right-0 p-4 opacity-10">
+        <svg fill="currentColor" viewBox="0 0 24 24" className="w-24 h-24 text-accent"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
+      </div>
+      <h3 className="text-xl font-bold font-mono text-accent mb-4 m-0 uppercase flex items-center">
+        <span className="w-2 h-2 bg-accent rounded-full animate-pulse mr-3"></span>
+        Key Architecture Takeaway
+      </h3>
+      <div className="text-lg text-gray-200 leading-relaxed z-10 relative">
+        {children}
+      </div>
+    </div>
+  )
+}
 
 function Table({ data }: { data?: { headers: string[]; rows: string[][] } }) {
   if (!data) return null
@@ -89,7 +160,8 @@ async function Pre({
       return <code {...props}>{children}</code>
     }
 
-    const html = await codeToHtml(String(codeElement?.props.children), {
+    const rawCode = String(codeElement?.props.children)
+    const html = await codeToHtml(rawCode, {
       lang,
       themes: {
         dark: "vesper",
@@ -97,7 +169,12 @@ async function Pre({
       },
     })
 
-    return <div dangerouslySetInnerHTML={{ __html: html }} />
+    return (
+      <div className="relative group relative-code-block mb-4 mt-6 rounded-lg overflow-hidden border border-gray-800">
+        <CopyButton text={rawCode} />
+        <div dangerouslySetInnerHTML={{ __html: html }} className="[&>pre]:!m-0 [&>pre]:!rounded-none" />
+      </div>
+    )
   }
 
   // If not, return the component as is
@@ -264,6 +341,10 @@ const components = {
   Metrics,
   ProsCons,
   Step,
+  TerminalWindow,
+  CodeDiff,
+  TechBadge,
+  KeyTakeaway,
 }
 
 export function MDX(props: any) {
