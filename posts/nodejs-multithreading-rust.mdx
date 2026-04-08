@@ -8,6 +8,13 @@ Node.js’s event-driven, single-threaded V8 engine shines in concurrent, I/O-in
 
 In this deep architectural exploration, I recently benchmarked four different strategies to crush the single-threaded block in Node.js and load-tested them under a strict 100-user barrage using `autocannon`.
 
+<Metrics data={[
+  { label: "Base Latency", value: "14.5s" },
+  { label: "Piscina Pool", value: "915ms" },
+  { label: "Rust Service", value: "195ms" },
+  { label: "BullMQ/Redis", value: "< 5ms" }
+]} />
+
 ## Architecture 1: The Crash & Burn (Unpooled Threads)
 
 Naivety says "just spawn a new `worker_thread` for every incoming request." Under any significant load, this strategy is fatal.
@@ -22,7 +29,11 @@ app.get('/compute', (req, res) => {
 });
 ```
 
-> **The Fallout**: Spawning 100 math requests at once creates 800 independent background OS-level threads. The memory footprint skyrockets, OS-context switching completely consumes the CPU time, and the server executes a self-inflicted Denial of Service (DoS) attack, causing universal timeouts.
+<Callout type="danger" title="The Fallout">
+<p>
+Spawning 100 math requests at once creates 800 independent background OS-level threads. The memory footprint skyrockets, OS-context switching completely consumes the CPU time, and the server executes a self-inflicted Denial of Service (DoS) attack, causing universal timeouts.
+</p>
+</Callout>
 
 ## Architecture 2: The Traffic Cop (Thread Pooling)
 
@@ -58,7 +69,11 @@ async fn compute_heavy_task() -> Json<u64> {
 }
 ```
 
-> Even accounting for internal cross-network IPC overhead, Rust’s raw, bare-metal math capabilities outperformed native JavaScript component pools by nearly **5x speed factors**.
+<Callout type="success" title="The Rust Advantage">
+<p>
+Even accounting for internal cross-network IPC overhead, Rust’s raw, bare-metal math capabilities outperformed native JavaScript component pools by nearly <strong>5x speed factors</strong>.
+</p>
+</Callout>
 
 ## Architecture 4: The Enterprise Task Queue (BullMQ + Redis)
 

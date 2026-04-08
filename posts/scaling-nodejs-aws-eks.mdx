@@ -8,6 +8,13 @@ Node.js is famously single-threaded. This design makes it incredibly lightweight
 
 Recently, I conducted a full-scale benchmark journey to break through these physical limits, migrating a standard Node.js app from local threading natively up to a dynamic **AWS EKS** (Elastic Kubernetes Service) cluster.
 
+<Metrics data={[
+  { label: "Target RPS", value: "5,000+" },
+  { label: "Pods", value: "20" },
+  { label: "AWS Compute", value: "c5.xlarge" },
+  { label: "Result", value: "Elastic" }
+]} />
+
 ## Phase 1: The Local Limits (Vertical Scaling)
 
 The traditional way to solve Node.js's bottleneck on a single VM is utilizing **PM2**. Instead of manually structuring `node:cluster` forks, we spawn a process for every physical CPU core.
@@ -17,7 +24,11 @@ npm install -g pm2
 pm2 start index.js -i max
 ```
 
-> **The Hardware Wall**: PM2 handles zero-downtime restarts and load balancing locally. However, it suffers from a fatal flaw—if incoming connections exhaust the available cores on that *single* machine, the application fundamentally crashes.
+<Callout type="danger" title="The Hardware Wall">
+<p>
+PM2 handles zero-downtime restarts and load balancing locally. However, it suffers from a fatal flaw—if incoming connections exhaust the available cores on that <em>single</em> machine, the application fundamentally crashes.
+</p>
+</Callout>
 
 ## Phase 2: Kubernetes and Docker (Horizontal Scaling)
 

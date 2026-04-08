@@ -118,6 +118,46 @@ function createHeading(level: number) {
   return HeadingComponent
 }
 
+function Callout({ type = "info", title, children }: { type?: "info" | "warning" | "danger" | "success", title?: string, children: React.ReactNode }) {
+  const styles = {
+    info: "bg-blue-900/20 border-blue-500 text-blue-200",
+    warning: "bg-yellow-900/20 border-yellow-500 text-yellow-200",
+    danger: "bg-red-900/20 border-red-500 text-red-200",
+    success: "bg-green-900/20 border-green-500 text-green-200",
+  }
+  
+  const icons = {
+    info: "💡",
+    warning: "⚠️",
+    danger: "🚨",
+    success: "✅",
+  }
+
+  return (
+    <div className={`border-l-4 p-4 my-6 rounded-r-lg ${styles[type]}`}>
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-xl">{icons[type]}</span>
+        {title && <strong className="block font-bold text-lg">{title}</strong>}
+      </div>
+      <div className="m-0 [&>p]:m-0">{children}</div>
+    </div>
+  )
+}
+
+function Metrics({ data }: { data?: { label: string; value: string }[] }) {
+  if (!data) return null;
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 not-prose">
+      {data.map((item, i) => (
+        <div key={i} className="bg-gray-900/50 border border-gray-800 p-4 rounded-lg text-center flex flex-col justify-center shadow-sm">
+          <div className="text-sm font-medium text-gray-400 mb-1">{item.label}</div>
+          <div className="text-2xl font-bold tracking-tight text-white mb-1"><span className="text-accent mr-1">*</span>{item.value}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const components = {
   a: CustomLink,
   img: CustomImage,
@@ -129,6 +169,8 @@ const components = {
   h6: createHeading(6),
   pre: Pre,
   Table,
+  Callout,
+  Metrics,
 }
 
 export function MDX(props: any) {
