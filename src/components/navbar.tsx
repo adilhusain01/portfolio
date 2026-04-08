@@ -34,6 +34,9 @@ export function Navbar() {
         case "p":
           router.push("/projects")
           break
+        case "s":
+          router.push("/system-design")
+          break
         case "a":
           router.push("/achievements")
           break
@@ -61,6 +64,12 @@ export function Navbar() {
           className="hover:text-accent transition-colors duration-200"
         >
           [p] projects
+        </Link>
+        <Link
+          href="/system-design"
+          className="hover:text-accent transition-colors duration-200"
+        >
+          [s] system design
         </Link>
         <Link
           href="/blog"
