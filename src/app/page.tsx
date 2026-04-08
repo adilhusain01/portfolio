@@ -16,6 +16,20 @@ const workItems: Item[] = [
 
 const projectItems = [
   {
+    title: "enterprise nodejs scaling",
+    role: "devops engineer",
+    description:
+      "A highly available auto-scaling architecture on AWS EKS. From PM2 vertical scaling to dynamic Docker/Kubernetes horizontal cluster scaling across EC2 nodes.",
+    href: "https://github.com/adilhusain01/Clustering",
+  },
+  {
+    title: "node.js multithreading architecture",
+    role: "system architect",
+    description:
+      "Explored intensive CPU-bound task offloading. Compared native Node.js thread pooling against blistering Rust-powered Axum microservices and Redis async task queues.",
+    href: "https://github.com/adilhusain01/Multithreading",
+  },
+  {
     title: "neverpay",
     role: "developer",
     description:
