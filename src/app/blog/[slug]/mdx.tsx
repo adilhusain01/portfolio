@@ -3,7 +3,8 @@ import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
 
-function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
+function Table({ data }: { data?: { headers: string[]; rows: string[][] } }) {
+  if (!data) return null;
   let headers = data.headers.map((header, index) => (
     <th key={index} className="p-2 text-left">
       {header}
