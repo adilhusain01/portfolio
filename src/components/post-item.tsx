@@ -17,7 +17,7 @@ export function PostItem({ post, isSelected }: PostItemProps) {
       }`}
     >
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
-        <h2 className="text-xl font-bold text-gray-200 group-hover:text-accent transition-colors duration-200">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-200 group-hover:text-accent transition-colors duration-200">
           {post.metadata.title.toLowerCase()}
         </h2>
         <span className="text-sm font-mono text-gray-500 shrink-0 sm:pt-1">

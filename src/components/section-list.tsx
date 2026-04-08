@@ -37,7 +37,9 @@ export function SectionList({
               <p className="text-xs sm:text-sm text-gray-400 mb-2">
                 {item.role} {item.period && `(${item.period})`}
               </p>
-              <p className="text-sm sm:text-base text-gray-300">{item.description}</p>
+              <p className="text-sm sm:text-base text-gray-300">
+                {item.description}
+              </p>
             </Link>
           </div>
         ))}

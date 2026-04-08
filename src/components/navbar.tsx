@@ -54,8 +54,8 @@ export function Navbar() {
   }, [router])
 
   return (
-    <nav className="flex flex-wrap sm:flex-nowrap items-center justify-between mb-12 text-sm gap-y-4">
-      <div className="flex space-x-4 flex-wrap gap-y-2">
+    <nav className="flex flex-col mb-10 sm:mb-12 text-sm gap-4">
+      <div className="flex overflow-x-auto pb-3 space-x-4 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50">
         <Link
           href="/"
           className="hover:text-accent transition-colors duration-200"
@@ -100,7 +100,7 @@ export function Navbar() {
           [r] resume
         </Link>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 shrink-0 px-1">
         <Link
           href="https://github.com/adilhusain01"
           target="_blank"
@@ -130,12 +130,14 @@ export function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-accent transition-colors duration-200"
+          title="Instagram"
         >
           <Instagram className="w-4 h-4" />
         </Link>
         <Link
           href="mailto:husainadil202@gmail.com"
           className="text-gray-400 hover:text-accent transition-colors duration-200"
+          title="Email"
         >
           <Mail className="w-4 h-4" />
         </Link>

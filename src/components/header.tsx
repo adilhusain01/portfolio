@@ -20,7 +20,8 @@ export function Header() {
         </div>
       </div>
       <p className="leading-relaxed animate-fade-in-up">
-        i&apos;m a 21 y/o web developer web3 enthusiast, traveller. i love reading books, riding bike, watching shows.
+        i&apos;m a 21 y/o web developer web3 enthusiast, traveller. i love
+        reading books, riding bike, watching shows.
       </p>
     </header>
   )
