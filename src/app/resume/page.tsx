@@ -10,18 +10,20 @@ export const metadata: Metadata = {
 function TimelineItem({ date, title, role, children, active = false }: { date: string, title: string, role?: string, children: React.ReactNode, active?: boolean }) {
   return (
     <div className="relative pl-8 md:pl-0">
-      <div className="md:hidden absolute left-0 top-1.5 w-3 h-3 rounded-full bg-gray-800 border border-gray-600" />
+      <div className="md:hidden absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#0d1117] border border-gray-600" />
       <div className="md:grid md:grid-cols-5 md:gap-8 items-start">
-        <div className="md:col-span-1 md:text-right mb-2 md:mb-0">
-          <div className="text-sm font-mono text-gray-500 mt-1">{date}</div>
+        <div className="md:col-span-1 border-b md:border-b-0 border-gray-800/50 pb-2 md:pb-0 mb-4 md:mb-0 md:text-right">
+          <div className="text-sm font-mono text-gray-400 md:mt-1.5">{date}</div>
         </div>
-        <div className="md:col-span-4 relative border-l-2 border-gray-800/80 md:pl-10 pb-16 last:pb-0 last:border-transparent">
-          <div className={`hidden md:block absolute -left-[7px] top-1.5 w-3 h-3 rounded-full border-2 ${active ? 'bg-accent border-accent shadow-[0_0_10px_rgba(0,229,255,0.5)]' : 'bg-[#0d1117] border-gray-600'}`} />
-          <h3 className="text-2xl font-bold text-white mb-1 group flex items-center">
+        <div className="md:col-span-4 relative md:border-l border-gray-800 md:pl-10 pb-12 md:pb-20 last:pb-0 last:border-transparent">
+          {/* Timeline Node */}
+          <div className={`hidden md:block absolute -left-[6.5px] top-1.5 w-3 h-3 rounded-full border-2 ${active ? 'bg-accent border-accent shadow-[0_0_10px_rgba(0,229,255,0.5)]' : 'bg-[#0d1117] border-gray-600'}`} />
+          
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center group-hover:text-accent transition-colors">
             {title}
           </h3>
-          {role && <div className="text-sm font-mono text-accent/80 mb-4 tracking-wide uppercase">{role}</div>}
-          <div className="text-gray-400 leading-relaxed text-base">
+          {role && <div className="text-sm text-gray-400 mb-6">{role}</div>}
+          <div className="text-gray-300 leading-relaxed text-base">
             {children}
           </div>
         </div>
@@ -32,28 +34,29 @@ function TimelineItem({ date, title, role, children, active = false }: { date: s
 
 export default function ResumePage() {
   return (
-    <main className="animate-fade-in-up relative pb-20">
-      {/* Sticky PDF Download Hook */}
-      <div className="fixed bottom-6 right-6 md:top-24 md:right-8 md:bottom-auto z-50">
+    <main className="animate-fade-in-up">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <h1 className="text-4xl font-bold text-white">
+          <span className="text-accent mr-2">*</span>
+          <ScrambleText text="resume & journey" />
+        </h1>
         <a
           href="/Resume.pdf"
           download="Adil_Husain_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 px-5 py-3 bg-[#0d1117] border border-gray-700 hover:border-accent/60 rounded-full text-sm font-bold font-mono text-gray-300 hover:text-white transition-all shadow-xl hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-700 hover:border-gray-500 hover:text-white rounded-md text-sm text-gray-300 transition-colors"
         >
-          <span className="hidden md:inline group-hover:text-accent transition-colors">download.pdf</span>
-          <span className="md:hidden">PDF</span>
-          <Download className="w-5 h-5 text-accent group-hover:-translate-y-0.5 transition-transform" />
+          <Download className="w-4 h-4" />
+          download pdf
         </a>
       </div>
 
-      <h1 className="text-4xl font-bold mb-16 text-white border-b border-gray-800/50 pb-8">
-        <span className="text-accent mr-2">~/</span>
-        <ScrambleText text="journey" />
-      </h1>
+      <p className="text-gray-400 mb-16 leading-relaxed max-w-full">
+        A timeline of my engineering journey. Download the PDF for a standard, formalized copy of my resume, or explore the context and architectural stories behind the milestones below.
+      </p>
 
-      <div className="space-y-0">
+      <div className="space-y-8 md:space-y-0">
         <TimelineItem 
           date="Present '26" 
           title="Breaking Architecture Limits"
