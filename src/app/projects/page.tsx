@@ -4,27 +4,29 @@ import { Metadata } from "next"
 
 const projects = [
   {
-    title: "enterprise node.js scaling & elastic kubernetes",
+    title: "enterprise node.js scaling to aws eks",
     description:
-      "Designed a highly available, auto-scaling enterprise architecture on AWS EKS. Transitioned from single-threaded limitations to vertical scaling with PM2, and implemented horizontal scaling using Docker and Kubernetes. Setup Horizontal Pod Autoscaler (HPA) terminating traffic spikes dynamically using compute-optimized EC2.",
-    role: "devops engineer / developer",
+      "A comprehensive architectural journey transforming a single-threaded Node.js server into a highly available, auto-scaling enterprise system. Broke through local hardware limits using PM2, containerized via Docker, and orchestrated dynamic horizontal scaling using Kubernetes (HPA) on AWS EKS.",
+    role: "devops engineer",
     period: "april 2026",
     achievements: [
-      "achieved 2x faster execution scaling to 20 Pods under 5,000 extreme load requests via c5.xlarge hardware scaling.",
+      "Halved execution time and slashed HTTP timeouts by 85% under a 5,000-request load.",
+      "Dynamically scaled to 20 Pods under 3 seconds employing zero-throttle c5.xlarge AWS compute nodes.",
     ],
     technologies: ["node.js", "pm2", "docker", "kubernetes", "aws eks"],
     href: "https://github.com/adilhusain01/Clustering",
   },
   {
-    title: "native multithreading vs rust microservices",
+    title: "high-performance node.js: multithreading & rust",
     description:
-      "Engineered a deep dive scaling CPU-bound tasks in Node.js. Evaluated native worker threads, implemented thread pooling via Piscina, and developed a blistering Rust-powered Microservice architecture for offloading intensive math calculations culminating in an enterprise-grade async task queue using Redis and Rust.",
+      "Engineered an extensive comparison benchmarking CPU-bound operations in Node.js. Evaluated naïve unpooled worker threads, established stable Piscina thread pooling, and built a blisteringly fast Rust Microservice (Axum/Rayon) culminating in a decoupled BullMQ/Redis Event-Driven Task Queue.",
     role: "system architect",
     period: "april 2026",
     achievements: [
-      "achieved ~150,000+ total gateway requests scaling backend processing flawlessly with Rust & BullMQ.",
+      "Achieved 150,000+ gateway requests with ~15k req/sec throughput and 6ms latency using async Rust workers.",
+      "Outperformed native Node.js mathematical processing speed internally by nearly 5x via compiled bare-metal optimization."
     ],
-    technologies: ["node.js", "rust", "axum", "rayon", "redis", "bullmq"],
+    technologies: ["node.js", "rust", "axum", "piscina", "rayon", "redis", "bullmq"],
     href: "https://github.com/adilhusain01/Multithreading",
   },
   {

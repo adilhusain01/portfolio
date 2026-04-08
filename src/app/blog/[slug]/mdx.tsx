@@ -2,9 +2,10 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
+import { Mermaid } from "./mermaid"
 
 function Table({ data }: { data?: { headers: string[]; rows: string[][] } }) {
-  if (!data) return null;
+  if (!data) return null
   let headers = data.headers.map((header, index) => (
     <th key={index} className="p-2 text-left">
       {header}
@@ -34,8 +35,9 @@ function CustomLink({
   href,
   ...props
 }: React.ComponentProps<typeof Link> & { href: string }) {
-  const commonClasses = "underline underline-offset-4 decoration-gray-700 hover:decoration-accent transition-colors"
-  
+  const commonClasses =
+    "underline underline-offset-4 decoration-gray-700 hover:decoration-accent transition-colors"
+
   if (href.startsWith("/")) {
     return (
       <Link href={href} className={commonClasses} {...props}>
@@ -48,7 +50,15 @@ function CustomLink({
     return <a className={commonClasses} {...props} />
   }
 
-  return <a href={href} target="_blank" rel="noopener noreferrer" className={commonClasses} {...props} />
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={commonClasses}
+      {...props}
+    />
+  )
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
@@ -70,6 +80,10 @@ async function Pre({
 
   if (isCodeBlock) {
     const lang = className.split(" ")[0]?.split("-")[1] ?? ""
+
+    if (lang === "mermaid") {
+      return <Mermaid code={String(codeElement?.props.children)} />
+    }
 
     if (!lang) {
       return <code {...props}>{children}</code>
@@ -118,14 +132,22 @@ function createHeading(level: number) {
   return HeadingComponent
 }
 
-function Callout({ type = "info", title, children }: { type?: "info" | "warning" | "danger" | "success", title?: string, children: React.ReactNode }) {
+function Callout({
+  type = "info",
+  title,
+  children,
+}: {
+  type?: "info" | "warning" | "danger" | "success"
+  title?: string
+  children: React.ReactNode
+}) {
   const styles = {
     info: "bg-blue-900/20 border-blue-500 text-blue-200",
     warning: "bg-yellow-900/20 border-yellow-500 text-yellow-200",
     danger: "bg-red-900/20 border-red-500 text-red-200",
     success: "bg-green-900/20 border-green-500 text-green-200",
   }
-  
+
   const icons = {
     info: "💡",
     warning: "⚠️",
@@ -145,15 +167,84 @@ function Callout({ type = "info", title, children }: { type?: "info" | "warning"
 }
 
 function Metrics({ data }: { data?: { label: string; value: string }[] }) {
-  if (!data) return null;
+  if (!data) return null
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 not-prose">
       {data.map((item, i) => (
-        <div key={i} className="bg-gray-900/50 border border-gray-800 p-4 rounded-lg text-center flex flex-col justify-center shadow-sm">
-          <div className="text-sm font-medium text-gray-400 mb-1">{item.label}</div>
-          <div className="text-2xl font-bold tracking-tight text-white mb-1"><span className="text-accent mr-1">*</span>{item.value}</div>
+        <div
+          key={i}
+          className="bg-gray-900/50 border border-gray-800 p-4 rounded-lg text-center flex flex-col justify-center shadow-sm"
+        >
+          <div className="text-sm font-medium text-gray-400 mb-1">
+            {item.label}
+          </div>
+          <div className="text-2xl font-bold tracking-tight text-white mb-1">
+            <span className="text-accent mr-1">*</span>
+            {item.value}
+          </div>
         </div>
       ))}
+    </div>
+  )
+}
+
+function ProsCons({ pros, cons }: { pros?: string[]; cons?: string[] }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-4 my-8 not-prose">
+      {pros && pros.length > 0 && (
+        <div className="bg-gray-900/40 border border-gray-800 rounded-lg p-5">
+          <h4 className="text-green-400 font-semibold mb-4 flex items-center text-lg">
+            <span className="mr-2">✓</span> Pros
+          </h4>
+          <ul className="space-y-3 m-0">
+            {pros.map((pro, i) => (
+              <li key={i} className="flex items-start text-base text-gray-300">
+                <span className="text-green-500 mr-2 mt-0.5">•</span>
+                <span>{pro}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {cons && cons.length > 0 && (
+        <div className="bg-gray-900/40 border border-gray-800 rounded-lg p-5">
+          <h4 className="text-red-400 font-semibold mb-4 flex items-center text-lg">
+            <span className="mr-2">✕</span> Cons
+          </h4>
+          <ul className="space-y-3 m-0">
+            {cons.map((con, i) => (
+              <li key={i} className="flex items-start text-base text-gray-300">
+                <span className="text-red-500 mr-2 mt-0.5">•</span>
+                <span>{con}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Step({
+  number,
+  title,
+  children,
+}: {
+  number: string | number
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex border-l-2 border-gray-800 ml-3 md:ml-4 pb-8 last:border-none last:pb-0 relative mt-8">
+      <div className="absolute -left-[17px] bg-gray-950 border-2 border-gray-800 h-8 w-8 rounded-full flex items-center justify-center text-accent font-bold text-sm">
+        {number}
+      </div>
+      <div className="ml-8 w-full">
+        <h3 className="text-2xl font-bold text-white mt-0.5 mb-4">{title}</h3>
+        <div className="text-gray-300 m-0 [&>*:first-child]:mt-0">
+          {children}
+        </div>
+      </div>
     </div>
   )
 }
@@ -171,6 +262,8 @@ const components = {
   Table,
   Callout,
   Metrics,
+  ProsCons,
+  Step,
 }
 
 export function MDX(props: any) {
