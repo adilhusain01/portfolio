@@ -74,7 +74,7 @@ export default function ResumePage() {
         stories behind the milestones below.
       </p>
 
-      <div className="space-y-24 md:space-y-0">
+      <div className="space-y-16 md:space-y-0">
         <TimelineItem
           date="Present '26"
           title="Breaking Architecture Limits"
