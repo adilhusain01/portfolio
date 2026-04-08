@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { Globe, MonitorPlay } from "lucide-react"
 
 type ProjectCardProps = {
   title: string
@@ -9,6 +9,7 @@ type ProjectCardProps = {
   achievements: string[]
   technologies: string[]
   href: string
+  video?: string
 }
 
 export function ProjectCard({
@@ -19,17 +20,37 @@ export function ProjectCard({
   achievements,
   technologies,
   href,
+  video,
 }: ProjectCardProps) {
   return (
     <div className="group border border-gray-800 p-6 transition-colors hover:border-accent/50">
-      <Link href={href} target="_blank">
-        <div className="flex justify-between items-start mb-4">
-          <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors underline underline-offset-4 decoration-gray-700 group-hover:decoration-accent">
-            {title}
-          </h2>
-          <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-accent transition-colors" />
+      <div className="flex justify-between items-start gap-4 mb-4">
+        <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
+          {title}
+        </h2>
+        <div className="flex items-center gap-3 pt-1 shrink-0">
+          {video && (
+            <Link
+              href={video}
+              target="_blank"
+              className="text-gray-400 hover:text-accent transition-colors"
+              title="Video Demo"
+            >
+              <MonitorPlay className="w-5 h-5" />
+            </Link>
+          )}
+          {href && (
+            <Link
+              href={href}
+              target="_blank"
+              className="text-gray-400 hover:text-accent transition-colors"
+              title="Visit Website"
+            >
+              <Globe className="w-5 h-5" />
+            </Link>
+          )}
         </div>
-      </Link>
+      </div>
 
       <p className="text-sm text-gray-400 mb-4">
         {role} {period && `(${period})`}

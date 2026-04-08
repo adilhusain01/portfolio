@@ -42,6 +42,7 @@ export const projects = [
       "base sepolia",
     ],
     href: "https://never-pay.vercel.app",
+    video: "https://youtu.be/adcnmsFEAIA"
   },
   {
     title: "clawpay",
@@ -59,6 +60,7 @@ export const projects = [
       "openclaw",
     ],
     href: "https://claw-pay.vercel.app",
+    video: "https://youtu.be/Az8vLFKR9r8"
   },
   {
     title: "taas",
@@ -71,6 +73,7 @@ export const projects = [
     ],
     technologies: ["javascript", "react.js", "alphaton chain", "tailwind css"],
     href: "https://taas-nine.vercel.app",
+    video: "https://youtu.be/Q_XKzGK77GQ"
   },
   {
     title: "somany",
@@ -81,6 +84,7 @@ export const projects = [
     achievements: ["won $1.5k as 2nd prize in somnia defi mini hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://somany-nine.vercel.app",
+    video: "https://youtu.be/vqzJIeNt3y4"
   },
   {
     title: "catch goofy",
@@ -91,6 +95,7 @@ export const projects = [
     achievements: ["won $200 as 2nd prize in somnia mini games hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
+    video: "https://youtu.be/XANNfyc-kpY"
   },
   {
     title: "concept bridge",
@@ -108,6 +113,7 @@ export const projects = [
       "aws bedrock",
     ],
     href: "https://concept-bridge.vercel.app",
+    video: "https://youtu.be/iuxmcOM0nQk"
   },
   {
     title: "vibe",
@@ -127,6 +133,7 @@ export const projects = [
       "google gemini",
     ],
     href: "https://vibeee.vercel.app",
+    video: "https://youtu.be/anlJwTk06JE"
   },
   {
     title: "air",
