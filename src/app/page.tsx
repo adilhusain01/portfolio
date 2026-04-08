@@ -33,10 +33,10 @@ export default function HomePage() {
       <BlogSection />
 
       <section
-        className="mb-16 animate-fade-in-up"
+        className="mb-12 sm:mb-16 animate-fade-in-up"
         style={{ animationDelay: "200ms", animationFillMode: "both" }}
       >
-        <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
           <span className="text-accent mr-2">*</span> system design
         </h2>
         <div className="space-y-6">
@@ -44,7 +44,7 @@ export default function HomePage() {
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
-        <div className="mt-8 flex justify-end">
+        <div className="mt-6 sm:mt-8 flex justify-end">
           <Link
             href="/system-design"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
@@ -58,10 +58,10 @@ export default function HomePage() {
       </section>
 
       <section
-        className="mb-16 animate-fade-in-up"
+        className="mb-12 sm:mb-16 animate-fade-in-up"
         style={{ animationDelay: "300ms", animationFillMode: "both" }}
       >
-        <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
           <span className="text-accent mr-2">*</span> latest projects
         </h2>
         <div className="space-y-6">
@@ -69,7 +69,7 @@ export default function HomePage() {
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
-        <div className="mt-8 flex justify-end">
+        <div className="mt-6 sm:mt-8 flex justify-end">
           <Link
             href="/projects"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"

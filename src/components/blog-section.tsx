@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { getPosts } from "@/lib/blog"
+import { PostItem } from "./post-item"
 
 const posts = getPosts()
   .sort(
@@ -11,33 +11,27 @@ const posts = getPosts()
 
 export function BlogSection() {
   return (
-    <section className="mb-16 animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+    <section className="mb-12 sm:mb-16 animate-fade-in-up">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
         <span className="text-accent mr-2">*</span>
         blog
       </h2>
-      <div className="space-y-4">
-        {posts.map((post, index) => (
-          <div key={index} className="flex justify-between items-center group">
-            <Link
-              href={`/blog/${post.slug}`}
-              className="text-gray-200 hover:text-accent transition-colors duration-200"
-            >
-              {post.metadata.title.toLowerCase()}
-            </Link>
-            <span className="text-sm text-gray-400">
-              {formatDate(post.metadata.date)}
-            </span>
-          </div>
+      <div className="space-y-6">
+        {posts.map((post) => (
+          <PostItem key={post.slug} post={post} />
         ))}
       </div>
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1 mt-6 text-accent hover:text-accent-foreground group transition-colors duration-200"
-      >
-        all posts{" "}
-        <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
-      </Link>
+      <div className="mt-6 sm:mt-8 flex justify-end">
+        <Link
+          href="/blog"
+          className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
+        >
+          <span className="transition-colors">all posts</span>
+          <span className="ml-2 group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+        </Link>
+      </div>
     </section>
   )
 }

@@ -3,8 +3,8 @@ import { MapPin, Building2 } from "lucide-react"
 
 export function Header() {
   return (
-    <header className="mb-16 space-y-4">
-      <h1 className="text-4xl font-bold mb-4 animate-fade-in text-white">
+    <header className="mb-12 sm:mb-16 space-y-4">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-in text-white">
         <span className="inline-block">
           <ScrambleText text="adil husain" />
         </span>

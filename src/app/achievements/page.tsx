@@ -63,12 +63,12 @@ const achievements = [
 export default function AchievementsPage() {
   return (
     <main className="animate-fade-in-up">
-      <h1 className="text-4xl font-bold mb-8 text-white">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
         <span className="text-accent mr-2">*</span>
         <ScrambleText text="achievements" />
       </h1>
 
-      <p className="text-gray-400 mb-12 leading-relaxed tracking-wide">
+      <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed tracking-wide">
         A track record of competing, building, and winning in global hackathons
         and technical competitions.
       </p>
@@ -88,8 +88,8 @@ export default function AchievementsPage() {
                 />
               </div>
             )}
-            <div className="p-6 flex flex-col sm:flex-row sm:items-start sm:items-center justify-between gap-4">
-              <div className="flex justify-between items-start gap-4">
+            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-start sm:items-center justify-between gap-4">
+              <div className="flex justify-between items-start gap-2 sm:gap-4">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-lg md:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
                     {item.event}

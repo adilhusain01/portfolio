@@ -25,8 +25,8 @@ export function ProjectCard({
   video,
 }: ProjectCardProps) {
   return (
-    <div className="group border border-gray-800 p-6 transition-colors hover:border-accent/50">
-      <div className="flex justify-between items-start gap-4 mb-4">
+    <div className="group border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-4 mb-4">
         <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
           {title}
         </h3>

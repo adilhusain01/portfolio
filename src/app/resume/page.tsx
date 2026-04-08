@@ -35,7 +35,7 @@ function TimelineItem({
             className={`hidden md:block absolute -left-[6.5px] top-1.5 w-3 h-3 rounded-full border-2 ${active ? "bg-accent border-accent shadow-[0_0_10px_rgba(0,229,255,0.5)]" : "bg-[#0d1117] border-gray-600"}`}
           />
 
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center group-hover:text-accent transition-colors">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 flex items-center group-hover:text-accent transition-colors">
             {title}
           </h3>
           {role && <div className="text-sm text-gray-400 mb-6">{role}</div>}
@@ -52,7 +52,7 @@ export default function ResumePage() {
   return (
     <main className="animate-fade-in-up">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <h1 className="text-4xl font-bold text-white">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white">
           <span className="text-accent mr-2">*</span>
           <ScrambleText text="resume & journey" />
         </h1>
@@ -61,14 +61,14 @@ export default function ResumePage() {
           download="Adil_Husain_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-700 hover:border-gray-500 hover:text-white rounded-md text-sm text-gray-300 transition-colors"
+          className="inline-flex max-w-[max-content] items-center justify-center gap-2 px-4 py-2 border border-gray-700 hover:border-gray-500 hover:text-white rounded-md text-sm text-gray-300 transition-colors"
         >
           <Download className="w-4 h-4" />
           download pdf
         </a>
       </div>
 
-      <p className="text-gray-400 mb-16 leading-relaxed max-w-full">
+      <p className="text-sm sm:text-base text-gray-400 mb-12 sm:mb-16 leading-relaxed max-w-full">
         A timeline of my engineering journey. PDF consists a formal copy of my
         resume, or explore the context and architectural stories behind the
         milestones below.

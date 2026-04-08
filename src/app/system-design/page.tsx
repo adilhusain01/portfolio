@@ -11,14 +11,15 @@ export default function SystemDesignPage() {
 
   return (
     <main className="animate-fade-in-up">
-      <h1 className="text-4xl font-bold mb-8 text-white">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
         <span className="text-accent mr-2">*</span>
         <ScrambleText text="system design" />
       </h1>
 
-      <p className="text-gray-400 mb-12 leading-relaxed">
+      <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed">
         An engineering archive mapping my journey scaling system architecture,
-        optimizing backend performance, and deploying distributed services to cloud infrastructure. Sorted chronologically.
+        optimizing backend performance, and deploying distributed services to
+        cloud infrastructure. Sorted chronologically.
       </p>
 
       <div className="space-y-12">

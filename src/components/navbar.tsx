@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
-import { Github, Twitter, Linkedin, Mail } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail, Instagram } from "lucide-react"
 
 export function Navbar() {
   const router = useRouter()
@@ -43,6 +43,9 @@ export function Navbar() {
         case "r":
           router.push("/resume")
           break
+        case "g":
+          router.push("/gallery")
+          break
       }
     }
 
@@ -69,7 +72,7 @@ export function Navbar() {
           href="/system-design"
           className="hover:text-accent transition-colors duration-200"
         >
-          [s] system design
+          [s] sys design
         </Link>
         <Link
           href="/blog"
@@ -83,6 +86,12 @@ export function Navbar() {
           className="hover:text-accent transition-colors duration-200"
         >
           [a] achievements
+        </Link>
+        <Link
+          href="/gallery"
+          className="hover:text-accent transition-colors duration-200"
+        >
+          [g] gallery
         </Link>
         <Link
           href="/resume"
@@ -115,6 +124,14 @@ export function Navbar() {
           className="text-gray-400 hover:text-accent transition-colors duration-200"
         >
           <Linkedin className="w-4 h-4" />
+        </Link>
+        <Link
+          href="https://www.instagram.com/adilhusain__"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-accent transition-colors duration-200"
+        >
+          <Instagram className="w-4 h-4" />
         </Link>
         <Link
           href="mailto:husainadil202@gmail.com"

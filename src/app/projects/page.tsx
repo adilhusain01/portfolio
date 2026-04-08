@@ -11,12 +11,12 @@ export default function ProjectsPage() {
 
   return (
     <main className="animate-fade-in-up">
-      <h1 className="text-4xl font-bold mb-8 text-white">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
         <span className="text-accent mr-2">*</span>
         <ScrambleText text="projects" />
       </h1>
 
-      <p className="text-gray-400 mb-12 leading-relaxed">
+      <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed">
         An engineering archive mapping my projects scaling system architecture,
         developing multi-chain blockchain smart contracts, and full stack AI
         application development.

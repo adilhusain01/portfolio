@@ -12,11 +12,11 @@ export function PostItem({ post, isSelected }: PostItemProps) {
     <Link
       href={`/blog/${post.slug}`}
       prefetch={true}
-      className={`group block border border-gray-800 p-6 transition-all hover:border-accent/50 relative ${
+      className={`group block border border-gray-800 p-4 sm:p-6 transition-all hover:border-accent/50 relative ${
         isSelected ? "bg-accent/5 border-l-2 border-l-accent" : ""
       }`}
     >
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
         <h2 className="text-xl font-bold text-gray-200 group-hover:text-accent transition-colors duration-200">
           {post.metadata.title.toLowerCase()}
         </h2>
