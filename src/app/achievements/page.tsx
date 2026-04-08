@@ -13,7 +13,7 @@ const achievements = [
     event: "Alphathon Origin Singapore (TOKEN2049)",
     award: "3rd Prize ($1,500 USDC)",
     project: "TaaS",
-    link: "https://taas-nine.vercel.app",
+    link: "https://taas-nine.vercel.app/",
   },
   {
     event: "Somnia DeFi Mini Hackathon",
@@ -23,12 +23,16 @@ const achievements = [
   },
   {
     event: "Somnia Mini Games Hackathon",
-    award: "2nd Prize ($200)",
+    award: "2nd Prize ($100)",
     project: "Catch Goofy",
-    link: "https://catch-goofy.vercel.app",
+    link: "https://catch-goofy.vercel.app/",
   },
   {
-    event: "Hack for Humanity 2025 (Microsoft x InnoQuest)",
+    event: "Microsoft x InnoQuest",
+    award: "2nd Position",
+  },
+  {
+    event: "Hack for Humanity 2025",
     award: "14th Place",
     project: "Concept Bridge",
     link: "https://concept-bridge.vercel.app/",
@@ -58,27 +62,39 @@ export default function AchievementsPage() {
         {achievements.map((item, index) => (
           <div
             key={index}
-            className="group border border-white/[0.05] rounded-xl p-6 bg-white/[0.01] hover:bg-white/[0.02] transition-colors relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+            className="group border border-gray-800 p-6 transition-colors hover:border-accent/50 flex flex-col sm:flex-row sm:items-start sm:items-center justify-between gap-4"
           >
-            <div className="flex flex-col gap-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2">
-                <Trophy className="w-5 h-5" />
-                {item.event}
-              </h3>
-              <p className="text-sm font-mono text-gray-400">
-                <span className="text-accent">{item.award}</span>
-              </p>
+            <div className="flex justify-between items-start gap-4">
+              <div className="flex flex-col gap-2">
+                <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2">
+                  <Trophy className="w-5 h-5 shrink-0" />
+                  {item.event}
+                </h2>
+                <p className="text-sm text-gray-400">
+                  <span className="text-gray-300 font-semibold">{item.award}</span>
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center">
-              <Link
-                href={item.link}
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors"
-              >
-                <span>built {item.project}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            <div className="flex items-center pt-1 shrink-0">
+              {item.project && item.link ? (
+                <Link
+                  href={item.link}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-accent transition-colors"
+                >
+                  <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded">
+                    built {item.project.toLowerCase()}
+                  </span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
+                </Link>
+              ) : item.project ? (
+                <div className="inline-flex items-center gap-2 text-sm text-gray-400">
+                  <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded">
+                    built {item.project.toLowerCase()}
+                  </span>
+                </div>
+              ) : null}
             </div>
           </div>
         ))}

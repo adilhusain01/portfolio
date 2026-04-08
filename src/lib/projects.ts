@@ -69,7 +69,7 @@ export const projects = [
       "a fun bird crash game, with high‑stakes betting and adrenaline‑charged experience.",
     role: "developer",
     period: "august 2025",
-    achievements: ["won $200 as 2nd prize in somnia mini games hackathon"],
+    achievements: ["won $100 as 2nd prize in somnia mini games hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
     github: "https://github.com/adilhusain01/catch-goofy",
