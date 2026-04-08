@@ -2,7 +2,6 @@ import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug, getPosts } from "@/lib/blog"
 import { ProgressBar } from "./progress-bar"
-import { TableOfContents } from "./toc"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -107,10 +106,6 @@ export default async function Post({ params }: PageProps) {
               <MDX source={post.content} />
             </article>
           </div>
-
-          <aside className="w-[200px] shrink-0 hidden lg:block">
-            <TableOfContents />
-          </aside>
         </div>
       </section>
     </>

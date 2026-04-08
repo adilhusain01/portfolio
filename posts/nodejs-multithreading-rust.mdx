@@ -31,17 +31,25 @@ Running 10s test @ http://localhost:3000/heavy
 <Step number="1" title="Unpooled OS Threads (The Crash & Burn)">
 Naivety says "just spawn a new `worker_thread` for every incoming request." Under any significant load, this strategy initiates a complete catastrophe.
 
-<CodeDiff 
-  before={`app.get('/heavy', (req, res) => {
+<CodeGroup>
+  <CodeGroupItem title="Unbounded Spawn (Danger)">
+```javascript
+app.get('/heavy', (req, res) => {
   // DANGER: Unbounded OS thread spawn
   const worker = new Worker('./heavy.js'); 
-});`} 
-  after={`app.get('/heavy', async (req, res) => {
+});
+```
+  </CodeGroupItem>
+  <CodeGroupItem title="Pooled Execution (Safe)" isOptimized={true}>
+```javascript
+app.get('/heavy', async (req, res) => {
   // SAFE: Bounded thread pool execution
   const result = await pool.run({ task: req.body });
   res.send(result);
-});`}
-/>
+});
+```
+  </CodeGroupItem>
+</CodeGroup>
 
 <Callout type="danger" title="Timeout">
 <p>

@@ -28,23 +28,22 @@ function TerminalWindow({ children, title = "zsh" }: { children: React.ReactNode
   )
 }
 
-function CodeDiff({ before, after }: { before: string, after: string }) {
+function CodeGroup({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 relative not-prose">
-      <div className="bg-[#1e1e2e] border border-red-900/50 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
-        <div className="bg-red-950/40 text-red-400 text-xs px-4 py-2 border-b border-red-900/50 font-bold tracking-wider uppercase">
-          Before Focus
-        </div>
-        <pre className="p-4 text-sm font-mono overflow-auto flex-1 text-gray-300 whitespace-pre-wrap"><code className="language-javascript">{before}</code></pre>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 not-prose">
+      {children}
+    </div>
+  )
+}
+
+function CodeGroupItem({ title, children, isOptimized = false }: { title: string, children: React.ReactNode, isOptimized?: boolean }) {
+  return (
+    <div className={`bg-[#0d1117] border rounded-lg overflow-hidden flex flex-col ${isOptimized ? 'border-green-900/50' : 'border-gray-800'}`}>
+      <div className={`text-xs px-4 py-2 border-b font-bold tracking-wider uppercase ${isOptimized ? 'bg-green-900/20 text-green-400 border-green-900/50' : 'bg-gray-900/50 text-gray-400 border-gray-800'}`}>
+        {title}
       </div>
-      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-gray-800 rounded-full border border-gray-700 items-center justify-center text-accent font-bold">
-        ➔
-      </div>
-      <div className="bg-[#1e1e2e] border border-green-900/50 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
-        <div className="bg-green-950/40 text-green-400 text-xs px-4 py-2 border-b border-green-900/50 font-bold tracking-wider uppercase">
-          Optimized Focus
-        </div>
-        <pre className="p-4 text-sm font-mono overflow-auto flex-1 text-gray-300 whitespace-pre-wrap"><code className="language-javascript">{after}</code></pre>
+      <div className="p-4 overflow-auto flex-1 [&_pre]:!m-0 [&_pre]:!bg-transparent text-sm">
+        {children}
       </div>
     </div>
   )
@@ -52,7 +51,7 @@ function CodeDiff({ before, after }: { before: string, after: string }) {
 
 function TechBadge({ text, bg = "bg-gray-800" }: { text: string, bg?: string }) {
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest glowing-badge mx-1 align-middle`}>
+    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest mx-1 align-middle`}>
       {text}
     </span>
   )
@@ -60,15 +59,12 @@ function TechBadge({ text, bg = "bg-gray-800" }: { text: string, bg?: string }) 
 
 function KeyTakeaway({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-black border-2 border-accent/30 p-8 my-10 shadow-[0_0_15px_rgba(0,229,255,0.15)] group hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] transition-all">
-      <div className="absolute top-0 right-0 p-4 opacity-10">
-        <svg fill="currentColor" viewBox="0 0 24 24" className="w-24 h-24 text-accent"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-      </div>
-      <h3 className="text-xl font-bold font-mono text-accent mb-4 m-0 uppercase flex items-center">
-        <span className="w-2 h-2 bg-accent rounded-full animate-pulse mr-3"></span>
-        Key Architecture Takeaway
+    <div className="border-l-4 border-gray-600 bg-gray-900/30 p-6 my-8 rounded-r-lg">
+      <h3 className="text-lg font-bold text-gray-200 mb-3 m-0 flex items-center">
+        <span className="text-gray-400 mr-2 text-xl">💡</span>
+        Key Takeaway
       </h3>
-      <div className="text-lg text-gray-200 leading-relaxed z-10 relative">
+      <div className="text-base text-gray-300 leading-relaxed z-10 relative">
         {children}
       </div>
     </div>
@@ -342,7 +338,8 @@ const components = {
   ProsCons,
   Step,
   TerminalWindow,
-  CodeDiff,
+  CodeGroup,
+  CodeGroupItem,
   TechBadge,
   KeyTakeaway,
 }
