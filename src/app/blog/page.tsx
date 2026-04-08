@@ -5,16 +5,22 @@ import { Metadata } from "next"
 
 const posts = getPosts().sort(
   (a, b) =>
-    new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+    new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
 )
 
 export default async function BlogPage() {
   return (
     <main className="animate-fade-in-up relative">
-      <h1 className="text-4xl font-bold mb-8 text-white">
+      <h1 className="text-4xl font-bold mb-4 text-white">
         <span className="text-accent mr-2">*</span>
         <ScrambleText text="blog" />
       </h1>
+
+      <p className="text-gray-400 mb-12 leading-relaxed max-w-full">
+        Thoughts and writings on systems engineering, scalable architectures,
+        and modern backend development. Explore the context and architectural
+        experiments behind my projects below.
+      </p>
 
       <p className="hidden sm:block text-sm text-gray-400 mb-8">
         press{" "}

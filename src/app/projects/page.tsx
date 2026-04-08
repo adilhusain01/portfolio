@@ -6,7 +6,7 @@ import { projects } from "@/lib/projects"
 export default function ProjectsPage() {
   // Sort projects chronologically by period
   const sortedProjects = [...projects].sort(
-    (a, b) => new Date(b.period).getTime() - new Date(a.period).getTime()
+    (a, b) => new Date(b.period).getTime() - new Date(a.period).getTime(),
   )
 
   return (
@@ -17,7 +17,9 @@ export default function ProjectsPage() {
       </h1>
 
       <p className="text-gray-400 mb-12 leading-relaxed">
-        An engineering archive mapping my journey scaling system architecture, developing multi-chain blockchain smart contracts, and full stack AI application development. Sorted chronologically.
+        An engineering archive mapping my journey scaling system architecture,
+        developing multi-chain blockchain smart contracts, and full stack AI
+        application development. Sorted chronologically.
       </p>
 
       <div className="space-y-12">
@@ -31,7 +33,8 @@ export default function ProjectsPage() {
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "An engineering archive of scaling systems, web3 applications, and full-stack AI development.",
+  description:
+    "An engineering archive of scaling systems, web3 applications, and full-stack AI development.",
   openGraph: {
     images: [
       {

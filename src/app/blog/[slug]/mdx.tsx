@@ -6,7 +6,13 @@ import { Mermaid } from "./mermaid"
 import { CopyButton } from "./copy-button"
 
 // NEW COMPONENTS
-function TerminalWindow({ children, title = "zsh" }: { children: React.ReactNode, title?: string }) {
+function TerminalWindow({
+  children,
+  title = "zsh",
+}: {
+  children: React.ReactNode
+  title?: string
+}) {
   return (
     <div className="rounded-xl overflow-hidden border border-gray-800 bg-[#0d1117] my-8 shadow-2xl">
       {/* Mac window header */}
@@ -36,10 +42,22 @@ function CodeGroup({ children }: { children: React.ReactNode }) {
   )
 }
 
-function CodeGroupItem({ title, children, isOptimized = false }: { title: string, children: React.ReactNode, isOptimized?: boolean }) {
+function CodeGroupItem({
+  title,
+  children,
+  isOptimized = false,
+}: {
+  title: string
+  children: React.ReactNode
+  isOptimized?: boolean
+}) {
   return (
-    <div className={`bg-[#0d1117] border rounded-lg overflow-hidden flex flex-col ${isOptimized ? 'border-green-900/50' : 'border-gray-800'}`}>
-      <div className={`text-xs px-4 py-2 border-b font-bold tracking-wider uppercase ${isOptimized ? 'bg-green-900/20 text-green-400 border-green-900/50' : 'bg-gray-900/50 text-gray-400 border-gray-800'}`}>
+    <div
+      className={`bg-[#0d1117] border rounded-lg overflow-hidden flex flex-col ${isOptimized ? "border-green-900/50" : "border-gray-800"}`}
+    >
+      <div
+        className={`text-xs px-4 py-2 border-b font-bold tracking-wider uppercase ${isOptimized ? "bg-green-900/20 text-green-400 border-green-900/50" : "bg-gray-900/50 text-gray-400 border-gray-800"}`}
+      >
         {title}
       </div>
       <div className="p-4 overflow-auto flex-1 [&_pre]:!m-0 [&_pre]:!bg-transparent text-sm">
@@ -49,9 +67,17 @@ function CodeGroupItem({ title, children, isOptimized = false }: { title: string
   )
 }
 
-function TechBadge({ text, bg = "bg-gray-800" }: { text: string, bg?: string }) {
+function TechBadge({
+  text,
+  bg = "bg-gray-800",
+}: {
+  text: string
+  bg?: string
+}) {
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest mx-1 align-middle`}>
+    <span
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest mx-1 align-middle`}
+    >
       {text}
     </span>
   )
@@ -168,7 +194,10 @@ async function Pre({
     return (
       <div className="relative group relative-code-block mb-4 mt-6 rounded-lg overflow-hidden border border-gray-800">
         <CopyButton text={rawCode} />
-        <div dangerouslySetInnerHTML={{ __html: html }} className="[&>pre]:!m-0 [&>pre]:!rounded-none" />
+        <div
+          dangerouslySetInnerHTML={{ __html: html }}
+          className="[&>pre]:!m-0 [&>pre]:!rounded-none"
+        />
       </div>
     )
   }

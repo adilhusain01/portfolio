@@ -26,8 +26,11 @@ export default function HomePage() {
       <Header />
       <SectionList title="work" items={workItems} />
       <BlogSection />
-      
-      <section className="my-14 animate-fade-in-up" style={{ animationDelay: "200ms", animationFillMode: "both" }}>
+
+      <section
+        className="my-14 animate-fade-in-up"
+        style={{ animationDelay: "200ms", animationFillMode: "both" }}
+      >
         <h2 className="text-xl font-bold mb-6 text-white">
           <span className="text-accent mr-2">*</span> featured architectures
         </h2>
