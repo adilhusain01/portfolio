@@ -3,201 +3,89 @@ import { ScrambleText } from "@/components/scramble-text"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Resume",
-  description: "Adil Husain's Resume",
+  title: "Journey",
+  description: "My engineering journey and architectural story.",
+}
+
+function TimelineItem({ date, title, role, children, active = false }: { date: string, title: string, role?: string, children: React.ReactNode, active?: boolean }) {
+  return (
+    <div className="relative pl-8 md:pl-0">
+      <div className="md:hidden absolute left-0 top-1.5 w-3 h-3 rounded-full bg-gray-800 border border-gray-600" />
+      <div className="md:grid md:grid-cols-5 md:gap-8 items-start">
+        <div className="md:col-span-1 md:text-right mb-2 md:mb-0">
+          <div className="text-sm font-mono text-gray-500 mt-1">{date}</div>
+        </div>
+        <div className="md:col-span-4 relative border-l-2 border-gray-800/80 md:pl-10 pb-16 last:pb-0 last:border-transparent">
+          <div className={`hidden md:block absolute -left-[7px] top-1.5 w-3 h-3 rounded-full border-2 ${active ? 'bg-accent border-accent shadow-[0_0_10px_rgba(0,229,255,0.5)]' : 'bg-[#0d1117] border-gray-600'}`} />
+          <h3 className="text-2xl font-bold text-white mb-1 group flex items-center">
+            {title}
+          </h3>
+          {role && <div className="text-sm font-mono text-accent/80 mb-4 tracking-wide uppercase">{role}</div>}
+          <div className="text-gray-400 leading-relaxed text-base">
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function ResumePage() {
   return (
-    <main className="animate-fade-in-up">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <h1 className="text-4xl font-bold text-white">
-          <span className="text-accent mr-2">*</span>
-          <ScrambleText text="resume" />
-        </h1>
+    <main className="animate-fade-in-up relative pb-20">
+      {/* Sticky PDF Download Hook */}
+      <div className="fixed bottom-6 right-6 md:top-24 md:right-8 md:bottom-auto z-50">
         <a
           href="/Resume.pdf"
           download="Adil_Husain_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-700 hover:border-gray-500 rounded-md text-sm text-gray-300 hover:text-white transition-colors"
+          className="group flex items-center gap-3 px-5 py-3 bg-[#0d1117] border border-gray-700 hover:border-accent/60 rounded-full text-sm font-bold font-mono text-gray-300 hover:text-white transition-all shadow-xl hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
         >
-          <Download className="w-4 h-4" />
-          download pdf
+          <span className="hidden md:inline group-hover:text-accent transition-colors">download.pdf</span>
+          <span className="md:hidden">PDF</span>
+          <Download className="w-5 h-5 text-accent group-hover:-translate-y-0.5 transition-transform" />
         </a>
       </div>
 
-      <div className="space-y-12 text-gray-300 leading-relaxed max-w-full">
-        {/* Header section in Resume */}
-        <section className="border-b border-gray-800 pb-8">
-          <h2 className="text-2xl font-bold text-white mb-2">Adil Husain</h2>
-          <p className="text-sm text-gray-500 mb-4">+91 8604135956 | Mohammadi, Uttar Pradesh, India - 262804</p>
-          <div className="flex gap-4 text-sm text-accent underline underline-offset-4">
-            <a href="mailto:husainadil202@gmail.com" className="hover:text-white transition-colors">husainadil202@gmail.com</a>
-            <a href="https://github.com/adilhusain01" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
-            <a href="https://www.linkedin.com/in/adil-husain" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-          </div>
-        </section>
+      <h1 className="text-4xl font-bold mb-16 text-white border-b border-gray-800/50 pb-8">
+        <span className="text-accent mr-2">~/</span>
+        <ScrambleText text="journey" />
+      </h1>
 
-        {/* Experience */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Experience
-          </h3>
-          <div className="mb-4">
-            <div className="flex justify-between items-baseline mb-1">
-              <h4 className="font-semibold text-white flex items-center gap-2">
-                <a href="https://www.linkedin.com/company/techbug-official" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">Full Stack Developer Intern</a>
-                <span className="font-normal text-gray-400">| Techbug</span>
-              </h4>
-              <span className="text-xs text-gray-500">Jul 2024 - Oct 2024</span>
-            </div>
-            <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-              <li>Engineered CMS dashboard increasing content update efficiency by 50%, integrating Google Analytics for real-time insights.</li>
-              <li>Enforced JWT-based authorization with role-based access control, reducing unauthorized access attempts by 90%.</li>
-              <li>Improved application performance by 65% through server-side pagination and nested child pagination strategies.</li>
-              <li>Developed automated email system reducing manual notification processes by 100%, triggering alerts for newsletter subscriptions and low product quantities.</li>
-            </ul>
-          </div>
-        </section>
+      <div className="space-y-0">
+        <TimelineItem 
+          date="Present '26" 
+          title="Breaking Architecture Limits"
+          role="Systems Engineering"
+          active={true}
+        >
+          I bypassed the ceiling of single-threaded Node.js and started tearing apart Javascript&apos;s internal execution structure. I implemented <strong>PM2 clustering</strong>, pushed <strong>Docker</strong> containers to <strong>AWS EKS</strong> with Horizontal Pod Autoscaling, and benchmarked <strong>Rust Axum microservices</strong> against Piscina thread pooling. This resulted in scaling architectural throughput to <strong>150,000+ RPS</strong> and dropping operational latencies to 6ms using asynchronous Redis/BullMQ task orchestration.
+        </TimelineItem>
 
-        {/* Projects */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Projects
-          </h3>
-          <div className="space-y-6">
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://never-pay.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">NeverPay</a>
-                  <span className="font-normal text-xs text-gray-400">NextJs, Solidity, AaveV3, LI.FI, Gemini, TailwindCSS</span>
-                </h4>
-                <span className="text-xs text-gray-500">Feb 2026</span>
-              </div>
-              <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-                <li>Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.</li>
-                <li>Implemented YieldVault.sol smart contract on Base Sepolia for automated aUSDC yield accrual and credit minting (50 credits per $1 USDC), cross-chain deposit bridging via LI.FI, real-time Next.js 16 dashboard with wagmi + RainbowKit, and secure API routes for Gemini AI.</li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://claw-pay.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">ClawPay</a>
-                  <span className="font-normal text-xs text-gray-400">ReactJs, FastAPI, Solidity, Lithic API, TailwindCSS, OpenClaw</span>
-                </h4>
-                <span className="text-xs text-gray-500">Feb 2026</span>
-              </div>
-              <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-                <li>Developed secure autonomous payment layer for AI agents enabling purchases on any Visa/Mastercard website using single-use virtual cards backed by USDC in on-chain escrow on Arbitrum Sepolia, eliminating merchant opt-in, persistent card exposure, and human intervention while keeping full user control of funds.</li>
-                <li>Engineered Solidity escrow contract, FastAPI backend with Lithic API for exact spend-limit single-use cards, and MCP server tools for seamless integration with Claude/OpenClaw agents via ethers.js.</li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://taas-nine.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">TAAS</a>
-                  <span className="font-normal text-xs text-gray-400">ReactJs, Solidity, TailwindCSS</span>
-                </h4>
-                <span className="text-xs text-gray-500">Oct 2025</span>
-              </div>
-              <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-                <li>Developed a decentralized escrow system for rental agreements on the TON blockchain, enabling trustless transactions between landlords and tenants with automated deposit management and smart contract-enforced terms.</li>
-                <li>Engineered a yield generation mechanism that automatically stakes security deposits at 5% APY during rental terms, returning the principal to tenants and distributing generated yield to landlords, creating a mutually beneficial financial model.</li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://vibeee.vercel.app" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">VIBE</a>
-                  <span className="font-normal text-xs text-gray-400">ReactJs, NodeJs, TailwindCSS, MongoDB, AWS Bedrock</span>
-                </h4>
-                <span className="text-xs text-gray-500">Nov 2024</span>
-              </div>
-              <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-                <li>Created an educational gaming platform featuring quizzes generated from PDFs, prompts, YouTube video links, or webpage URLs, along with a fact-checking game based on topic inputs using AWS Bedrock API’s AI.</li>
-                <li>Implemented a reward model to incentivize participants, where the game initiator deposits a predefined budget via their crypto wallet, calculated based on the number of questions, participants, and reward per score, boosting user retention by 30%-70%.</li>
-                <li>Incorporated server-side caching using Redis to optimize data retrieval, reduce server load, and enhance response time.</li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-semibold text-white flex items-center gap-2">
-                  <a href="https://github.com/adilhusain01/AIR" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-gray-500 hover:decoration-accent hover:text-accent transition-colors">AIR</a>
-                  <span className="font-normal text-xs text-gray-400">ReactJs, Django, SQLite, WebSocket, TailwindCSS, Gemini API</span>
-                </h4>
-                <span className="text-xs text-gray-500">Apr 2024</span>
-              </div>
-              <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-                <li>Constructed a real-time chat application using Google Gemini API for AI-powered message suggestions, image descriptions, and sentiment analysis.</li>
-                <li>Made the auto chat suggestion based on the ongoing chat flow, tone and behavior paving the conversations more fruitful and improving conversation efficiency by 50%.</li>
-                <li>Incorporated sentiment analysis to provide insights into conversation tone, helping maintain professionalism in communication.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+        <TimelineItem 
+          date="Late '25 - Early '26" 
+          title="The Web3 Hackathon Sprint"
+          role="Blockchain & Autonomous Agents"
+        >
+          Immersed completely into decentralized architectures and EVM engineering. Built <strong>NeverPay</strong> (yield-farming AI platform via Aave V3) and <strong>ClawPay</strong> (an autonomous fiat-payment layer backed by Arbitrum Sepolia escrows for AI agents). Competed globally—securing <strong>3rd place at Token2049 Origins Singapore</strong> with the TAAS escrow protocol, netting $8k with a 4th place sweep at the <strong>TRON Grand Hackatron</strong>, and winning multiple bounties in Somnia DeFi circuits.
+        </TimelineItem>
 
-        {/* Technical Skills */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Technical Skills
-          </h3>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li><span className="font-semibold text-white">Languages:</span> JavaScript, Java, Python, SQL, CSS, HTML, Solidity</li>
-            <li><span className="font-semibold text-white">Frameworks & Tech:</span> NodeJs, ReactJs, PostgreSQL, MongoDB, TailwindCSS, Redis, Git, Linux Scripting, AWS EC2, AWS S3</li>
-          </ul>
-        </section>
+        <TimelineItem 
+          date="Jul '24 - Oct '24" 
+          title="Professional Leap: Techbug"
+          role="Full Stack Developer Intern"
+        >
+          It wasn&apos;t just writing features or fixing UI bugs; I directly overhauled backend data pathways. I engineered the central CMS dashboard (boosting content update speeds by 50%), ripped out legacy authentication for a hardened <strong>JWT-based pipeline</strong> (preventing 90% of unauthorized API hits), and restructured fundamental database pagination formulas to <strong>slash general loading latency by 65%</strong>.
+        </TimelineItem>
 
-        {/* Certificates */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Certificates
-          </h3>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li className="flex justify-between items-baseline">
-              <span>Data Structure and Algorithms | Boards Infinity</span>
-              <span className="text-xs text-gray-500">Oct 2024</span>
-            </li>
-          </ul>
-        </section>
-
-        {/* Education */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Education
-          </h3>
-          <div className="space-y-4">
-            <div className="flex justify-between items-baseline">
-              <div>
-                <h4 className="font-semibold text-white">Lovely Professional University <span className="font-normal text-xs text-gray-400 ml-1">Jalandhar, Punjab</span></h4>
-                <p className="text-sm text-gray-400">Computer Science Engineering</p>
-              </div>
-              <span className="text-xs text-gray-500">Since 2022</span>
-            </div>
-            <div className="flex justify-between items-baseline">
-              <div>
-                <h4 className="font-semibold text-white">Doon Public School <span className="font-normal text-xs text-gray-400 ml-1">Mohammadi, Uttar Pradesh</span></h4>
-                <p className="text-sm text-gray-400">Intermediate with Science</p>
-              </div>
-              <span className="text-xs text-gray-500">2019 - 2021</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Achievements */}
-        <section>
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="text-accent">&gt;</span> Achievements
-          </h3>
-          <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-400">
-            <li>TOKEN2049 Origins hackathon Singapore - 3rd prize ($1.5K) <span className="text-xs text-gray-500 ml-2">Oct 2025</span></li>
-            <li>Microsoft x InnoQuest Ideathon - 2nd position <span className="text-xs text-gray-500 ml-2">Oct 2025</span></li>
-            <li>Somnia DeFi hackathon - 2nd prize ($1.5K) <span className="text-xs text-gray-500 ml-2">Sep 2025</span></li>
-            <li>Somnia mini games Hackathon - 2nd prize ($100) <span className="text-xs text-gray-500 ml-2">Aug 2025</span></li>
-            <li>TRON HackaTron Season 7 - 4th prize ($8K) <span className="text-xs text-gray-500 ml-2">Nov 2024</span></li>
-          </ul>
-        </section>
-
+        <TimelineItem 
+          date="Early 2024" 
+          title="Getting Off The Ground"
+          role="Full Stack Foundations"
+        >
+          Started aggressively building intensive full-stack systems beyond standard CRUD apps. Developed <strong>AIR</strong>, a real-time WebSocket chat application leveraging Django and native SQLite seamlessly interwoven with the Gemini API to execute on-the-fly sentiment analysis and message prediction engines. 
+        </TimelineItem>
       </div>
     </main>
   )

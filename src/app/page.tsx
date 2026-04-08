@@ -1,7 +1,6 @@
 import { Header } from "@/components/header"
 import { Item, SectionList } from "@/components/section-list"
 import { BlogSection } from "@/components/blog-section"
-import { LinksSection } from "@/components/links-section"
 import { projects } from "@/lib/projects"
 import { ProjectCard } from "@/components/project-card"
 import Link from "next/link"
@@ -51,8 +50,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      <LinksSection />
     </>
   )
 }
