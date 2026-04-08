@@ -22,6 +22,10 @@ export default function HomePage() {
     .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
     .slice(0, 2)
 
+  const topSystemDesign = [...systemDesign]
+    .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
+    .slice(0, 2)
+
   return (
     <>
       <Header />
@@ -36,9 +40,20 @@ export default function HomePage() {
           <span className="text-accent mr-2">*</span> system design
         </h2>
         <div className="space-y-6">
-          {systemDesign.map((project) => (
+          {topSystemDesign.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
+        </div>
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/system-design"
+            className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
+          >
+            <span className="transition-colors">expand architecture logs</span>
+            <span className="ml-2 group-hover:translate-x-1 transition-transform">
+              →
+            </span>
+          </Link>
         </div>
       </section>
 

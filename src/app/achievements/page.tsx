@@ -1,8 +1,9 @@
-import { Trophy } from "lucide-react";
-import Link from "next/link";
-import { MoveRight } from "lucide-react";
+import { ScrambleText } from "@/components/scramble-text"
+import { Metadata } from "next"
+import Link from "next/link"
+import { Trophy, ArrowRight } from "lucide-react"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Achievements",
   description: "Hackathons and technical achievements.",
 };
@@ -42,50 +43,46 @@ const achievements = [
 
 export default function AchievementsPage() {
   return (
-    <div className="flex flex-col gap-12 sm:gap-16 pt-8 pb-16">
-      <section className="flex flex-col gap-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-neutral-900 dark:text-neutral-100 flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-neutral-500" />
-            Achievements
-          </h1>
-          <p className="mt-4 text-base text-neutral-600 dark:text-neutral-400">
-            A track record of competing and building in global hackathons.
-          </p>
-        </div>
+    <main className="animate-fade-in-up">
+      <h1 className="text-4xl font-bold mb-8 text-white flex items-center">
+        <span className="text-accent mr-2">*</span>
+        <ScrambleText text="achievements" />
+      </h1>
 
-        <div className="flex flex-col gap-4">
-          {achievements.map((item, index) => (
-            <div
-              key={index}
-              className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 md:p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors"
-            >
-              <div className="flex flex-col gap-1.5">
-                <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">
-                  {item.event}
-                </h3>
-                <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                  {item.award}
-                </p>
-              </div>
+      <p className="text-gray-400 mb-12 leading-relaxed tracking-wide">
+        A track record of competing, building, and winning in global hackathons
+        and technical competitions.
+      </p>
 
-              <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 w-full sm:w-auto">
-                <span className="text-sm text-neutral-500 dark:text-neutral-400 hidden sm:block">
-                  Built
-                </span>
-                <Link
-                  href={item.link}
-                  target="_blank"
-                  className="inline-flex max-w-[fit-content] items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-                >
-                  {item.project}
-                  <MoveRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-              </div>
+      <div className="space-y-6">
+        {achievements.map((item, index) => (
+          <div
+            key={index}
+            className="group border border-white/[0.05] rounded-xl p-6 bg-white/[0.01] hover:bg-white/[0.02] transition-colors relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          >
+            <div className="flex flex-col gap-2">
+              <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2">
+                <Trophy className="w-5 h-5" />
+                {item.event}
+              </h3>
+              <p className="text-sm font-mono text-gray-400">
+                <span className="text-accent">{item.award}</span>
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+
+            <div className="flex items-center">
+              <Link
+                href={item.link}
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors"
+              >
+                <span>built {item.project}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }
