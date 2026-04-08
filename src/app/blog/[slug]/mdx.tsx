@@ -104,17 +104,14 @@ function createHeading(level: number) {
   const HeadingComponent = ({ children }: { children: React.ReactNode }) => {
     const childrenString = Children.toArray(children).join("")
     const slug = slugify(childrenString)
-    return createElement(`h${level}`, { id: slug }, [
-      createElement(
-        "a",
-        {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: "anchor",
-        },
-        children,
-      ),
-    ])
+    const Tag = `h${level}` as any
+    return (
+      <Tag id={slug}>
+        <a href={`#${slug}`} key={`link-${slug}`} className="anchor">
+          {children}
+        </a>
+      </Tag>
+    )
   }
   HeadingComponent.displayName = `Heading${level}`
   return HeadingComponent

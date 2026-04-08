@@ -4,7 +4,7 @@ import { BlogSection } from "@/components/blog-section"
 import { LinksSection } from "@/components/links-section"
 
 const workItems: Item[] = [
-   {
+  {
     title: "techbug",
     role: "full stack developer intern",
     period: "july 2024 - october 2024",
@@ -53,7 +53,8 @@ const projectItems = [
   {
     title: "somany",
     role: "blockchain developer",
-    description: "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
+    description:
+      "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
     href: "https://somany-nine.vercel.app",
   },
 ]
