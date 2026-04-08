@@ -17,9 +17,9 @@ export default function ProjectsPage() {
       </h1>
 
       <p className="text-gray-400 mb-12 leading-relaxed">
-        An engineering archive mapping my journey scaling system architecture,
+        An engineering archive mapping my projects scaling system architecture,
         developing multi-chain blockchain smart contracts, and full stack AI
-        application development. Sorted chronologically.
+        application development.
       </p>
 
       <div className="space-y-12">

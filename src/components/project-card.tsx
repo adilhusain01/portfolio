@@ -27,9 +27,9 @@ export function ProjectCard({
   return (
     <div className="group border border-gray-800 p-6 transition-colors hover:border-accent/50">
       <div className="flex justify-between items-start gap-4 mb-4">
-        <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
+        <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
           {title}
-        </h2>
+        </h3>
         <div className="flex items-center gap-3 pt-1 shrink-0">
           {github && (
             <Link

@@ -33,10 +33,10 @@ export default function HomePage() {
       <BlogSection />
 
       <section
-        className="my-14 animate-fade-in-up"
+        className="mb-16 animate-fade-in-up"
         style={{ animationDelay: "200ms", animationFillMode: "both" }}
       >
-        <h2 className="text-xl font-bold mb-6 text-white">
+        <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
           <span className="text-accent mr-2">*</span> system design
         </h2>
         <div className="space-y-6">
@@ -49,7 +49,7 @@ export default function HomePage() {
             href="/system-design"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
           >
-            <span className="transition-colors">expand architecture logs</span>
+            <span className="transition-colors">show all</span>
             <span className="ml-2 group-hover:translate-x-1 transition-transform">
               →
             </span>
@@ -58,10 +58,10 @@ export default function HomePage() {
       </section>
 
       <section
-        className="my-14 animate-fade-in-up"
+        className="mb-16 animate-fade-in-up"
         style={{ animationDelay: "300ms", animationFillMode: "both" }}
       >
-        <h2 className="text-xl font-bold mb-6 text-white">
+        <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
           <span className="text-accent mr-2">*</span> latest projects
         </h2>
         <div className="space-y-6">
@@ -74,7 +74,7 @@ export default function HomePage() {
             href="/projects"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
           >
-            <span className="transition-colors">compile all projects</span>
+            <span className="transition-colors">show all</span>
             <span className="ml-2 group-hover:translate-x-1 transition-transform">
               →
             </span>

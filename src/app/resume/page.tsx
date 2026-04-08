@@ -69,9 +69,9 @@ export default function ResumePage() {
       </div>
 
       <p className="text-gray-400 mb-16 leading-relaxed max-w-full">
-        A timeline of my engineering journey. Download the PDF for a standard,
-        formalized copy of my resume, or explore the context and architectural
-        stories behind the milestones below.
+        A timeline of my engineering journey. PDF consists a formal copy of my
+        resume, or explore the context and architectural stories behind the
+        milestones below.
       </p>
 
       <div className="space-y-16 md:space-y-0">
