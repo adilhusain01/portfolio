@@ -44,7 +44,7 @@ export default function HomePage() {
             href="/projects"
             className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
           >
-            <span className="underline underline-offset-4 decoration-gray-800 group-hover:decoration-accent transition-colors">
+            <span className="transition-colors">
               compile all projects
             </span>
             <span className="ml-2 group-hover:translate-x-1 transition-transform">

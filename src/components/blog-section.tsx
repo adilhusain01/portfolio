@@ -21,7 +21,7 @@ export function BlogSection() {
           <div key={index} className="flex justify-between items-center group">
             <Link
               href={`/blog/${post.slug}`}
-              className="text-gray-200 hover:text-accent transition-colors duration-200 underline underline-offset-4 decoration-gray-700 hover:decoration-accent"
+              className="text-gray-200 hover:text-accent transition-colors duration-200"
             >
               {post.metadata.title.toLowerCase()}
             </Link>
@@ -33,7 +33,7 @@ export function BlogSection() {
       </div>
       <Link
         href="/blog"
-        className="inline-flex items-center gap-1 mt-6 text-accent underline underline-offset-4 decoration-accent/30 hover:decoration-accent hover:text-accent-foreground group transition-colors duration-200"
+        className="inline-flex items-center gap-1 mt-6 text-accent hover:text-accent-foreground group transition-colors duration-200"
       >
         all posts{" "}
         <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />

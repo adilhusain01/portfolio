@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, MonitorPlay } from "lucide-react"
+import { Globe, MonitorPlay, Github } from "lucide-react"
 
 type ProjectCardProps = {
   title: string
@@ -8,7 +8,8 @@ type ProjectCardProps = {
   period?: string
   achievements: string[]
   technologies: string[]
-  href: string
+  href?: string
+  github?: string
   video?: string
 }
 
@@ -20,6 +21,7 @@ export function ProjectCard({
   achievements,
   technologies,
   href,
+  github,
   video,
 }: ProjectCardProps) {
   return (
@@ -29,6 +31,16 @@ export function ProjectCard({
           {title}
         </h2>
         <div className="flex items-center gap-3 pt-1 shrink-0">
+          {github && (
+            <Link
+              href={github}
+              target="_blank"
+              className="text-gray-400 hover:text-white transition-colors"
+              title="View Source Code"
+            >
+              <Github className="w-5 h-5" />
+            </Link>
+          )}
           {video && (
             <Link
               href={video}

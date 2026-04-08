@@ -10,7 +10,7 @@ export const projects = [
       "Dynamically scaled to 20 Pods under 3 seconds employing zero-throttle c5.xlarge AWS compute nodes.",
     ],
     technologies: ["node.js", "pm2", "docker", "kubernetes", "aws eks"],
-    href: "https://github.com/adilhusain01/Clustering",
+    github: "https://github.com/adilhusain01/Clustering",
   },
   {
     title: "high-performance node.js: multithreading & rust",
@@ -23,7 +23,7 @@ export const projects = [
       "Outperformed native Node.js mathematical processing speed internally by nearly 5x via compiled bare-metal optimization."
     ],
     technologies: ["node.js", "rust", "axum", "piscina", "rayon", "redis", "bullmq"],
-    href: "https://github.com/adilhusain01/Multithreading",
+    github: "https://github.com/adilhusain01/Multithreading",
   },
   {
     title: "neverpay",
@@ -41,7 +41,8 @@ export const projects = [
       "tailwind css",
       "base sepolia",
     ],
-    href: "https://never-pay.vercel.app",
+    href: "https://never-pay.vercel.app/",
+    github: "https://github.com/adilhusain01/NeverPay",
     video: "https://youtu.be/adcnmsFEAIA"
   },
   {
@@ -60,6 +61,7 @@ export const projects = [
       "openclaw",
     ],
     href: "https://claw-pay.vercel.app",
+    github: "https://github.com/adilhusain01/clawpay",
     video: "https://youtu.be/Az8vLFKR9r8"
   },
   {
@@ -83,7 +85,8 @@ export const projects = [
     period: "september 2025",
     achievements: ["won $1.5k as 2nd prize in somnia defi mini hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
-    href: "https://somany-nine.vercel.app",
+    href: "https://somany-nine.vercel.app/",
+    github: "https://github.com/adilhusain01/somany",
     video: "https://youtu.be/vqzJIeNt3y4"
   },
   {
@@ -95,6 +98,7 @@ export const projects = [
     achievements: ["won $200 as 2nd prize in somnia mini games hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
+    github: "https://github.com/adilhusain01/catch-goofy",
     video: "https://youtu.be/XANNfyc-kpY"
   },
   {
@@ -112,7 +116,8 @@ export const projects = [
       "mongodb",
       "aws bedrock",
     ],
-    href: "https://concept-bridge.vercel.app",
+    href: "https://concept-bridge.vercel.app/",
+    github: "https://github.com/adilhusain01/concept-bridge-client",
     video: "https://youtu.be/iuxmcOM0nQk"
   },
   {
@@ -132,7 +137,8 @@ export const projects = [
       "mongodb",
       "google gemini",
     ],
-    href: "https://vibeee.vercel.app",
+    href: "https://vibe-gamez.vercel.app/",
+    github: "https://github.com/adilhusain01/vibe",
     video: "https://youtu.be/anlJwTk06JE"
   },
   {
@@ -150,6 +156,6 @@ export const projects = [
       "tailwind css",
       "gemini api",
     ],
-    href: "https://github.com/adilhusain01/AIR",
+    github: "https://github.com/adilhusain01/AIr",
   },
 ]
