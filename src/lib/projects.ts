@@ -1,5 +1,25 @@
 export const projects = [
   {
+    title: "croppy",
+    description:
+      "Built a client-side social media crop studio that lets users upload once and export multiple platform-specific image sizes with interactive zoom/rotation controls, safe-zone overlays, and high-resolution output formats.",
+    role: "developer",
+    period: "april 2026",
+    image:
+      "https://raw.githubusercontent.com/adilhusain01/croppy/main/client/public/og.webp",
+    achievements: [],
+    technologies: [
+      "react 19",
+      "vite 7",
+      "typescript",
+      "tailwind css",
+      "react-easy-crop",
+      "canvas api",
+    ],
+    href: "https://croppy-pied.vercel.app",
+    github: "https://github.com/adilhusain01/croppy",
+  },
+  {
     title: "neverpay",
     description:
       "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",
@@ -17,7 +37,7 @@ export const projects = [
     ],
     href: "https://never-pay.vercel.app/",
     github: "https://github.com/adilhusain01/NeverPay",
-    video: "https://youtu.be/adcnmsFEAIA"
+    video: "https://youtu.be/adcnmsFEAIA",
   },
   {
     title: "clawpay",
@@ -36,7 +56,7 @@ export const projects = [
     ],
     href: "https://claw-pay.vercel.app",
     github: "https://github.com/adilhusain01/clawpay",
-    video: "https://youtu.be/Az8vLFKR9r8"
+    video: "https://youtu.be/Az8vLFKR9r8",
   },
   {
     title: "taas",
@@ -49,7 +69,7 @@ export const projects = [
     ],
     technologies: ["javascript", "react.js", "alphaton chain", "tailwind css"],
     href: "https://taas-nine.vercel.app",
-    video: "https://youtu.be/Q_XKzGK77GQ"
+    video: "https://youtu.be/Q_XKzGK77GQ",
   },
   {
     title: "somany",
@@ -61,7 +81,7 @@ export const projects = [
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://somany-nine.vercel.app/",
     github: "https://github.com/adilhusain01/somany",
-    video: "https://youtu.be/vqzJIeNt3y4"
+    video: "https://youtu.be/vqzJIeNt3y4",
   },
   {
     title: "catch goofy",
@@ -73,7 +93,7 @@ export const projects = [
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
     github: "https://github.com/adilhusain01/catch-goofy",
-    video: "https://youtu.be/XANNfyc-kpY"
+    video: "https://youtu.be/XANNfyc-kpY",
   },
   {
     title: "concept bridge",
@@ -92,7 +112,7 @@ export const projects = [
     ],
     href: "https://concept-bridge.vercel.app/",
     github: "https://github.com/adilhusain01/concept-bridge-client",
-    video: "https://youtu.be/iuxmcOM0nQk"
+    video: "https://youtu.be/iuxmcOM0nQk",
   },
   {
     title: "vibe",
@@ -113,7 +133,7 @@ export const projects = [
     ],
     href: "https://vibe-gamez.vercel.app/",
     github: "https://github.com/adilhusain01/vibe",
-    video: "https://youtu.be/anlJwTk06JE"
+    video: "https://youtu.be/anlJwTk06JE",
   },
   {
     title: "air",
