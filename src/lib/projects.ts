@@ -1,5 +1,25 @@
 export const projects = [
   {
+    title: "bookboy",
+    description:
+      "Built an immersive browser-based PDF reader designed for active reading with high-resolution clipping, persistent reading state, paper-grain visuals, and generative brown-noise focus audio.",
+    role: "developer",
+    period: "april 2026",
+    image:
+      "https://res.cloudinary.com/djxuqljgr/image/upload/v1769391452/Screenshot_2026-01-26_at_7.04.57_AM_cevnzb.jpg",
+    achievements: [],
+    technologies: [
+      "javascript",
+      "html",
+      "pdf.js",
+      "canvas api",
+      "web audio api",
+      "svg filters",
+    ],
+    href: "https://bookboy.vercel.app/",
+    github: "https://github.com/adilhusain01/bookboy",
+  },
+  {
     title: "croppy",
     description:
       "Built a client-side social media crop studio that lets users upload once and export multiple platform-specific image sizes with interactive zoom/rotation controls, safe-zone overlays, and high-resolution output formats.",
