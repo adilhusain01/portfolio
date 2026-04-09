@@ -1,10 +1,29 @@
 export const projects = [
   {
+    title: "flashcards",
+    description:
+      "Built a CSV-driven study app with animated 3D card flipping, keyboard navigation, and progress tracking to turn simple question-answer datasets into focused revision sessions.",
+    role: "developer",
+    period: "february 17, 2026",
+    image: "https://cardsflash.vercel.app/og.webp",
+    achievements: [],
+    technologies: [
+      "next.js 16",
+      "react 19",
+      "typescript",
+      "tailwind css v4",
+      "framer motion",
+      "papa parse",
+    ],
+    href: "https://cardsflash.vercel.app/",
+    github: "https://github.com/adilhusain01/flashcards",
+  },
+  {
     title: "bookboy",
     description:
       "Built an immersive browser-based PDF reader designed for active reading with high-resolution clipping, persistent reading state, paper-grain visuals, and generative brown-noise focus audio.",
     role: "developer",
-    period: "april 2026",
+    period: "january 26, 2026",
     image:
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1769391452/Screenshot_2026-01-26_at_7.04.57_AM_cevnzb.jpg",
     achievements: [],
