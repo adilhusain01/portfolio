@@ -59,8 +59,7 @@ export default async function GalleryPage() {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed max-w-full">
-        A real-time synced board of life fragments. Pulled directly from my
-        GitHub repository seamlessly as an asymmetric masonry grid.
+        Some delicate moments of my life.
       </p>
 
       {images.length > 0 ? (

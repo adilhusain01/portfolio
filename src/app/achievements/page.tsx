@@ -69,8 +69,7 @@ export default function AchievementsPage() {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed tracking-wide">
-        A track record of competing, building, and winning in global hackathons
-        and technical competitions.
+        Some of my little achievements which means alot to me.
       </p>
 
       <div className="space-y-6">

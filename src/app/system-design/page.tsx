@@ -17,9 +17,8 @@ export default function SystemDesignPage() {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed">
-        An engineering archive mapping my journey scaling system architecture,
-        optimizing backend performance, and deploying distributed services to
-        cloud infrastructure. Sorted chronologically.
+        Archive of my scaling journey, optimizing backend performance, and
+        deploying distributed services to cloud infrastructure.
       </p>
 
       <div className="space-y-12">

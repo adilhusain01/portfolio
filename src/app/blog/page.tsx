@@ -17,9 +17,7 @@ export default async function BlogPage() {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed max-w-full">
-        Thoughts and writings on systems engineering, scalable architectures,
-        and modern backend development. Explore the context and architectural
-        experiments behind my projects below.
+        Thoughts and writings.
       </p>
 
       <p className="hidden sm:block text-sm text-gray-400 mb-8">

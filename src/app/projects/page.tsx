@@ -17,9 +17,7 @@ export default function ProjectsPage() {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed">
-        An engineering archive mapping my projects scaling system architecture,
-        developing multi-chain blockchain smart contracts, and full stack AI
-        application development.
+        A look of my fun projects that I love to do.
       </p>
 
       <div className="space-y-12">
