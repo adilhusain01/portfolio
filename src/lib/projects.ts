@@ -16,7 +16,7 @@ export const projects = [
       "react-easy-crop",
       "canvas api",
     ],
-    href: "https://croppy-pied.vercel.app",
+    href: "https://croppy-all.vercel.app/",
     github: "https://github.com/adilhusain01/croppy",
   },
   {
