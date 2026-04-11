@@ -84,6 +84,7 @@ export const projects = [
       "Developed secure autonomous payment layer for AI agents enabling purchases on any Visa/Mastercard website using single-use virtual cards backed by USDC in on-chain escrow on Arbitrum Sepolia, eliminating merchant opt-in, persistent card exposure, and human intervention while keeping full user control of funds.",
     role: "developer",
     period: "february 2026",
+    image: "https://claw-pay.vercel.app/clawypay-og.webp",
     achievements: [],
     technologies: [
       "react.js",
