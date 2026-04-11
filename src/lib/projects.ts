@@ -109,7 +109,7 @@ export const projects = [
       "won $1.5k as 3rd prize in the stablecoin track of alphaton bounty in token2049 origins singapore hackathon",
     ],
     technologies: ["javascript", "react.js", "alphaton chain", "tailwind css"],
-    href: "https://taas-nine.vercel.app",
+    github: "https://github.com/rizwanmoulvi/taas",
     video: "https://youtu.be/Q_XKzGK77GQ",
   },
   {
