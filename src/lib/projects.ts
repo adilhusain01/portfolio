@@ -116,6 +116,7 @@ export const projects = [
       "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
     role: "blockchain developer",
     period: "september 2025",
+    image: "https://somany-nine.vercel.app/somany-og.webp",
     achievements: ["won $1.5k as 2nd prize in somnia defi mini hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://somany-nine.vercel.app/",
