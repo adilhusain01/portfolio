@@ -64,6 +64,7 @@ export const projects = [
       "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",
     role: "developer",
     period: "february 2026",
+    image: "https://never-pay.vercel.app/neverpay-og.webp",
     achievements: [],
     technologies: [
       "next.js",
