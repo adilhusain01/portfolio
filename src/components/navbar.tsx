@@ -72,7 +72,7 @@ export function Navbar() {
           href="/system-design"
           className="hover:text-accent transition-colors duration-200"
         >
-          [s] sys design
+          [s] system design
         </Link>
         <Link
           href="/blog"
