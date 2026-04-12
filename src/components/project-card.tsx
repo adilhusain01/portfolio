@@ -117,6 +117,25 @@ function SystemDesignFallback({
   )
 }
 
+function StarProjectRibbon() {
+  return (
+    <div
+      className="pointer-events-none absolute -top-[10px] -right-[10px] z-20 h-[130px] w-[130px] sm:h-[150px] sm:w-[150px]"
+      aria-hidden="true"
+    >
+      <div className="relative h-full w-full overflow-hidden">
+        <div className="absolute right-[54px] top-[10px] h-[8px] w-[44px] rotate-45 rounded-[9px] bg-gradient-to-r from-[#be123c] to-[#4c0519] sm:right-[62px] sm:top-[12px] sm:w-[52px]" />
+
+        <div className="absolute right-0 top-[52px] h-[42px] w-[8px] rounded-r-[9px] bg-gradient-to-b from-[#4c0519] to-[#be123c] sm:top-[60px] sm:h-[50px]" />
+
+        <div className="absolute top-[28px] -right-[68px] h-[38px] w-[220px] rotate-45 bg-gradient-to-r from-[#7f1d1d] via-[#dc2626] to-[#7f1d1d] shadow-[inset_0_0_0_2px_rgba(127,29,29,0.95),inset_0_0_0_3px_rgba(69,10,10,0.8),inset_0_0_0_4px_rgba(248,113,113,0.28),0_18px_5px_-16px_rgba(0,0,0,0.8)] sm:top-[30px] sm:-right-[76px] sm:h-[42px] sm:w-[248px]" />
+
+        <div className="absolute right-[12px] top-[42px] h-[74px] w-[11px] -rotate-45 bg-gradient-to-r from-transparent via-[#881337]/35 to-transparent sm:right-[14px] sm:top-[48px] sm:h-[86px]" />
+      </div>
+    </div>
+  )
+}
+
 type CoverType = "default" | "system-design"
 
 type ProjectCardProps = {
@@ -151,10 +170,13 @@ export function ProjectCard({
   const accent = FALLBACK_ACCENTS[hashTitle(title) % FALLBACK_ACCENTS.length]
   const initials = getInitials(title)
   const showSystemDesignFallback = !image && coverType === "system-design"
+  const isStarProject = achievements.length > 0
 
   return (
-    <div className="group border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
-      <div className="-mt-4 -mx-4 sm:-mt-6 sm:-mx-6 mb-4 sm:mb-6 overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
+    <div className="group relative overflow-visible border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
+      {isStarProject && <StarProjectRibbon />}
+
+      <div className="relative -mt-4 -mx-4 sm:-mt-6 sm:-mx-6 mb-4 sm:mb-6 overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
         <div className="w-full" style={{ aspectRatio: "1200 / 630" }}>
           {image ? (
             <img
@@ -214,9 +236,11 @@ export function ProjectCard({
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-4 mb-4">
-        <h3 className="text-lg sm:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
-          {title}
-        </h3>
+        <div>
+          <h3 className="text-lg sm:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
+            {title}
+          </h3>
+        </div>
         <div className="flex items-center gap-3 pt-1 shrink-0">
           {github && (
             <Link
