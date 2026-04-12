@@ -29,12 +29,16 @@ const achievements = [
     award: "2nd Prize ($1,500)",
     project: "Somany",
     link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
+    image:
+      "https://cdn.dorahacks.io/static/files/198840c1a75063621f8f85844ff9995a.png",
   },
   {
     event: "Somnia Mini Games Hackathon",
     award: "2nd Prize ($100)",
     project: "Catch Goofy",
     link: "https://dorahacks.io/hackathon/somnia-minigames/buidl",
+    image:
+      "https://cdn.dorahacks.io/static/files/1981e7aebe221556ff526be4829964e8.png",
   },
   {
     event: "Microsoft x InnoQuest",
@@ -48,7 +52,7 @@ const achievements = [
     project: "Concept Bridge",
     link: "https://devpost.com/software/concept-bridge-la3cfg",
     image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/241/940/datas/medium.png",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/003/120/949/datas/full_width.png",
   },
   {
     event: "TRON HackaTron Season 7",
@@ -56,7 +60,7 @@ const achievements = [
     project: "Vibe",
     link: "https://hackatron7.devpost.com/",
     image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/960/563/datas/original.png",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/002/960/566/datas/full_width.png",
   },
 ]
 
@@ -79,15 +83,18 @@ export default function AchievementsPage() {
             className="group border border-gray-800 transition-colors hover:border-accent/50 flex flex-col overflow-hidden"
           >
             {item.image && (
-              <div className="w-full h-40 md:h-56 overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
-                <img
-                  src={item.image}
-                  alt={item.event}
-                  className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                />
+              <div className="w-full overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
+                <div className="w-full" style={{ aspectRatio: "1200 / 630" }}>
+                  <img
+                    src={item.image}
+                    alt={item.event}
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  />
+                </div>
               </div>
             )}
-            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
               <div className="flex justify-between items-start gap-2 sm:gap-4">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-lg md:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
