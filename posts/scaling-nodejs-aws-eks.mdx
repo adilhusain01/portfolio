@@ -64,11 +64,26 @@ The gold-standard for resilience is configuring a **Horizontal Pod Autoscaler (H
 
 <CodeGroup>
   <CodeGroupItem title="hpa.yaml">
-    ```yaml apiVersion: autoscaling/v2 kind: HorizontalPodAutoscaler metadata:
-    name: production-node-hpa spec: scaleTargetRef: apiVersion: apps/v1 kind:
-    Deployment name: production-node-app minReplicas: 3 maxReplicas: 20 metrics:
-    - type: Resource resource: name: cpu target: type: Utilization
-    averageUtilization: 50 ```
+    <pre>
+      <code className="language-yaml">{`apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: production-node-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: production-node-app
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50`}</code>
+    </pre>
   </CodeGroupItem>
 </CodeGroup>
 
