@@ -41,7 +41,11 @@ export default function HomePage() {
         </h2>
         <div className="space-y-6">
           {topSystemDesign.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <ProjectCard
+              key={project.title}
+              {...project}
+              coverType="system-design"
+            />
           ))}
         </div>
         <div className="mt-6 sm:mt-8 flex justify-end">

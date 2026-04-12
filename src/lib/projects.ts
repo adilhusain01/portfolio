@@ -59,6 +59,25 @@ export const projects = [
     github: "https://github.com/adilhusain01/croppy",
   },
   {
+    title: "sahar studios",
+    description:
+      "Built a bold, liquid-style creative studio landing experience with cinematic motion, immersive scroll interactions, and polished social preview metadata for high-impact sharing.",
+    role: "developer",
+    period: "april 2026",
+    image: "https://saharstudios.vercel.app/og.webp",
+    achievements: [],
+    technologies: [
+      "next.js 16",
+      "react 19",
+      "tailwind css",
+      "gsap",
+      "framer motion",
+      "lenis",
+    ],
+    href: "https://saharstudios.vercel.app/",
+    github: "https://github.com/adilhusain01/saharstudios",
+  },
+  {
     title: "neverpay",
     description:
       "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",

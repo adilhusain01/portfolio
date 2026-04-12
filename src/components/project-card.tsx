@@ -32,6 +32,93 @@ function getInitials(value: string) {
   return initials || "PR"
 }
 
+function SystemDesignFallback({
+  title,
+  accent,
+}: {
+  title: string
+  accent: string
+}) {
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-[#0a1118]">
+      <div
+        className="absolute inset-0 opacity-25"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      <div
+        className="absolute inset-x-0 top-0 h-28"
+        style={{
+          background: `radial-gradient(circle at 50% 0%, ${accent}55 0%, transparent 70%)`,
+        }}
+      />
+
+      <div className="relative h-full p-4 sm:p-7 flex flex-col">
+        <div className="flex items-center justify-between gap-2">
+          <span
+            className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] sm:text-xs uppercase tracking-[0.16em]"
+            style={{
+              color: accent,
+              borderColor: `${accent}66`,
+              backgroundColor: `${accent}1A`,
+            }}
+          >
+            system design canvas
+          </span>
+          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.14em] text-gray-300/80">
+            architecture map
+          </span>
+        </div>
+
+        <div className="relative flex-1 mt-4 sm:mt-5">
+          <div className="absolute rounded-md border border-cyan-300/35 bg-[#0d1620]/80 px-2.5 py-1 text-[10px] sm:text-xs text-cyan-200 left-[5%] top-[8%]">
+            client
+          </div>
+          <div className="absolute rounded-md border border-violet-300/35 bg-[#1a1325]/80 px-2.5 py-1 text-[10px] sm:text-xs text-violet-200 right-[5%] top-[8%]">
+            api gateway
+          </div>
+          <div className="absolute rounded-md border border-amber-300/35 bg-[#241909]/80 px-2.5 py-1 text-[10px] sm:text-xs text-amber-200 left-1/2 -translate-x-1/2 top-[42%]">
+            message queue
+          </div>
+          <div className="absolute rounded-md border border-emerald-300/35 bg-[#0f2018]/80 px-2.5 py-1 text-[10px] sm:text-xs text-emerald-200 left-[16%] bottom-[8%]">
+            workers
+          </div>
+          <div className="absolute rounded-md border border-blue-300/35 bg-[#0c1b2d]/80 px-2.5 py-1 text-[10px] sm:text-xs text-blue-200 right-[16%] bottom-[8%]">
+            datastore
+          </div>
+
+          <div
+            className="absolute h-px bg-white/25"
+            style={{ top: "21%", left: "20%", width: "30%" }}
+          />
+          <div
+            className="absolute h-px bg-white/25"
+            style={{ top: "21%", right: "20%", width: "30%" }}
+          />
+          <div
+            className="absolute w-px bg-white/25"
+            style={{ top: "48%", left: "50%", height: "25%" }}
+          />
+          <div
+            className="absolute h-px bg-white/25"
+            style={{ top: "72%", left: "24%", width: "52%" }}
+          />
+        </div>
+
+        <div className="text-[10px] sm:text-xs uppercase tracking-[0.14em] text-gray-300/80">
+          latency · throughput · resilience · {title}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type CoverType = "default" | "system-design"
+
 type ProjectCardProps = {
   title: string
   description: string
@@ -39,6 +126,7 @@ type ProjectCardProps = {
   period?: string
   image?: string
   imageAlt?: string
+  coverType?: CoverType
   achievements: string[]
   technologies: string[]
   href?: string
@@ -53,6 +141,7 @@ export function ProjectCard({
   period,
   image,
   imageAlt,
+  coverType = "default",
   achievements,
   technologies,
   href,
@@ -61,6 +150,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const accent = FALLBACK_ACCENTS[hashTitle(title) % FALLBACK_ACCENTS.length]
   const initials = getInitials(title)
+  const showSystemDesignFallback = !image && coverType === "system-design"
 
   return (
     <div className="group border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
@@ -73,6 +163,8 @@ export function ProjectCard({
               loading="lazy"
               className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
             />
+          ) : showSystemDesignFallback ? (
+            <SystemDesignFallback title={title} accent={accent} />
           ) : (
             <div
               className="relative w-full h-full overflow-hidden bg-[#0b0f12]"
