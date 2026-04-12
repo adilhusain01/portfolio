@@ -5,6 +5,8 @@ export type Metadata = {
   title: string
   description: string
   date: string
+  image?: string
+  tag?: string
 }
 
 export type FrontmatterParseResult = {
