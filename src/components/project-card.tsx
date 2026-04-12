@@ -118,7 +118,7 @@ export function ProjectCard({
               </div>
             </div>
           )}
-          </div>
+        </div>
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-4 mb-4">

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const achievements = [
   {
     event: "Alphathon Origin Singapore (TOKEN2049)",
-    award: "3rd Prize ($1,500 USDC)",
+    award: "3rd Prize ($1,500)",
     project: "TaaS",
     link: "https://www.token2049.com/singapore/2049-origins",
     image:
@@ -48,7 +48,7 @@ const achievements = [
   },
   {
     event: "Hack for Humanity 2025",
-    award: "14th Place",
+    award: "14th Position",
     project: "Concept Bridge",
     link: "https://devpost.com/software/concept-bridge-la3cfg",
     image:
@@ -56,7 +56,7 @@ const achievements = [
   },
   {
     event: "TRON HackaTron Season 7",
-    award: "Artistry Track 4th Prize ($8,000)",
+    award: "4th Prize ($8,000) - Artistry Track",
     project: "Vibe",
     link: "https://hackatron7.devpost.com/",
     image:
@@ -101,9 +101,6 @@ export default function AchievementsPage() {
                     {item.event}
                   </h3>
                   <div className="flex items-center flex-wrap gap-2">
-                    <span className="text-[10px] uppercase tracking-[0.16em] text-gray-500">
-                      prize
-                    </span>
                     <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs sm:text-sm font-semibold text-accent bg-accent/10 border border-accent/40">
                       {item.award}
                     </span>
