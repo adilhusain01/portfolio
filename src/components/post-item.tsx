@@ -27,6 +27,8 @@ type PostItemProps = {
 }
 
 export function PostItem({ post, isSelected }: PostItemProps) {
+  const hasCustomCover = Boolean(post.metadata.image)
+
   const publishedDate = new Date(post.metadata.date)
     .toLocaleDateString("en-US", {
       month: "short",
@@ -47,7 +49,7 @@ export function PostItem({ post, isSelected }: PostItemProps) {
     >
       <div className="-mt-4 -mx-4 sm:-mt-6 sm:-mx-6 mb-4 sm:mb-6 overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
         <div className="w-full" style={{ aspectRatio: "1200 / 630" }}>
-          {post.metadata.image ? (
+          {hasCustomCover ? (
             <img
               src={post.metadata.image}
               alt={`${post.metadata.title} cover`}
@@ -109,14 +111,16 @@ export function PostItem({ post, isSelected }: PostItemProps) {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
-        <h2 className="text-lg sm:text-xl font-bold text-gray-200 group-hover:text-accent transition-colors duration-200">
-          {post.metadata.title.toLowerCase()}
-        </h2>
-        <span className="text-sm font-mono text-gray-500 shrink-0 sm:pt-1">
-          {publishedDate}
-        </span>
-      </div>
+      {hasCustomCover && (
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-200 group-hover:text-accent transition-colors duration-200">
+            {post.metadata.title.toLowerCase()}
+          </h2>
+          <span className="text-sm font-mono text-gray-500 shrink-0 sm:pt-1">
+            {publishedDate}
+          </span>
+        </div>
+      )}
 
       {post.metadata.description && (
         <p className="text-gray-400 text-sm leading-relaxed mb-6">
