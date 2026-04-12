@@ -5,7 +5,10 @@ date: "2026-04-08"
 tag: "Performance"
 ---
 
-<TechBadge text="Node.js" bg="bg-green-900 border-green-700" /> <TechBadge text="Rust" bg="bg-orange-900 border-orange-700" /> <TechBadge text="Redis" bg="bg-red-900 border-red-700" /> <TechBadge text="System Design" bg="bg-blue-900 border-blue-700" />
+<TechBadge text="Node.js" bg="bg-green-900 border-green-700" />
+<TechBadge text="Rust" bg="bg-orange-900 border-orange-700" />
+<TechBadge text="Redis" bg="bg-red-900 border-red-700" />
+<TechBadge text="System Design" bg="bg-blue-900 border-blue-700" />
 
 Node.js’s event-driven, single-threaded V8 engine shines incredibly bright in concurrent, I/O-intensive web traffic scenarios. But when faced with massive, CPU-bound calculations (like counting 20 million operations), Node's event loop completely stalls out, severely punishing your users due to blocked API paths.
 
@@ -17,15 +20,17 @@ $ autocannon -c 100 -d 10 http://localhost:3000/heavy
 
 Running 10s test @ http://localhost:3000/heavy
 100 connections
+
 </TerminalWindow>
 
-<Metrics data={[
-  { label: "Piscina Throughput", value: "105 req/s" },
-  { label: "Rust Service Speed", value: "500 req/s" },
-  { label: "Rust Latency", value: "195 ms" },
-  { label: "BullMQ Throughput", value: "15k req/s" }
-]} />
-
+<Metrics
+  data={[
+    { label: "Piscina Throughput", value: "105 req/s" },
+    { label: "Rust Service Speed", value: "500 req/s" },
+    { label: "Rust Latency", value: "195 ms" },
+    { label: "BullMQ Throughput", value: "15k req/s" },
+  ]}
+/>
 
 <div className="mt-12">
 <Step number="1" title="Unpooled OS Threads (The Crash & Burn)">
@@ -52,10 +57,11 @@ app.get('/heavy', async (req, res) => {
 </CodeGroup>
 
 <Callout type="danger" title="Timeout">
-<p>
-<strong>Total Requests:</strong> 0.<br/>
-Spawning 100 math requests at once statically creates 800 independent background OS-level threads. The memory footprint skyrockets, and OS-context switching completely consumes the CPU time.
-</p>
+  <strong>Total Requests:</strong> 0.
+  <br />
+  Spawning 100 math requests at once statically creates 800 independent
+  background OS-level threads. The memory footprint skyrockets, and OS-context
+  switching completely consumes the CPU time.
 </Callout>
 
 </Step>
@@ -65,12 +71,12 @@ Instead of wild threading, we introduce a bounded, static capacity using `piscin
 
 Here, 8 requests run, while the other 92 wait completely safely in line.
 
-<ProsCons 
+<ProsCons
   pros={[
     "Total Requests Processed: ~1,050",
     "Average Latency: ~915ms",
     "Event Loop Protection: The API remains deeply stable.",
-    "Native production approach for 10ms - 2s tasks."
+    "Native production approach for 10ms - 2s tasks.",
   ]}
 />
 
@@ -83,7 +89,7 @@ To dramatically accelerate beyond V8's internal ceilings, we treat Node purely a
 graph LR
     Users((100 Users)) -->|100 Req| Gateway[Node.js Proxy]
     Gateway -->|Forward to :4000| Rust[Rust Axum Microservice]
-    
+
     subgraph Rust Process
       Rust --> Queue[(Rayon Work Stealing)]
       Queue --> R1[Native Thread 1]
@@ -91,7 +97,7 @@ graph LR
     end
 ```
 
-**The Results: Blistering.** Even though Node and Rust send payloads back and forth over a local HTTP socket (costing a minor network latency penalty), Rust compiles to bare-metal machine code. It processed **~4,973 requests** with zero timeouts at a phenomenal `195ms` latency (an astounding **~500 req/sec** throughput). 
+**The Results: Blistering.** Even though Node and Rust send payloads back and forth over a local HTTP socket (costing a minor network latency penalty), Rust compiles to bare-metal machine code. It processed **~4,973 requests** with zero timeouts at a phenomenal `195ms` latency (an astounding **~500 req/sec** throughput).
 
 </Step>
 
@@ -99,21 +105,26 @@ graph LR
 How is operations clustering *actually* handled in Enterprise production for tasks taking anywhere from 5 seconds to 5 hours? They decouple the web application completely via **Async Queuing**.
 
 <TerminalWindow title="docker-compose.yml">
-version: '3.8'
-services:
-  redis:
-    image: redis:6-alpine
-    ports:
-      - "6379:6379"
+  version: '3.8' services: redis: image: redis:6-alpine ports: - "6379:6379"
 </TerminalWindow>
 
 <Callout type="info" title="Decoupled Architecture Flow">
-<p>
-1. The <strong>API Gateway</strong> intercepts the HTTP request.<br/>
-2. It pushes the payload data directly into a dedicated Message Broker (Redis/BullMQ).<br/>
-3. Node.js replies instantly: <em>"HTTP 202 Accepted"</em>.<br/>
-4. A completely separate backend application natively polls the Redis stack, executes the heavy work, and updates the database.
-</p>
+  <ol>
+    <li>
+      The <strong>API Gateway</strong> intercepts the HTTP request.
+    </li>
+    <li>
+      It pushes the payload data directly into a dedicated Message Broker
+      (Redis/BullMQ).
+    </li>
+    <li>
+      Node.js replies instantly: <em>"HTTP 202 Accepted"</em>.
+    </li>
+    <li>
+      A completely separate backend application natively polls the Redis stack,
+      executes the heavy work, and updates the database.
+    </li>
+  </ol>
 </Callout>
 
 ### Benchmark Results: The Independence Factor
@@ -123,9 +134,15 @@ The Express API processed an absolute staggering **~150,000+ total requests** re
 </Step>
 
 <KeyTakeaway>
-There is no "silver bullet" to performance, only trade-offs. 
-<br/><br/>
-For quick math under a second, use a `Worker Pool` like Piscina to keep the ecosystem pure Javascript. If the task is heavily algorithmic, porting the module to a <b>Rust Microservice</b> yields a blistering 5x latency advantage. Finally, if the operation is slow, unpredictable, and user-facing completion can be delayed... completely detach the workload utilizing an <b>Enterprise Messaging Queue</b>. 
+  There is no "silver bullet" to performance, only trade-offs.
+  <br />
+  <br />
+  For quick math under a second, use a `Worker Pool` like Piscina to keep the
+  ecosystem pure Javascript. If the task is heavily algorithmic, porting the
+  module to a <b>Rust Microservice</b> yields a blistering 5x latency advantage.
+  Finally, if the operation is slow, unpredictable, and user-facing completion
+  can be delayed... completely detach the workload utilizing an{" "}
+  <b>Enterprise Messaging Queue</b>.
 </KeyTakeaway>
 
 </div>

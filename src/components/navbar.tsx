@@ -3,7 +3,14 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
-import { Github, Twitter, Linkedin, Mail, Instagram } from "lucide-react"
+import {
+  Github,
+  Twitter,
+  Linkedin,
+  Mail,
+  Instagram,
+  ChevronsRight,
+} from "lucide-react"
 
 export function Navbar() {
   const router = useRouter()
@@ -55,92 +62,104 @@ export function Navbar() {
 
   return (
     <nav className="flex flex-col mb-10 sm:mb-12 text-sm gap-4">
-      <div className="flex overflow-x-auto pb-3 space-x-4 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50">
-        <Link
-          href="/"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [h] home
-        </Link>
-        <Link
-          href="/projects"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [p] projects
-        </Link>
-        <Link
-          href="/system-design"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [s] system design
-        </Link>
-        <Link
-          href="/blog"
-          prefetch={true}
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [b] blog
-        </Link>
-        <Link
-          href="/achievements"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [a] achievements
-        </Link>
-        <Link
-          href="/gallery"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [g] gallery
-        </Link>
-        <Link
-          href="/resume"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [r] resume
-        </Link>
+      <div className="relative">
+        <div className="flex overflow-x-auto pb-3 space-x-4 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50 snap-x snap-mandatory pr-8 lg:pr-0 cursor-grab active:cursor-grabbing">
+          <Link
+            href="/"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [h] home
+          </Link>
+          <Link
+            href="/projects"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [p] projects
+          </Link>
+          <Link
+            href="/system-design"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [s] system design
+          </Link>
+          <Link
+            href="/blog"
+            prefetch={true}
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [b] blog
+          </Link>
+          <Link
+            href="/achievements"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [a] achievements
+          </Link>
+          <Link
+            href="/gallery"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [g] gallery
+          </Link>
+          <Link
+            href="/resume"
+            className="hover:text-accent transition-colors duration-200 snap-start"
+          >
+            [r] resume
+          </Link>
+        </div>
+
+        <div className="pointer-events-none absolute right-0 top-0 h-[calc(100%-12px)] w-12 bg-gradient-to-l from-[#111] to-transparent lg:hidden" />
+        <div className="pointer-events-none absolute left-0 top-0 h-[calc(100%-12px)] w-8 bg-gradient-to-r from-[#111] to-transparent lg:hidden" />
       </div>
-      <div className="flex items-center space-x-4 shrink-0 px-1">
-        <Link
-          href="https://github.com/adilhusain01"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-accent transition-colors duration-200"
-        >
-          <Github className="w-4 h-4" />
-        </Link>
-        <Link
-          href="https://x.com/0xAdilHusain"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-accent transition-colors duration-200"
-        >
-          <Twitter className="w-4 h-4" />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/adil-husain"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-accent transition-colors duration-200"
-        >
-          <Linkedin className="w-4 h-4" />
-        </Link>
-        <Link
-          href="https://www.instagram.com/adilhusain__"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-accent transition-colors duration-200"
-          title="Instagram"
-        >
-          <Instagram className="w-4 h-4" />
-        </Link>
-        <Link
-          href="mailto:husainadil202@gmail.com"
-          className="text-gray-400 hover:text-accent transition-colors duration-200"
-          title="Email"
-        >
-          <Mail className="w-4 h-4" />
-        </Link>
+      <div className="flex items-center justify-between gap-4 shrink-0 px-1">
+        <div className="flex items-center space-x-4">
+          <Link
+            href="https://github.com/adilhusain01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-accent transition-colors duration-200"
+          >
+            <Github className="w-4 h-4" />
+          </Link>
+          <Link
+            href="https://x.com/0xAdilHusain"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-accent transition-colors duration-200"
+          >
+            <Twitter className="w-4 h-4" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/adil-husain"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-accent transition-colors duration-200"
+          >
+            <Linkedin className="w-4 h-4" />
+          </Link>
+          <Link
+            href="https://www.instagram.com/adilhusain__"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-accent transition-colors duration-200"
+            title="Instagram"
+          >
+            <Instagram className="w-4 h-4" />
+          </Link>
+          <Link
+            href="mailto:husainadil202@gmail.com"
+            className="text-gray-400 hover:text-accent transition-colors duration-200"
+            title="Email"
+          >
+            <Mail className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-1 text-[10px] uppercase tracking-[0.12em] text-gray-500 lg:hidden">
+          <span>swipe nav</span>
+          <ChevronsRight className="h-3 w-3 animate-pulse" />
+        </div>
       </div>
     </nav>
   )
