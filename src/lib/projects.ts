@@ -100,6 +100,25 @@ export const projects = [
     video: "https://youtu.be/Az8vLFKR9r8",
   },
   {
+    title: "campayyn",
+    description:
+      "Built an influencer-marketing campaign platform where brands fund creator campaigns in tokens, campaign budgets can earn staking yield while live, and payouts are distributed transparently by performance.",
+    role: "developer",
+    period: "november 2, 2025",
+    image: "https://campayyn.vercel.app/og.png",
+    achievements: [],
+    technologies: [
+      "react.js",
+      "vite",
+      "tailwind css",
+      "ethers.js",
+      "wagmi",
+      "privy",
+    ],
+    href: "https://campayyn.vercel.app/",
+    github: "https://github.com/adilhusain01/campayyn",
+  },
+  {
     title: "taas",
     description:
       "TAAS (Trust-as-a-Service) Protocol enables trustless rental agreements where security deposits are automatically staked to generate yield during the rental term. The protocol ensures both landlords and tenants benefit from a transparent, automated escrow system.",
