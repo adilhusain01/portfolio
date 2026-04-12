@@ -10,6 +10,12 @@ const FALLBACK_ACCENTS = [
   "#60a5fa",
 ]
 
+const USE_TEMP_SYSTEM_DESIGN_IMAGE = true
+const TEMP_SYSTEM_DESIGN_IMAGE_URL =
+  "https://images.unsplash.com/photo-1667372335936-3dc4ff716017?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+const TEMP_PROJECT_FALLBACK_IMAGE_URL =
+  "https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
 function hashTitle(value: string) {
   let hash = 0
 
@@ -32,85 +38,99 @@ function getInitials(value: string) {
   return initials || "PR"
 }
 
-function SystemDesignFallback({
-  title,
-  accent,
-}: {
-  title: string
-  accent: string
-}) {
+function SystemDesignFallback({ accent }: { accent: string }) {
+  const flowBars = [92, 76, 63, 48]
+
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#0a1118]">
+    <div className="relative h-full w-full overflow-hidden bg-[#05070d]">
       <div
-        className="absolute inset-0 opacity-25"
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(circle at 18% 24%, ${accent}2A 0%, transparent 42%), radial-gradient(circle at 84% 12%, rgba(56,189,248,0.16) 0%, transparent 40%), linear-gradient(135deg, #05070d 0%, #0b1320 48%, #111827 100%)`,
+        }}
+      />
+
+      <div
+        className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
+            "linear-gradient(rgba(148,163,184,0.13) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.13) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
         }}
       />
 
       <div
-        className="absolute inset-x-0 top-0 h-28"
-        style={{
-          background: `radial-gradient(circle at 50% 0%, ${accent}55 0%, transparent 70%)`,
-        }}
+        className="absolute -top-20 right-8 h-56 w-56 rounded-full blur-3xl"
+        style={{ backgroundColor: accent, opacity: 0.24 }}
       />
 
-      <div className="relative h-full p-4 sm:p-7 flex flex-col">
-        <div className="flex items-center justify-between gap-2">
-          <span
-            className="inline-flex items-center rounded-full border px-3 py-1 text-[10px] sm:text-xs uppercase tracking-[0.16em]"
-            style={{
-              color: accent,
-              borderColor: `${accent}66`,
-              backgroundColor: `${accent}1A`,
-            }}
-          >
-            system design canvas
-          </span>
-          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.14em] text-gray-300/80">
-            architecture map
-          </span>
-        </div>
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#04060b] to-transparent" />
 
-        <div className="relative flex-1 mt-4 sm:mt-5">
-          <div className="absolute rounded-md border border-cyan-300/35 bg-[#0d1620]/80 px-2.5 py-1 text-[10px] sm:text-xs text-cyan-200 left-[5%] top-[8%]">
-            client
-          </div>
-          <div className="absolute rounded-md border border-violet-300/35 bg-[#1a1325]/80 px-2.5 py-1 text-[10px] sm:text-xs text-violet-200 right-[5%] top-[8%]">
-            api gateway
-          </div>
-          <div className="absolute rounded-md border border-amber-300/35 bg-[#241909]/80 px-2.5 py-1 text-[10px] sm:text-xs text-amber-200 left-1/2 -translate-x-1/2 top-[42%]">
-            message queue
-          </div>
-          <div className="absolute rounded-md border border-emerald-300/35 bg-[#0f2018]/80 px-2.5 py-1 text-[10px] sm:text-xs text-emerald-200 left-[16%] bottom-[8%]">
-            workers
-          </div>
-          <div className="absolute rounded-md border border-blue-300/35 bg-[#0c1b2d]/80 px-2.5 py-1 text-[10px] sm:text-xs text-blue-200 right-[16%] bottom-[8%]">
-            datastore
+      <div className="relative flex h-full flex-col p-4 sm:p-7">
+        <div className="mt-4 grid flex-1 grid-cols-2 gap-3 sm:gap-4">
+          <div className="relative rounded-xl border border-white/10 bg-white/[0.04] p-3 sm:p-4">
+            <div className="mt-3 space-y-2.5">
+              {flowBars.map((width, index) => (
+                <div key={width} className="flex items-center gap-2">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{
+                      backgroundColor: accent,
+                      opacity: 0.95 - index * 0.15,
+                    }}
+                  />
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className="h-full rounded-full"
+                      style={{
+                        width: `${width}%`,
+                        background: `linear-gradient(90deg, ${accent} 0%, rgba(248,250,252,0.88) 100%)`,
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="absolute inset-x-4 bottom-4 grid grid-cols-4 gap-2">
+              <span className="h-6 rounded-md border border-cyan-300/30 bg-cyan-400/10" />
+              <span className="h-6 rounded-md border border-violet-300/30 bg-violet-400/10" />
+              <span className="h-6 rounded-md border border-emerald-300/30 bg-emerald-400/10" />
+              <span className="h-6 rounded-md border border-amber-300/30 bg-amber-400/10" />
+            </div>
           </div>
 
-          <div
-            className="absolute h-px bg-white/25"
-            style={{ top: "21%", left: "20%", width: "30%" }}
-          />
-          <div
-            className="absolute h-px bg-white/25"
-            style={{ top: "21%", right: "20%", width: "30%" }}
-          />
-          <div
-            className="absolute w-px bg-white/25"
-            style={{ top: "48%", left: "50%", height: "25%" }}
-          />
-          <div
-            className="absolute h-px bg-white/25"
-            style={{ top: "72%", left: "24%", width: "52%" }}
-          />
-        </div>
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-3 sm:p-4">
+            <div className="relative mt-2 h-[120px] sm:h-[150px]">
+              <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25" />
+              <div
+                className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40"
+                style={{ backgroundColor: `${accent}30` }}
+              />
 
-        <div className="text-[10px] sm:text-xs uppercase tracking-[0.14em] text-gray-300/80">
-          latency · throughput · resilience · {title}
+              <div
+                className="absolute left-[18%] top-[20%] h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: accent }}
+              />
+              <div
+                className="absolute right-[18%] top-[24%] h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: accent }}
+              />
+              <div
+                className="absolute right-[22%] bottom-[22%] h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: accent }}
+              />
+              <div
+                className="absolute left-[22%] bottom-[20%] h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: accent }}
+              />
+
+              <div className="absolute left-[22%] top-[26%] h-px w-[28%] rotate-[24deg] bg-white/30" />
+              <div className="absolute right-[20%] top-[30%] h-px w-[28%] -rotate-[24deg] bg-white/30" />
+              <div className="absolute right-[24%] bottom-[28%] h-px w-[26%] rotate-[22deg] bg-white/30" />
+              <div className="absolute left-[24%] bottom-[26%] h-px w-[26%] -rotate-[22deg] bg-white/30" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -169,7 +189,11 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const accent = FALLBACK_ACCENTS[hashTitle(title) % FALLBACK_ACCENTS.length]
   const initials = getInitials(title)
-  const showSystemDesignFallback = !image && coverType === "system-design"
+  const isSystemDesignCard = !image && coverType === "system-design"
+  const showSystemDesignImage =
+    isSystemDesignCard && USE_TEMP_SYSTEM_DESIGN_IMAGE
+  const showSystemDesignFallback =
+    isSystemDesignCard && !USE_TEMP_SYSTEM_DESIGN_IMAGE
   const isStarProject = achievements.length > 0
 
   return (
@@ -185,48 +209,33 @@ export function ProjectCard({
               loading="lazy"
               className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
             />
+          ) : showSystemDesignImage ? (
+            <img
+              src={TEMP_SYSTEM_DESIGN_IMAGE_URL}
+              alt={imageAlt ?? `${title} system design preview`}
+              loading="lazy"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            />
           ) : showSystemDesignFallback ? (
-            <SystemDesignFallback title={title} accent={accent} />
+            <SystemDesignFallback accent={accent} />
           ) : (
             <div
-              className="relative w-full h-full overflow-hidden bg-[#0b0f12]"
+              className="relative w-full h-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500"
               style={{
-                backgroundImage:
-                  "radial-gradient(circle at 12% 18%, rgba(255,255,255,0.06) 0px, transparent 32%), radial-gradient(circle at 88% 82%, rgba(255,255,255,0.04) 0px, transparent 36%)",
+                backgroundImage: `url(${TEMP_PROJECT_FALLBACK_IMAGE_URL})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             >
-              <div
-                className="absolute inset-0 opacity-35"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
-                  backgroundSize: "46px 46px",
-                }}
-              />
-
-              <div
-                className="absolute -top-16 -right-12 w-72 h-72 rounded-full blur-3xl"
-                style={{ backgroundColor: accent, opacity: 0.28 }}
-              />
-              <div
-                className="absolute -bottom-20 -left-10 w-72 h-72 rounded-full blur-3xl"
-                style={{ backgroundColor: accent, opacity: 0.18 }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/28 via-black/36 to-black/46" />
 
               <div className="relative h-full flex flex-col justify-between p-5 sm:p-8">
-                <span className="inline-flex w-fit items-center rounded-full border border-white/20 px-3 py-1 text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gray-200/90 bg-black/30">
-                  auto generated preview
-                </span>
-
                 <div className="space-y-2">
                   <div className="text-5xl sm:text-7xl font-bold leading-none text-white/90">
                     {initials}
                   </div>
                   <p className="text-lg sm:text-3xl font-semibold leading-tight text-white">
                     {title}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-300/80">
-                    project cover pending update
                   </p>
                 </div>
               </div>
