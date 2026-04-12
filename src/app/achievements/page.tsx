@@ -100,11 +100,14 @@ export default function AchievementsPage() {
                   <h3 className="text-lg md:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
                     {item.event}
                   </h3>
-                  <p className="text-sm text-gray-400">
-                    <span className="text-gray-300 font-semibold">
+                  <div className="flex items-center flex-wrap gap-2">
+                    <span className="text-[10px] uppercase tracking-[0.16em] text-gray-500">
+                      prize
+                    </span>
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs sm:text-sm font-semibold text-accent bg-accent/10 border border-accent/40">
                       {item.award}
                     </span>
-                  </p>
+                  </div>
                 </div>
               </div>
 
