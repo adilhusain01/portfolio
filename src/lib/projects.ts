@@ -145,6 +145,26 @@ export const projects = [
     video: "https://youtu.be/vqzJIeNt3y4",
   },
   {
+    title: "hyperswipe",
+    description:
+      "Built a mobile-first Hyperliquid testnet trading app where users can swipe right to buy and swipe left to sell, with live price data, wallet positions, and real-time market updates.",
+    role: "developer",
+    period: "august 2025",
+    image: "https://hyperswipe.vercel.app/og.png",
+    achievements: [],
+    technologies: [
+      "react.js",
+      "vite",
+      "tailwind css",
+      "viem",
+      "privy",
+      "framer motion",
+    ],
+    href: "https://hyperswipe.vercel.app/",
+    github: "https://github.com/adilhusain01/hyperswipe-client",
+    video: "https://www.youtube.com/watch?v=PcIxu5QQeYI",
+  },
+  {
     title: "catch goofy",
     description:
       "a fun bird crash game, with high‑stakes betting and adrenaline‑charged experience.",
