@@ -1,7 +1,7 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { ProjectCard } from "@/components/project-card"
 import { Metadata } from "next"
-import { projects } from "@/lib/projects"
+import { getProjectSlug, projects } from "@/lib/projects"
 
 export default function ProjectsPage() {
   // Sort projects chronologically by period
@@ -22,7 +22,11 @@ export default function ProjectsPage() {
 
       <div className="space-y-12">
         {sortedProjects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+          <ProjectCard
+            key={getProjectSlug(project)}
+            {...project}
+            detailHref={`/projects/${getProjectSlug(project)}`}
+          />
         ))}
       </div>
     </main>

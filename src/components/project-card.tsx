@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, MonitorPlay, Github } from "lucide-react"
+import { Globe, MonitorPlay, Github, ArrowRight } from "lucide-react"
 
 const FALLBACK_ACCENTS = [
   "#22d3ee",
@@ -168,6 +168,8 @@ type ProjectCardProps = {
   coverType?: CoverType
   achievements: string[]
   technologies: string[]
+  detailHref?: string
+  detailLabel?: string
   href?: string
   github?: string
   video?: string
@@ -183,6 +185,8 @@ export function ProjectCard({
   coverType = "default",
   achievements,
   technologies,
+  detailHref,
+  detailLabel = "see more",
   href,
   github,
   video,
@@ -195,6 +199,8 @@ export function ProjectCard({
   const showSystemDesignFallback =
     isSystemDesignCard && !USE_TEMP_SYSTEM_DESIGN_IMAGE
   const isStarProject = achievements.length > 0
+  const isInternalHref = Boolean(href?.startsWith("/"))
+  const isInternalDetailHref = Boolean(detailHref?.startsWith("/"))
 
   return (
     <div className="group relative overflow-visible border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
@@ -247,7 +253,18 @@ export function ProjectCard({
       <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-4 mb-4">
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
-            {title}
+            {detailHref ? (
+              <Link
+                href={detailHref}
+                target={isInternalDetailHref ? undefined : "_blank"}
+                rel={isInternalDetailHref ? undefined : "noopener noreferrer"}
+                className="transition-colors"
+              >
+                {title}
+              </Link>
+            ) : (
+              title
+            )}
           </h3>
         </div>
         <div className="flex items-center gap-3 pt-1 shrink-0">
@@ -274,9 +291,12 @@ export function ProjectCard({
           {href && (
             <Link
               href={href}
-              target="_blank"
+              target={isInternalHref ? undefined : "_blank"}
+              rel={isInternalHref ? undefined : "noopener noreferrer"}
               className="text-gray-400 hover:text-accent transition-colors"
-              title="Visit Website"
+              title={
+                coverType === "system-design" ? "Read it" : "Visit Website"
+              }
             >
               <Globe className="w-5 h-5" />
             </Link>
@@ -316,6 +336,18 @@ export function ProjectCard({
           </div>
         </div>
       </div>
+
+      {detailHref && (
+        <Link
+          href={detailHref}
+          target={isInternalDetailHref ? undefined : "_blank"}
+          rel={isInternalDetailHref ? undefined : "noopener noreferrer"}
+          className="mt-6 inline-flex items-center text-gray-400 group-hover:text-accent text-sm font-medium gap-2 transition-colors"
+        >
+          {detailLabel}
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      )}
     </div>
   )
 }

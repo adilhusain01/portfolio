@@ -70,3 +70,35 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.prose .markdown-alert {
+  @apply my-6 rounded-r-lg border-l-4 p-4;
+}
+
+.prose .markdown-alert > p {
+  @apply m-0;
+}
+
+.prose .markdown-alert-title {
+  @apply mb-2 font-semibold;
+}
+
+.prose .markdown-alert-note {
+  @apply border-blue-500 bg-blue-900/20 text-blue-200;
+}
+
+.prose .markdown-alert-tip {
+  @apply border-emerald-500 bg-emerald-900/20 text-emerald-200;
+}
+
+.prose .markdown-alert-important {
+  @apply border-violet-500 bg-violet-900/20 text-violet-200;
+}
+
+.prose .markdown-alert-warning {
+  @apply border-amber-500 bg-amber-900/20 text-amber-200;
+}
+
+.prose .markdown-alert-caution {
+  @apply border-red-500 bg-red-900/20 text-red-200;
+}

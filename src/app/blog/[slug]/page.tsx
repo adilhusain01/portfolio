@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug, getPosts } from "@/lib/blog"
 import { ProgressBar } from "./progress-bar"
+import { BackButton } from "@/components/back-button"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -86,6 +87,8 @@ export default async function Post({ params }: PageProps) {
 
         <div className="flex flex-col lg:flex-row gap-2 md:gap-12 relative items-start">
           <div className="flex-1 w-full min-w-0">
+            <BackButton className="mb-6 inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-accent transition-colors" />
+
             <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
               {post.metadata.title}
             </h1>

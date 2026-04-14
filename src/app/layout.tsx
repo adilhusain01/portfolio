@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Geist_Mono } from "next/font/google"
 import "./globals.css"
+import "katex/dist/katex.min.css"
+import "highlight.js/styles/github-dark.css"
 import { Navbar } from "../components/navbar"
 
 const geistMono = Geist_Mono({

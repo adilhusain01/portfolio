@@ -1,10 +1,23 @@
-export const projects = [
+export type ProjectEntry = {
+  title: string
+  description: string
+  role: string
+  period: string
+  image?: string
+  achievements: string[]
+  technologies: string[]
+  href?: string
+  github?: string
+  video?: string
+}
+
+export const projects: ProjectEntry[] = [
   {
     title: "flashcards",
     description:
       "Built a CSV-driven study app with animated 3D card flipping, keyboard navigation, and progress tracking to turn simple question-answer datasets into focused revision sessions.",
     role: "developer",
-    period: "february 17, 2026",
+    period: "february 2026",
     image: "https://cardsflash.vercel.app/og.webp",
     achievements: [],
     technologies: [
@@ -23,7 +36,7 @@ export const projects = [
     description:
       "Built an immersive browser-based PDF reader designed for active reading with high-resolution clipping, persistent reading state, paper-grain visuals, and generative brown-noise focus audio.",
     role: "developer",
-    period: "january 26, 2026",
+    period: "january 2026",
     image:
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1769391452/Screenshot_2026-01-26_at_7.04.57_AM_cevnzb.jpg",
     achievements: [],
@@ -63,7 +76,7 @@ export const projects = [
     description:
       "Built a bold, liquid-style creative studio landing experience with cinematic motion, immersive scroll interactions, and polished social preview metadata for high-impact sharing.",
     role: "developer",
-    period: "april 2026",
+    period: "march 2026",
     image: "https://saharstudios.vercel.app/og.webp",
     achievements: [],
     technologies: [
@@ -123,7 +136,7 @@ export const projects = [
     description:
       "Built an influencer-marketing campaign platform where brands fund creator campaigns in tokens, campaign budgets can earn staking yield while live, and payouts are distributed transparently by performance.",
     role: "developer",
-    period: "november 2, 2025",
+    period: "november 2025",
     image: "https://campayyn.vercel.app/og.png",
     achievements: [],
     technologies: [
@@ -255,3 +268,21 @@ export const projects = [
     github: "https://github.com/adilhusain01/AIr",
   },
 ]
+
+function slugifyProjectTitle(title: string) {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+}
+
+export function getProjectSlug(project: Pick<ProjectEntry, "title">) {
+  return slugifyProjectTitle(project.title)
+}
+
+export function getProjectBySlug(slug: string): ProjectEntry | null {
+  return projects.find((project) => getProjectSlug(project) === slug) ?? null
+}

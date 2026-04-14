@@ -24,9 +24,10 @@ export default function SystemDesignPage() {
       <div className="space-y-12">
         {sortedSystemDesign.map((project) => (
           <ProjectCard
-            key={project.title}
+            key={project.slug}
             {...project}
             coverType="system-design"
+            detailHref={`/system-design/${project.slug}`}
           />
         ))}
       </div>
