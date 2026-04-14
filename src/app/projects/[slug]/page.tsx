@@ -14,12 +14,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import type { Components } from "react-markdown"
-import {
-  ExternalLink,
-  Github,
-  Globe,
-  MonitorPlay,
-} from "lucide-react"
+import { ExternalLink, Github, Globe, MonitorPlay } from "lucide-react"
 import { Children, isValidElement, type ComponentPropsWithoutRef } from "react"
 
 type PageProps = {

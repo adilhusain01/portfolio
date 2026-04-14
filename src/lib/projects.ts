@@ -205,7 +205,7 @@ export const projects: ProjectEntry[] = [
     achievements: ["won $100 as 2nd prize in somnia mini games hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
-    github: "https://github.com/adilhusain01/catch-goofy",
+    github: "https://github.com/rizwanmoulvi/catch-goofy",
     video: "https://youtu.be/XANNfyc-kpY",
   },
   {
