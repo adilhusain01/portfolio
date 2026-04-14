@@ -1,4 +1,4 @@
-const BOX_DRAWING_PATTERN = /[┌┐└┘├┤┬┴┼│─]/
+const BOX_DRAWING_PATTERN = /[\u2500-\u257F]/
 const FLOW_SYMBOL_PATTERN = /[▼▲→←↔↕·]/
 
 function isDiagramLine(line: string) {
@@ -31,7 +31,7 @@ export function preserveAsciiDiagrams(markdown: string) {
       continue
     }
 
-    if (!inFence && BOX_DRAWING_PATTERN.test(line)) {
+    if (!inFence && isDiagramLine(line)) {
       const block: string[] = []
 
       while (index < lines.length) {
