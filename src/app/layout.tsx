@@ -4,6 +4,7 @@ import "./globals.css"
 import "katex/dist/katex.min.css"
 import "highlight.js/styles/github-dark.css"
 import { Navbar } from "../components/navbar"
+import Head from "next/head"
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -49,11 +50,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <meta property="og:image" content="https://adilhusain.xyz/og.png" />
         <meta name="twitter:image" content="https://adilhusain.xyz/og.png" />
         <meta name="twitter:card" content="summary_large_image" />
-      </head>
+      </Head>
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
