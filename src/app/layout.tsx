@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Adil husain",
     card: "summary_large_image",
     creator: "@0xAdilHusain",
-    image: "https://adilhusain.xyz/og.png",
+    images: ["https://adilhusain.xyz/og.png"],
   },
 }
 
@@ -50,11 +50,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <meta property="og:image" content="https://adilhusain.xyz/og.png" />
-        <meta name="twitter:image" content="https://adilhusain.xyz/og.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
