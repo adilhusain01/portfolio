@@ -49,6 +49,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:image" content="https://adilhusain.xyz/og.png" />
+        <meta name="twitter:image" content="https://adilhusain.xyz/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </head>
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
