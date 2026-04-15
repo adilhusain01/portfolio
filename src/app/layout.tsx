@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Adil husain",
     description: "Developer",
-    url: "https://adilhusain.me",
+    url: "https://adilhusain.xyz",
     siteName: "Adil husain",
     locale: "en_US",
     type: "website",
-    images: ["https://adilhusain.me/og/home"],
+    images: ["https://adilhusain.xyz/og.png"],
   },
   robots: {
     index: true,
@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     title: "Adil husain",
     card: "summary_large_image",
     creator: "@0xAdilHusain",
+    image: "https://adilhusain.xyz/og.png",
   },
 }
 
