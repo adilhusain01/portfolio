@@ -33,7 +33,7 @@ const achievements = [
       "https://cdn.dorahacks.io/static/files/198840c1a75063621f8f85844ff9995a.png",
   },
   {
-    event: "Alphathon Origin Singapore (TOKEN2049)",
+    event: "TOKEN2049 Origins Singapore",
     award: "3rd Prize ($1,500)",
     project: "TaaS",
     link: "https://www.token2049.com/singapore/2049-origins",
