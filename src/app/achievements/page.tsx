@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 
 const achievements = [
   {
+    event: "Arbitrum APAC Mini Hackathon",
+    award: "Honorable Mention ($100)",
+    project: "Arbipic",
+    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
+    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
+  },
+  {
     event: "Alphathon Origin Singapore (TOKEN2049)",
     award: "3rd Prize ($1,500)",
     project: "TaaS",
