@@ -57,8 +57,8 @@ export default function ResumePage() {
           <ScrambleText text="resume & journey" />
         </h1>
         <a
-          href="/Resume.pdf"
-          download="Adil_Husain_Resume.pdf"
+          href="/Adil_Husain_Web_Developer_Resume.pdf"
+          download="Adil_Husain_Web_Developer_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex max-w-[max-content] items-center justify-center gap-2 px-4 py-2 border border-gray-700 hover:border-gray-500 hover:text-white rounded-md text-sm text-gray-300 transition-colors"
