@@ -41,19 +41,19 @@ const achievements = [
       "https://token2049.nyc3.cdn.digitaloceanspaces.com/Singapore/OG/TOKEN2049%20Origins%20-%20Opengraph-2%20OCT%202025%20Opt2png.png",
   },
   {
-    event: "Arbitrum APAC Mini Hackathon",
-    award: "Honorable Mention ($100)",
-    project: "Arbipic",
-    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
-    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
-  },
-  {
     event: "Somnia Mini Games Hackathon",
     award: "2nd Prize ($100)",
     project: "Catch Goofy",
     link: "https://dorahacks.io/hackathon/somnia-minigames/buidl",
     image:
       "https://cdn.dorahacks.io/static/files/1981e7aebe221556ff526be4829964e8.png",
+  },
+  {
+    event: "Arbitrum APAC Mini Hackathon",
+    award: "Honorable Mention Prize ($100)",
+    project: "Arbipic",
+    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
+    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
   },
   {
     event: "Microsoft x InnoQuest",
