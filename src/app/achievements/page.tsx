@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const achievements = [
   {
     event: "TRON HackaTron Season 7",
-    award: "4th Prize ($8,000) - Artistry Track",
+    award: "Grabbed 4th Prize ($8,000) - Artistry Track",
     project: "Vibe",
     link: "https://hackatron7.devpost.com/",
     image:
@@ -26,7 +26,7 @@ const achievements = [
   },
   {
     event: "Somnia DeFi Mini Hackathon",
-    award: "2nd Prize ($1,500)",
+    award: "Grabbed 2nd Prize ($1,500)",
     project: "Somany",
     link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
     image:
@@ -34,7 +34,7 @@ const achievements = [
   },
   {
     event: "TOKEN2049 Origins Singapore",
-    award: "3rd Prize ($1,500)",
+    award: "Grabbed 3rd Prize ($1,500)",
     project: "TaaS",
     link: "https://www.token2049.com/singapore/2049-origins",
     image:
@@ -42,7 +42,7 @@ const achievements = [
   },
   {
     event: "Somnia Mini Games Hackathon",
-    award: "2nd Prize ($100)",
+    award: "Grabbed 2nd Prize ($100)",
     project: "Catch Goofy",
     link: "https://dorahacks.io/hackathon/somnia-minigames/buidl",
     image:
@@ -50,20 +50,20 @@ const achievements = [
   },
   {
     event: "Arbitrum APAC Mini Hackathon",
-    award: "Honorable Mention Prize ($100)",
+    award: "Got Honorable Mention Prize ($100)",
     project: "Arbipic",
     link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
     image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
   },
   {
     event: "Microsoft x InnoQuest",
-    award: "2nd Position",
+    award: "Got 2nd Position",
     link: "https://www.reskilll.com/hack/innoquest#schedule-area",
     image: "https://content.reskilll.com/ABCO3KzcG6.png",
   },
   {
     event: "Hack for Humanity 2025",
-    award: "14th Position",
+    award: "Got 14th Position",
     project: "Concept Bridge",
     link: "https://devpost.com/software/concept-bridge-la3cfg",
     image:
