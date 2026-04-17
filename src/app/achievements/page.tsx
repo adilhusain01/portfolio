@@ -17,11 +17,20 @@ export const metadata: Metadata = {
 
 const achievements = [
   {
-    event: "Arbitrum APAC Mini Hackathon",
-    award: "Honorable Mention ($100)",
-    project: "Arbipic",
-    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
-    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
+    event: "TRON HackaTron Season 7",
+    award: "4th Prize ($8,000) - Artistry Track",
+    project: "Vibe",
+    link: "https://hackatron7.devpost.com/",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/002/960/566/datas/full_width.png",
+  },
+  {
+    event: "Somnia DeFi Mini Hackathon",
+    award: "2nd Prize ($1,500)",
+    project: "Somany",
+    link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
+    image:
+      "https://cdn.dorahacks.io/static/files/198840c1a75063621f8f85844ff9995a.png",
   },
   {
     event: "Alphathon Origin Singapore (TOKEN2049)",
@@ -32,12 +41,11 @@ const achievements = [
       "https://token2049.nyc3.cdn.digitaloceanspaces.com/Singapore/OG/TOKEN2049%20Origins%20-%20Opengraph-2%20OCT%202025%20Opt2png.png",
   },
   {
-    event: "Somnia DeFi Mini Hackathon",
-    award: "2nd Prize ($1,500)",
-    project: "Somany",
-    link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
-    image:
-      "https://cdn.dorahacks.io/static/files/198840c1a75063621f8f85844ff9995a.png",
+    event: "Arbitrum APAC Mini Hackathon",
+    award: "Honorable Mention ($100)",
+    project: "Arbipic",
+    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
+    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
   },
   {
     event: "Somnia Mini Games Hackathon",
@@ -60,14 +68,6 @@ const achievements = [
     link: "https://devpost.com/software/concept-bridge-la3cfg",
     image:
       "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/003/120/949/datas/full_width.png",
-  },
-  {
-    event: "TRON HackaTron Season 7",
-    award: "4th Prize ($8,000) - Artistry Track",
-    project: "Vibe",
-    link: "https://hackatron7.devpost.com/",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/002/960/566/datas/full_width.png",
   },
 ]
 
