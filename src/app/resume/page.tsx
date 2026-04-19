@@ -1,5 +1,6 @@
 import { Download } from "lucide-react"
 import { ScrambleText } from "@/components/scramble-text"
+import { AchievementGallery } from "@/components/achievement-gallery"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -104,6 +105,96 @@ export default function ResumePage() {
           TAAS escrow protocol, netting $8k with a 4th place sweep at the{" "}
           <strong>TRON Grand Hackatron</strong>, and winning multiple bounties
           in Somnia DeFi circuits.
+        </TimelineItem>
+
+        <TimelineItem
+          date="Dec 6–8 2024"
+          title="ETHIndia + FIL Bangalore"
+          role="Bengaluru · hackathon chaos & city roam"
+        >
+          <div className="space-y-6">
+            <p>
+              Three days of ETHIndia and FIL Bangalore with a frozen laptop and
+              no phone — I became a city wanderer, paying cash, chasing delivery
+              updates, and still squeezing in table football, table tennis, and
+              endless foodie runs.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                "offline",
+                "city hunt",
+                "hackathon",
+                "table football",
+                "foodie",
+                "sapno ka baaraat",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex rounded-full border border-gray-800 bg-gray-900/30 px-3 py-1 text-xs uppercase tracking-[0.22em] text-gray-400"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <AchievementGallery
+              gallery={[
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776624429/IMG_1524_ugltjm.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776624713/IMG_1535_qptgzw.jpg",
+              ]}
+              event="ETHIndia + FIL Bangalore"
+              useTilePattern
+            />
+          </div>
+        </TimelineItem>
+
+        <TimelineItem
+          date="Dec 4–5 2024"
+          title="India Blockchain Week"
+          role="Bangalore · conference + afterparty"
+        >
+          <div className="space-y-6">
+            <p>
+              Two days at India Blockchain Week in Bangalore—high-voltage
+              keynotes, sharp Web3 panels, and a final-night afterparty that
+              sealed the event.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                "keynotes",
+                "panels",
+                "workshops",
+                "networking",
+                "afterparty",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex rounded-full border border-gray-800 bg-gray-900/30 px-3 py-1 text-xs uppercase tracking-[0.22em] text-gray-400"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <AchievementGallery
+              gallery={[
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776622532/photo_2026-04-19_23.40.36_hjsri2.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623035/IMG_1472_xg8lqf.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623046/IMG_1469_yomlpb.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776622997/IMG_1527_dxdtap.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623015/IMG_1488_vx4ap4.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776625059/IMG_1473_fo2yhj.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623003/IMG_1513_iemmbq.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623079/IMG_1449_z7ihms.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623068/IMG_1458_fjwfnd.jpg",
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776623058/IMG_1460_agzblr.png",
+              ]}
+              event="India Blockchain Week"
+              useTilePattern
+            />
+          </div>
         </TimelineItem>
 
         <TimelineItem

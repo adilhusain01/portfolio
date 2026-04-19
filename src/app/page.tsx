@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { Item, SectionList } from "@/components/section-list"
 import { BlogSection } from "@/components/blog-section"
-import { getProjectSlug, projects } from "@/lib/projects"
+import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
 import { systemDesign } from "@/lib/system-design"
 import { ProjectCard } from "@/components/project-card"
 import Link from "next/link"
@@ -37,9 +37,7 @@ const skillsByCategory = [
 ]
 
 export default function HomePage() {
-  const topProjects = [...projects]
-    .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
-    .slice(0, 2)
+  const topProjects = sortProjects(projects).slice(0, 2)
 
   const topSystemDesign = [...systemDesign]
     .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())

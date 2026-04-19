@@ -9,6 +9,7 @@ export type ProjectEntry = {
   href?: string
   github?: string
   video?: string
+  ribbon?: "red" | "gold"
 }
 
 export const projects: ProjectEntry[] = [
@@ -110,6 +111,7 @@ export const projects: ProjectEntry[] = [
     href: "https://never-pay.vercel.app/",
     github: "https://github.com/adilhusain01/NeverPay",
     video: "https://youtu.be/adcnmsFEAIA",
+    ribbon: "gold",
   },
   {
     title: "clawpay",
@@ -130,6 +132,7 @@ export const projects: ProjectEntry[] = [
     href: "https://claw-pay.vercel.app",
     github: "https://github.com/adilhusain01/clawpay",
     video: "https://youtu.be/Az8vLFKR9r8",
+    ribbon: "gold",
   },
   {
     title: "campayyn",
@@ -149,6 +152,7 @@ export const projects: ProjectEntry[] = [
     ],
     href: "https://campayyn.vercel.app/",
     github: "https://github.com/adilhusain01/campayyn",
+    ribbon: "gold",
   },
   {
     title: "taas",
@@ -195,6 +199,7 @@ export const projects: ProjectEntry[] = [
     href: "https://hyperswipe.vercel.app/",
     github: "https://github.com/adilhusain01/hyperswipe-client",
     video: "https://www.youtube.com/watch?v=PcIxu5QQeYI",
+    ribbon: "gold",
   },
   {
     title: "catch goofy",
@@ -281,6 +286,31 @@ function slugifyProjectTitle(title: string) {
 
 export function getProjectSlug(project: Pick<ProjectEntry, "title">) {
   return slugifyProjectTitle(project.title)
+}
+
+const getProjectTime = (project: Pick<ProjectEntry, "period">) => {
+  const time = new Date(project.period).getTime()
+  return Number.isNaN(time) ? 0 : time
+}
+
+export function sortProjects<T extends ProjectEntry>(projectList: T[]) {
+  return [...projectList].sort((a, b) => {
+    const aHasAchievement = a.achievements.length > 0 ? 2 : 0
+    const bHasAchievement = b.achievements.length > 0 ? 2 : 0
+
+    if (aHasAchievement !== bHasAchievement) {
+      return bHasAchievement - aHasAchievement
+    }
+
+    const aHasGoldRibbon = a.ribbon === "gold" ? 1 : 0
+    const bHasGoldRibbon = b.ribbon === "gold" ? 1 : 0
+
+    if (aHasGoldRibbon !== bHasGoldRibbon) {
+      return bHasGoldRibbon - aHasGoldRibbon
+    }
+
+    return getProjectTime(b) - getProjectTime(a)
+  })
 }
 
 export function getProjectBySlug(slug: string): ProjectEntry | null {

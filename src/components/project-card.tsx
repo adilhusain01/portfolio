@@ -137,20 +137,42 @@ function SystemDesignFallback({ accent }: { accent: string }) {
   )
 }
 
-function StarProjectRibbon() {
+function ProjectRibbon({ variant }: { variant: "red" | "gold" }) {
+  const isGold = variant === "gold"
+  const diagonalBar = isGold
+    ? "bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b]"
+    : "bg-gradient-to-r from-[#be123c] to-[#4c0519]"
+  const verticalBar = isGold
+    ? "bg-gradient-to-b from-[#92400e] to-[#f59e0b]"
+    : "bg-gradient-to-b from-[#4c0519] to-[#be123c]"
+  const ribbonStripe = isGold
+    ? "bg-gradient-to-r from-transparent via-[#f59e0b]/35 to-transparent"
+    : "bg-gradient-to-r from-transparent via-[#881337]/35 to-transparent"
+  const ribbonBody = isGold
+    ? "bg-gradient-to-r from-[#ca8a04] via-[#f59e0b] to-[#f59e0b] shadow-[inset_0_0_0_2px_rgba(133,77,14,0.95),inset_0_0_0_3px_rgba(120,53,15,0.8),inset_0_0_0_4px_rgba(251,191,36,0.28),0_18px_5px_-16px_rgba(0,0,0,0.8)]"
+    : "bg-gradient-to-r from-[#7f1d1d] via-[#dc2626] to-[#7f1d1d] shadow-[inset_0_0_0_2px_rgba(127,29,29,0.95),inset_0_0_0_3px_rgba(69,10,10,0.8),inset_0_0_0_4px_rgba(248,113,113,0.28),0_18px_5px_-16px_rgba(0,0,0,0.8)]"
+
   return (
     <div
       className="pointer-events-none absolute -top-[10px] -right-[10px] z-20 h-[130px] w-[130px] sm:h-[150px] sm:w-[150px]"
       aria-hidden="true"
     >
       <div className="relative h-full w-full overflow-hidden">
-        <div className="absolute right-[54px] top-[10px] h-[8px] w-[44px] rotate-45 rounded-[9px] bg-gradient-to-r from-[#be123c] to-[#4c0519] sm:right-[62px] sm:top-[12px] sm:w-[52px]" />
+        <div
+          className={`absolute right-[54px] top-[10px] h-[8px] w-[44px] rotate-45 rounded-[9px] ${diagonalBar} sm:right-[62px] sm:top-[12px] sm:w-[52px]`}
+        />
 
-        <div className="absolute right-0 top-[52px] h-[42px] w-[8px] rounded-r-[9px] bg-gradient-to-b from-[#4c0519] to-[#be123c] sm:top-[60px] sm:h-[50px]" />
+        <div
+          className={`absolute right-0 top-[52px] h-[42px] w-[8px] rounded-r-[9px] ${verticalBar} sm:top-[60px] sm:h-[50px]`}
+        />
 
-        <div className="absolute top-[28px] -right-[68px] h-[38px] w-[220px] rotate-45 bg-gradient-to-r from-[#7f1d1d] via-[#dc2626] to-[#7f1d1d] shadow-[inset_0_0_0_2px_rgba(127,29,29,0.95),inset_0_0_0_3px_rgba(69,10,10,0.8),inset_0_0_0_4px_rgba(248,113,113,0.28),0_18px_5px_-16px_rgba(0,0,0,0.8)] sm:top-[30px] sm:-right-[76px] sm:h-[42px] sm:w-[248px]" />
+        <div
+          className={`absolute top-[28px] -right-[68px] h-[38px] w-[220px] rotate-45 ${ribbonBody} sm:top-[30px] sm:-right-[76px] sm:h-[42px] sm:w-[248px]`}
+        />
 
-        <div className="absolute right-[12px] top-[42px] h-[74px] w-[11px] -rotate-45 bg-gradient-to-r from-transparent via-[#881337]/35 to-transparent sm:right-[14px] sm:top-[48px] sm:h-[86px]" />
+        <div
+          className={`absolute right-[12px] top-[42px] h-[74px] w-[11px] -rotate-45 ${ribbonStripe} sm:right-[14px] sm:top-[48px] sm:h-[86px]`}
+        />
       </div>
     </div>
   )
@@ -173,6 +195,7 @@ type ProjectCardProps = {
   href?: string
   github?: string
   video?: string
+  ribbon?: "red" | "gold"
 }
 
 export function ProjectCard({
@@ -190,6 +213,7 @@ export function ProjectCard({
   href,
   github,
   video,
+  ribbon,
 }: ProjectCardProps) {
   const accent = FALLBACK_ACCENTS[hashTitle(title) % FALLBACK_ACCENTS.length]
   const initials = getInitials(title)
@@ -198,13 +222,13 @@ export function ProjectCard({
     isSystemDesignCard && USE_TEMP_SYSTEM_DESIGN_IMAGE
   const showSystemDesignFallback =
     isSystemDesignCard && !USE_TEMP_SYSTEM_DESIGN_IMAGE
-  const isStarProject = achievements.length > 0
+  const ribbonVariant = ribbon ?? (achievements.length > 0 ? "red" : undefined)
   const isInternalHref = Boolean(href?.startsWith("/"))
   const isInternalDetailHref = Boolean(detailHref?.startsWith("/"))
 
   return (
     <div className="group relative overflow-visible border border-gray-800 p-4 sm:p-6 transition-colors hover:border-accent/50">
-      {isStarProject && <StarProjectRibbon />}
+      {ribbonVariant && <ProjectRibbon variant={ribbonVariant} />}
 
       <div className="relative -mt-4 -mx-4 sm:-mt-6 sm:-mx-6 mb-4 sm:mb-6 overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
         <div className="w-full" style={{ aspectRatio: "1200 / 630" }}>

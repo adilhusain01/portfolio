@@ -1,13 +1,10 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { ProjectCard } from "@/components/project-card"
 import { Metadata } from "next"
-import { getProjectSlug, projects } from "@/lib/projects"
+import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
 
 export default function ProjectsPage() {
-  // Sort projects chronologically by period
-  const sortedProjects = [...projects].sort(
-    (a, b) => new Date(b.period).getTime() - new Date(a.period).getTime(),
-  )
+  const sortedProjects = sortProjects(projects)
 
   return (
     <main className="animate-fade-in-up">

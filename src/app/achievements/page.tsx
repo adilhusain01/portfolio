@@ -2,6 +2,7 @@ import { ScrambleText } from "@/components/scramble-text"
 import { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { getAchievementSlug, getAllAchievements } from "@/lib/achievements"
 
 export const metadata: Metadata = {
   title: "Achievements",
@@ -15,61 +16,7 @@ export const metadata: Metadata = {
   },
 }
 
-const achievements = [
-  {
-    event: "TRON HackaTron Season 7",
-    award: "Grabbed 4th Prize ($8,000) - Artistry Track",
-    project: "Vibe",
-    link: "https://hackatron7.devpost.com/",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/002/960/566/datas/full_width.png",
-  },
-  {
-    event: "Somnia DeFi Mini Hackathon",
-    award: "Grabbed 2nd Prize ($1,500)",
-    project: "Somany",
-    link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
-    image:
-      "https://cdn.dorahacks.io/static/files/198840c1a75063621f8f85844ff9995a.png",
-  },
-  {
-    event: "TOKEN2049 Origins Singapore",
-    award: "Grabbed 3rd Prize ($1,500)",
-    project: "TaaS",
-    link: "https://www.token2049.com/singapore/2049-origins",
-    image:
-      "https://token2049.nyc3.cdn.digitaloceanspaces.com/Singapore/OG/TOKEN2049%20Origins%20-%20Opengraph-2%20OCT%202025%20Opt2png.png",
-  },
-  {
-    event: "Somnia Mini Games Hackathon",
-    award: "Grabbed 2nd Prize ($100)",
-    project: "Catch Goofy",
-    link: "https://dorahacks.io/hackathon/somnia-minigames/buidl",
-    image:
-      "https://cdn.dorahacks.io/static/files/1981e7aebe221556ff526be4829964e8.png",
-  },
-  {
-    event: "Arbitrum APAC Mini Hackathon",
-    award: "Got Honorable Mention Prize ($100)",
-    project: "Arbipic",
-    link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
-    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
-  },
-  {
-    event: "Microsoft x InnoQuest",
-    award: "Got 2nd Position",
-    link: "https://www.reskilll.com/hack/innoquest#schedule-area",
-    image: "https://content.reskilll.com/ABCO3KzcG6.png",
-  },
-  {
-    event: "Hack for Humanity 2025",
-    award: "Got 14th Position",
-    project: "Concept Bridge",
-    link: "https://devpost.com/software/concept-bridge-la3cfg",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/003/120/949/datas/full_width.png",
-  },
-]
+const achievements = getAllAchievements()
 
 export default function AchievementsPage() {
   return (
@@ -84,9 +31,9 @@ export default function AchievementsPage() {
       </p>
 
       <div className="space-y-6">
-        {achievements.map((item, index) => (
+        {achievements.map((item) => (
           <div
-            key={index}
+            key={getAchievementSlug(item)}
             className="group border border-gray-800 transition-colors hover:border-accent/50 flex flex-col overflow-hidden"
           >
             {item.image && (
@@ -116,26 +63,13 @@ export default function AchievementsPage() {
               </div>
 
               <div className="flex items-center pt-1 shrink-0">
-                {item.link ? (
-                  <Link
-                    href={item.link}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-accent transition-colors"
-                  >
-                    <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded">
-                      {item.project
-                        ? `built ${item.project.toLowerCase()}`
-                        : "view project"}
-                    </span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
-                  </Link>
-                ) : item.project ? (
-                  <div className="inline-flex items-center gap-2 text-sm text-gray-400">
-                    <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded">
-                      built {item.project.toLowerCase()}
-                    </span>
-                  </div>
-                ) : null}
+                <Link
+                  href={`/achievements/${getAchievementSlug(item)}`}
+                  className="inline-flex items-center gap-2 text-sm text-gray-300 bg-gray-800/60 px-3 py-2 rounded-md hover:bg-accent/15 hover:text-white transition-colors"
+                >
+                  view details
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
