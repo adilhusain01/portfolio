@@ -49,6 +49,22 @@ function TimelineItem({
   )
 }
 
+function SentenceBulletedText({ text }: { text: string }) {
+  return (
+    <div className="space-y-2 text-gray-300 text-base leading-relaxed">
+      {text.split(/\.\s+/).map((sentence, index, array) => {
+        const content = index < array.length - 1 ? `${sentence}.` : sentence
+        return (
+          <p key={`${sentence}-${index}`} className="flex gap-2">
+            <span className="text-accent">&gt;</span>
+            <span>{content}</span>
+          </p>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function ResumePage() {
   return (
     <main className="animate-fade-in-up">
@@ -81,14 +97,7 @@ export default function ResumePage() {
           role="Systems Engineering"
           active={true}
         >
-          I bypassed the ceiling of single-threaded Node.js and started tearing
-          apart Javascript&apos;s internal execution structure. I implemented{" "}
-          <strong>PM2 clustering</strong>, pushed <strong>Docker</strong>{" "}
-          containers to <strong>AWS EKS</strong> with Horizontal Pod
-          Autoscaling, and benchmarked <strong>Rust Axum microservices</strong>{" "}
-          against Piscina thread pooling. This resulted in scaling architectural
-          throughput to <strong>150,000+ RPS</strong> and dropping operational
-          latencies to 6ms using asynchronous Redis/BullMQ task orchestration.
+          <SentenceBulletedText text="I bypassed the ceiling of single-threaded Node.js and started tearing apart Javascript's internal execution structure. I implemented PM2 clustering, pushed Docker containers to AWS EKS with Horizontal Pod Autoscaling, and benchmarked Rust Axum microservices against Piscina thread pooling. This resulted in scaling architectural throughput to 150,000+ RPS and dropping operational latencies to 6ms using asynchronous Redis/BullMQ task orchestration." />
         </TimelineItem>
 
         <TimelineItem
@@ -96,15 +105,7 @@ export default function ResumePage() {
           title="The Web3 Hackathon Sprint"
           role="Blockchain & Autonomous Agents"
         >
-          Immersed completely into decentralized architectures and EVM
-          engineering. Built <strong>NeverPay</strong> (yield-farming AI
-          platform via Aave V3) and <strong>ClawPay</strong> (an autonomous
-          fiat-payment layer backed by Arbitrum Sepolia escrows for AI agents).
-          Competed globally—securing{" "}
-          <strong>3rd place at Token2049 Origins Singapore</strong> with the
-          TAAS escrow protocol, netting $8k with a 4th place sweep at the{" "}
-          <strong>TRON Grand Hackatron</strong>, and winning multiple bounties
-          in Somnia DeFi circuits.
+          <SentenceBulletedText text="Immersed completely into decentralized architectures and EVM engineering. Built NeverPay (yield-farming AI platform via Aave V3) and ClawPay (an autonomous fiat-payment layer backed by Arbitrum Sepolia escrows for AI agents). Competed globally—securing 3rd place at Token2049 Origins Singapore with the TAAS escrow protocol, netting $8k with a 4th place sweep at the TRON Grand Hackatron, and winning multiple bounties in Somnia DeFi circuits." />
         </TimelineItem>
 
         <TimelineItem
@@ -202,14 +203,7 @@ export default function ResumePage() {
           title="Professional Leap: Techbug"
           role="Full Stack Developer Intern"
         >
-          Built and deployed scalable Node.js and React.js applications and CMS
-          dashboards using Docker, AWS EC2/S3, Cloudinary, and Google Analytics.
-          Implemented JWT-based authentication with RBAC and improved API
-          reliability with Redis caching, rate limiting, and optimized queries.
-          Enhanced scalability and response times with server-side pagination,
-          indexing, and Node.js clustering using worker threads. Developed an
-          event-driven email system to automate user and inventory alerts,
-          removing manual processes.
+          <SentenceBulletedText text="Built and deployed scalable Node.js and React.js applications and CMS dashboards using Docker, AWS EC2/S3, Cloudinary, and Google Analytics. Implemented JWT-based authentication with RBAC and improved API reliability with Redis caching, rate limiting, and optimized queries. Enhanced scalability and response times with server-side pagination, indexing, and Node.js clustering using worker threads. Developed an event-driven email system to automate user and inventory alerts, removing manual processes." />
         </TimelineItem>
 
         <TimelineItem
@@ -217,11 +211,7 @@ export default function ResumePage() {
           title="Getting Off The Ground"
           role="Full Stack Foundations"
         >
-          Started aggressively building intensive full-stack systems beyond
-          standard CRUD apps. Developed <strong>AIR</strong>, a real-time
-          WebSocket chat application leveraging Django and native SQLite
-          seamlessly interwoven with the Gemini API to execute on-the-fly
-          sentiment analysis and message prediction engines.
+          <SentenceBulletedText text="Started aggressively building intensive full-stack systems beyond standard CRUD apps. Developed AIR, a real-time WebSocket chat application leveraging Django and native SQLite seamlessly interwoven with the Gemini API to execute on-the-fly sentiment analysis and message prediction engines." />
         </TimelineItem>
       </div>
     </main>

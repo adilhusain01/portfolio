@@ -16,6 +16,21 @@ const TEMP_SYSTEM_DESIGN_IMAGE_URL =
 const TEMP_PROJECT_FALLBACK_IMAGE_URL =
   "https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
+function renderSentenceLines(text: string) {
+  return text.split(/\.\s+/).map((sentence, index, array) => {
+    const content = index < array.length - 1 ? `${sentence}.` : sentence
+    return (
+      <span
+        key={`${sentence}-${index}`}
+        className={index === 0 ? "block" : "block mt-2"}
+      >
+        <span className="text-accent mr-2">&gt;</span>
+        {content}
+      </span>
+    )
+  })
+}
+
 function hashTitle(value: string) {
   let hash = 0
 
@@ -332,7 +347,7 @@ export function ProjectCard({
         {role} {period && `(${period})`}
       </p>
 
-      <p className="text-gray-300 mb-6">{description}</p>
+      <p className="text-gray-300 mb-6">{renderSentenceLines(description)}</p>
 
       <div className="space-y-6">
         {achievements && achievements.length > 0 && (

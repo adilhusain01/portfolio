@@ -9,6 +9,21 @@ export type Item = {
   description: string
 }
 
+function renderSentenceLines(text: string) {
+  return text.split(/\.\s+/).map((sentence, index, array) => {
+    const content = index < array.length - 1 ? `${sentence}.` : sentence
+    return (
+      <span
+        key={`${sentence}-${index}`}
+        className={index === 0 ? "block" : "block mt-2"}
+      >
+        <span className="text-accent mr-2">&gt;</span>
+        {content}
+      </span>
+    )
+  })
+}
+
 type SectionListProps = {
   title: string
   items: Item[]
@@ -38,7 +53,7 @@ export function SectionList({
                 {item.role} {item.period && `(${item.period})`}
               </p>
               <p className="text-sm sm:text-base text-gray-300">
-                {item.description}
+                {renderSentenceLines(item.description)}
               </p>
             </Link>
           </div>
