@@ -202,13 +202,14 @@ export default function ResumePage() {
           title="Professional Leap: Techbug"
           role="Full Stack Developer Intern"
         >
-          It wasn&apos;t just writing features or fixing UI bugs; I directly
-          overhauled backend data pathways. I engineered the central CMS
-          dashboard (boosting content update speeds by 50%), ripped out legacy
-          authentication for a hardened <strong>JWT-based pipeline</strong>{" "}
-          (preventing 90% of unauthorized API hits), and restructured
-          fundamental database pagination formulas to{" "}
-          <strong>slash general loading latency by 65%</strong>.
+          Built and deployed scalable Node.js and React.js applications and CMS
+          dashboards using Docker, AWS EC2/S3, Cloudinary, and Google Analytics.
+          Implemented JWT-based authentication with RBAC and improved API
+          reliability with Redis caching, rate limiting, and optimized queries.
+          Enhanced scalability and response times with server-side pagination,
+          indexing, and Node.js clustering using worker threads. Developed an
+          event-driven email system to automate user and inventory alerts,
+          removing manual processes.
         </TimelineItem>
 
         <TimelineItem

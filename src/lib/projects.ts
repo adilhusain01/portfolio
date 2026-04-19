@@ -94,7 +94,7 @@ export const projects: ProjectEntry[] = [
   {
     title: "neverpay",
     description:
-      "Built NeverPay, a DeFi-powered AI platform where users deposit USDC once to earn perpetual credits from Aave V3 yield farming for platform credits which can be used at the marketplace on things like Image generation, conversion tools etc and much more, while retaining full principal withdrawal rights at any time.",
+      "Built a DeFi-powered platform where users deposit USDC to earn yield from Aave V3 and convert it into platform credits for a native marketplace. Users retain full control of their principal and can withdraw it anytime, while the platform applies a 5% margin to generated yield. Implemented YieldVault smart contracts on Base to automate yield accrual and credit conversion, added LI.FI cross-chain deposit bridging, RainbowKit wallet integration, and secure Gemini API-backed routes.",
     role: "developer",
     period: "february 2026",
     image: "https://never-pay.vercel.app/neverpay-og.webp",
@@ -116,7 +116,7 @@ export const projects: ProjectEntry[] = [
   {
     title: "clawpay",
     description:
-      "Developed secure autonomous payment layer for AI agents enabling purchases on any Visa/Mastercard website using single-use virtual cards backed by USDC in on-chain escrow on Arbitrum Sepolia, eliminating merchant opt-in, persistent card exposure, and human intervention while keeping full user control of funds.",
+      "Created a secure payment layer that lets AI agents make purchases on Visa/Mastercard websites using single-use virtual cards funded by USDC in on-chain escrow on Arbitrum. This removed personal card exposure while enabling pay-as-you-go agent spending under strict limits. Designed Solidity escrow contracts, a FastAPI backend integrated with Lithic for exact spend-limit virtual cards, and MCP server tooling for seamless Claude/OpenClaw agent workflows using ethers.js.",
     role: "developer",
     period: "february 2026",
     image: "https://claw-pay.vercel.app/clawypay-og.webp",
@@ -157,7 +157,7 @@ export const projects: ProjectEntry[] = [
   {
     title: "taas",
     description:
-      "TAAS (Trust-as-a-Service) Protocol enables trustless rental agreements where security deposits are automatically staked to generate yield during the rental term. The protocol ensures both landlords and tenants benefit from a transparent, automated escrow system.",
+      "Created a decentralized escrow platform for rental agreements on TON that lets landlords and tenants transact without intermediaries by locking security deposits into smart contracts with automated fund handling. Deposits were held in escrow and deployed for yield generation (~5% APY) during the rental period, then returned to tenants while generated yield was transferred to landlords. Implemented TON escrow smart contracts for agreement enforcement, deposit management, yield allocation, and automated settlement.",
     role: "blockchain developer",
     period: "october 2025",
     achievements: [
@@ -236,7 +236,7 @@ export const projects: ProjectEntry[] = [
   {
     title: "vibe",
     description:
-      "quiz platform with rewards and memories. earn TRX & NFTs with every answer. vibe with web3",
+      "Constructed an AI-powered educational gaming platform that generates time-constrained quizzes and fact-checking games from PDFs, text prompts, YouTube links, and web pages using AWS Bedrock LLM APIs. Added a reward system where creators deposit a budget via crypto wallet, dynamically calculated from question count, participants, and score rewards, enabling transparent automated prize distribution. Used Redis caching, rate limiting, and clustering to reduce latency and improve scalability, while Somnia blockchain smart contracts handled game generation, scoring, and rewards.",
     role: "developer",
     period: "november 2024",
     achievements: [

@@ -12,7 +12,7 @@ const workItems: Item[] = [
     role: "full stack developer intern",
     period: "july 2024 - october 2024",
     description:
-      "Engineered CMS dashboard increasing content update efficiency by 50%. Enforced JWT-based authorization, reducing unauthorized access by 90%. Improved app performance by 65% through optimized pagination. Developed an automated email system for notifications.",
+      "Built and deployed scalable Node.js and React.js applications and CMS dashboards using Docker, AWS EC2/S3, Cloudinary, and Google Analytics. Implemented JWT-based authentication with RBAC, improved API reliability with Redis caching, rate limiting, and optimized queries. Enhanced scalability and response times with server-side pagination, indexing, and Node.js clustering using worker threads. Developed an event-driven email system to automate user and inventory alerts.",
     href: "https://www.linkedin.com/company/techbug-official",
   },
 ]
