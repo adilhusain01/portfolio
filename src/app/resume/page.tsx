@@ -101,6 +101,47 @@ export default function ResumePage() {
         </TimelineItem>
 
         <TimelineItem
+          date="Feb 10–12 2026"
+          title="Consensus Hong Kong 2026"
+          role="Hong Kong · conference & hackathon"
+        >
+          <div className="space-y-6">
+            <p>
+              After a rejection last year, I finally made it into Consensus Hong
+              Kong and the EasyA hackathon. The event was all deal flow,
+              institution-scale Web3 energy, and elite networking at the Hong
+              Kong Convention & Exhibition Centre.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Consensus",
+                "hackathon",
+                "Web3",
+                "institutional",
+                "deal flow",
+                "Asia",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex rounded-full border border-gray-800 bg-gray-900/30 px-3 py-1 text-xs uppercase tracking-[0.22em] text-gray-400"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <AchievementGallery
+              gallery={[
+                "https://res.cloudinary.com/djxuqljgr/image/upload/v1776629741/photo_2026-04-20_01.43.06_v9ltqt.jpg",
+              ]}
+              event="Consensus Hong Kong 2026"
+              useTilePattern
+            />
+          </div>
+        </TimelineItem>
+
+        <TimelineItem
           date="Late '25 - Early '26"
           title="The Web3 Hackathon Sprint"
           role="Blockchain & Autonomous Agents"
