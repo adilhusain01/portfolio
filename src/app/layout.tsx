@@ -7,6 +7,11 @@ import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
 import Head from "next/head"
 import { AsciiBackground } from "../components/ascii-background"
+import { AsciiCat } from "../components/ascii-cat"
+import { AFKTab } from "../components/afk-tab"
+import { ClickSparks } from "../components/click-sparks"
+import { JellyScroll } from "../components/jelly-scroll"
+import { ClickSound } from "../components/click-sound"
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -55,12 +60,18 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
+        <AFKTab />
         <AsciiBackground />
-        <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <AsciiCat />
+        <ClickSparks />
+        <ClickSound />
+        <JellyScroll>
+          <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </JellyScroll>
       </body>
     </html>
   )
