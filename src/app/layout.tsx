@@ -12,6 +12,7 @@ import { AFKTab } from "../components/afk-tab"
 import { ClickSparks } from "../components/click-sparks"
 import { JellyScroll } from "../components/jelly-scroll"
 import { ClickSound } from "../components/click-sound"
+import { ScrollMinimap } from "../components/scroll-minimap"
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
         <AsciiCat />
         <ClickSparks />
         <ClickSound />
+        <ScrollMinimap />
         <JellyScroll>
           <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
             <Navbar />

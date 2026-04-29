@@ -5,10 +5,12 @@ export function Magnetic({
   children,
   strength = 10,
   padding = 30,
+  wrapperClass = "",
 }: {
   children: React.ReactElement
   strength?: number
   padding?: number
+  wrapperClass?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -77,7 +79,7 @@ export function Magnetic({
   }, [strength, padding])
 
   return (
-    <div ref={ref} className="inline-block relative z-20">
+    <div ref={ref} className={`inline-block relative z-20 ${wrapperClass}`}>
       {React.cloneElement(children, {
         style: {
           ...children.props.style,

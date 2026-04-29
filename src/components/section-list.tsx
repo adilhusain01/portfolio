@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { ScrollScramble } from "./scroll-scramble"
 
 export type Item = {
   title: string
@@ -40,7 +41,7 @@ export function SectionList({
   return (
     <section className="mb-12 sm:mb-16 animate-fade-in-up">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-        <span className="text-accent mr-2">*</span> {title}
+        <span className="text-accent mr-2">*</span> <ScrollScramble text={title} />
       </h2>
       <div className="space-y-6 sm:space-y-8">
         {items.map((item, index) => (

@@ -36,8 +36,11 @@ export function Navbar() {
         case "h":
           router.push("/")
           break
-        case "b":
-          router.push("/blog")
+        case "a":
+          router.push("/achievements")
+          break
+        case "r":
+          router.push("/resume")
           break
         case "p":
           router.push("/projects")
@@ -45,11 +48,8 @@ export function Navbar() {
         case "s":
           router.push("/system-design")
           break
-        case "a":
-          router.push("/achievements")
-          break
-        case "r":
-          router.push("/resume")
+        case "b":
+          router.push("/blog")
           break
         case "g":
           router.push("/gallery")
@@ -65,63 +65,65 @@ export function Navbar() {
     <nav className="flex flex-col mb-10 sm:mb-12 text-sm gap-4">
       <div className="relative">
         <div className="flex overflow-x-auto pb-3 space-x-4 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50 snap-x snap-mandatory pr-8 lg:pr-0 cursor-grab active:cursor-grabbing">
-          <Magnetic>
+          <Magnetic wrapperClass="snap-start">
             <Link
               href="/"
-              className="hover:text-accent transition-colors duration-200 snap-start"
+              className="hover:text-accent transition-colors duration-200"
             >
               [h] home
             </Link>
           </Magnetic>
-          <Magnetic>
-            <Link
-              href="/projects"
-              className="hover:text-accent transition-colors duration-200 snap-start"
-            >
-              [p] projects
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link
-              href="/system-design"
-              className="hover:text-accent transition-colors duration-200 snap-start"
-            >
-              [s] system design
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link
-              href="/blog"
-              prefetch={true}
-              className="hover:text-accent transition-colors duration-200 snap-start"
-            >
-              [b] blog
-            </Link>
-          </Magnetic>
-          <Magnetic>
+          <Magnetic wrapperClass="snap-start">
             <Link
               href="/achievements"
-              className="hover:text-accent transition-colors duration-200 snap-start"
+              className="hover:text-accent transition-colors duration-200"
             >
               [a] achievements
             </Link>
           </Magnetic>
-          <Magnetic>
-            <Link
-              href="/gallery"
-              className="hover:text-accent transition-colors duration-200 snap-start"
-            >
-              [g] gallery
-            </Link>
-          </Magnetic>
-          <Magnetic>
+          <Magnetic wrapperClass="snap-start">
             <Link
               href="/resume"
-              className="hover:text-accent transition-colors duration-200 snap-start"
+              className="hover:text-accent transition-colors duration-200"
             >
               [r] resume
             </Link>
           </Magnetic>
+          <Magnetic wrapperClass="snap-start">
+            <Link
+              href="/projects"
+              className="hover:text-accent transition-colors duration-200"
+            >
+              [p] projects
+            </Link>
+          </Magnetic>
+          <Magnetic wrapperClass="snap-start">
+            <Link
+              href="/system-design"
+              className="hover:text-accent transition-colors duration-200"
+            >
+              [s] system design
+            </Link>
+          </Magnetic>
+          <Magnetic wrapperClass="snap-start">
+            <Link
+              href="/blog"
+              prefetch={true}
+              className="hover:text-accent transition-colors duration-200"
+            >
+              [b] blog
+            </Link>
+          </Magnetic>
+
+          <Magnetic wrapperClass="snap-start">
+            <Link
+              href="/gallery"
+              className="hover:text-accent transition-colors duration-200"
+            >
+              [g] gallery
+            </Link>
+          </Magnetic>
+
         </div>
 
         <div className="pointer-events-none absolute right-0 top-0 h-[calc(100%-12px)] w-12 bg-gradient-to-l from-[#111] to-transparent lg:hidden" />

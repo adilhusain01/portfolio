@@ -8,6 +8,8 @@ import { AchievementsSection } from "@/components/achievements-section"
 import { GallerySection } from "@/components/gallery-section"
 import { ResumeSection } from "@/components/resume-section"
 import Link from "next/link"
+import { PhysicsSkills } from "@/components/physics-skills"
+import { ScrollScramble } from "@/components/scroll-scramble"
 
 const workItems: Item[] = [
   {
@@ -55,28 +57,10 @@ export default function HomePage() {
         style={{ animationDelay: "120ms", animationFillMode: "both" }}
       >
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> skills
+          <span className="text-accent mr-2">*</span> <ScrollScramble text="skills" />
         </h2>
 
-        <div className="space-y-4 sm:space-y-5">
-          {skillsByCategory.map((group) => (
-            <div key={group.title}>
-              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.12em] text-gray-500 mb-2">
-                {group.title}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <PhysicsSkills skills={skillsByCategory.flatMap(g => g.skills)} />
       </section>
 
       <SectionList title="work" items={workItems} />
@@ -90,7 +74,7 @@ export default function HomePage() {
         style={{ animationDelay: "200ms", animationFillMode: "both" }}
       >
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> latest projects
+          <span className="text-accent mr-2">*</span> <ScrollScramble text="latest projects" />
         </h2>
         <div className="space-y-6">
           {topProjects.map((project) => (
@@ -119,7 +103,7 @@ export default function HomePage() {
         style={{ animationDelay: "300ms", animationFillMode: "both" }}
       >
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> system design
+          <span className="text-accent mr-2">*</span> <ScrollScramble text="system design" />
         </h2>
         <div className="space-y-6">
           {topSystemDesign.map((project) => (
