@@ -4,6 +4,9 @@ import { BlogSection } from "@/components/blog-section"
 import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
 import { systemDesign } from "@/lib/system-design"
 import { ProjectCard } from "@/components/project-card"
+import { AchievementsSection } from "@/components/achievements-section"
+import { GallerySection } from "@/components/gallery-section"
+import { ResumeSection } from "@/components/resume-section"
 import Link from "next/link"
 
 const workItems: Item[] = [
@@ -78,6 +81,10 @@ export default function HomePage() {
 
       <SectionList title="work" items={workItems} />
 
+      <ResumeSection />
+
+      <AchievementsSection />
+
       <section
         className="mb-12 sm:mb-16 animate-fade-in-up"
         style={{ animationDelay: "200ms", animationFillMode: "both" }}
@@ -138,6 +145,7 @@ export default function HomePage() {
       </section>
 
       <BlogSection />
+
     </>
   )
 }

@@ -4,7 +4,9 @@ import "./globals.css"
 import "katex/dist/katex.min.css"
 import "highlight.js/styles/github-dark.css"
 import { Navbar } from "../components/navbar"
+import { Footer } from "../components/footer"
 import Head from "next/head"
+import { AsciiBackground } from "../components/ascii-background"
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -53,9 +55,11 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <AsciiBackground />
+        <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
           <Navbar />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

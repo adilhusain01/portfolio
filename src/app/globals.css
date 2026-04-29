@@ -7,6 +7,11 @@
   --foreground: #d1d5db;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
