@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 const FALLBACK_ACCENTS = [
   "#22d3ee",
@@ -337,7 +337,7 @@ export function ProjectCard({
                 coverType === "system-design" ? "Read it" : "Visit Website"
               }
             >
-              <Globe className="w-5 h-5" />
+              <img src="/globe-shadowed.png" alt="Website" className="w-5 h-5 object-contain" />
             </Link>
           )}
         </div>

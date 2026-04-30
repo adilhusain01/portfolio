@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ProjectEntry } from "@/lib/projects"
-import { ArrowRight, Globe } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export function DesignCard({ design, index }: { design: ProjectEntry; index: number }) {
@@ -97,7 +97,7 @@ export function DesignCard({ design, index }: { design: ProjectEntry; index: num
                     className="text-gray-400 hover:text-accent transition-colors"
                     title="Live Site"
                   >
-                    <Globe className="w-4 h-4" />
+                    <img src="/globe-shadowed.png" alt="Website" className="w-5 h-5 object-contain" />
                   </Link>
                 )}
               </div>

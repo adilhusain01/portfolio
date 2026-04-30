@@ -14,7 +14,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import type { Components } from "react-markdown"
-import { ExternalLink, Globe } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import { Children, isValidElement, type ComponentPropsWithoutRef } from "react"
 import { ImageModal } from "@/components/image-modal"
 
@@ -195,7 +195,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               aria-label="Open live project"
               className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
             >
-              <Globe className="h-4 w-4" />
+              <img src="/globe-shadowed.png" alt="Website" className="h-5 w-5 object-contain" />
             </a>
           )}
 

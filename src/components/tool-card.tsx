@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 type ToolCardProps = {
   title: string
@@ -55,7 +55,7 @@ export function ToolCard({
               className="text-gray-400 hover:text-accent transition-colors"
               title="Launch Tool"
             >
-              <Globe className="w-4 h-4" />
+              <img src="/globe-shadowed.png" alt="Website" className="w-5 h-5 object-contain" />
             </Link>
           )}
         </div>

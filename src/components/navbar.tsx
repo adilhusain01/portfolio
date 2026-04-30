@@ -115,7 +115,7 @@ export function Navbar() {
                 className="hover:text-accent transition-colors duration-200"
               >
                 <span className="inline-flex items-center gap-1.5">
-                  [h] <Home className="w-4 h-4" />
+                  [h] <img src="/home-shadowed.png" alt="Home" className="w-6 h-6 object-contain" />
                 </span>
               </Link>
             </Magnetic>
@@ -125,7 +125,7 @@ export function Navbar() {
                 className="hover:text-accent transition-colors duration-200"
               >
                 <span className="inline-flex items-center gap-1.5">
-                  [a] <Trophy className="w-4 h-4" />
+                  [a] <img src="/trophy-shadowed.png" alt="Achievements" className="w-6 h-6 object-contain" />
                 </span>
               </Link>
             </Magnetic>
@@ -175,7 +175,11 @@ export function Navbar() {
                 prefetch={true}
                 className="hover:text-accent transition-colors duration-200"
               >
-                [b] blog
+                <span className="inline-flex items-center gap-1.5">
+
+                  [b] <img src="/pen-shadowed.png" alt="Blog" className="w-6 h-6 object-contain" />
+                </span>
+
               </Link>
             </Magnetic>
 
@@ -185,7 +189,8 @@ export function Navbar() {
                 className="hover:text-accent transition-colors duration-200"
               >
                 <span className="inline-flex items-center gap-1.5">
-                  [g] <Image className="w-4 h-4" />
+
+                  [g] <img src="/gallery-shadowed.png" alt="Gallery" className="w-6 h-6 object-contain" />
                 </span>
               </Link>
             </Magnetic>
