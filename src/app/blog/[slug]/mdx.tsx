@@ -4,6 +4,7 @@ import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
 import { Mermaid } from "./mermaid"
 import { CopyButton } from "./copy-button"
+import { ImageModal } from "@/components/image-modal"
 
 // NEW COMPONENTS
 function TerminalWindow({
@@ -155,7 +156,7 @@ function CustomLink({
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
-  return <img alt={props.alt} className="rounded-lg" {...props} />
+  return <ImageModal alt={props.alt} className="rounded-lg" {...props} />
 }
 
 async function Pre({

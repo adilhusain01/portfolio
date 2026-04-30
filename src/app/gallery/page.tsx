@@ -1,5 +1,6 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { Metadata } from "next"
+import { ImageModal } from "@/components/image-modal"
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -73,13 +74,13 @@ export default async function GalleryPage() {
                 animationFillMode: "both",
               }}
             >
-              <img
+              <ImageModal
                 src={image.download_url}
                 alt={image.name}
                 loading="lazy"
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500"
               />
-              <div className="absolute px-4 pb-4 pt-8 bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute px-4 pb-4 pt-8 bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300">
                 <p className="text-xs text-gray-300 font-mono truncate">
                   {image.name}
                 </p>

@@ -88,29 +88,31 @@ class Particle {
 
     const char = chars[this.charIndex] || chars[chars.length - 1]
 
-    // Shading based on pixel art love letter palette (Dark Outline -> Beige Envelope -> Pink Heart)
+    // Shading based on the requested palette:
+    // Black (#000) for outer outline
+    // Gold (#EAC473) & Cream (#FFE8CC) for main body
+    // Pink (#FF617A, #FFA5B4) for special center highlights
     const ratio = this.charIndex / (chars.length - 1)
-    let h = 0, s = 0, l = 0
+    let color = ""
 
-    if (ratio < 0.15) {
-      // Outline (Dark Brown/Black)
-      h = 30; s = 50; l = 2 + (ratio / 0.15) * 8
-    } else if (ratio < 0.45) {
-      // Envelope Shadow (Dark Beige)
-      h = 35; s = 80; l = 25 + ((ratio - 0.15) / 0.3) * 25
-    } else if (ratio < 0.75) {
-      // Envelope Body (Light Beige/Cream)
-      h = 35; s = 90; l = 60 + ((ratio - 0.45) / 0.3) * 20
-    } else if (ratio < 0.9) {
-      // Heart Seal (Pink)
-      h = 350; s = 100; l = 55 + ((ratio - 0.75) / 0.15) * 15
+    if (ratio < 0.12) {
+      // Outer layer outline (Black)
+      color = "#000000"
+    } else if (ratio < 0.4) {
+      // Main body - Outer (Dark Yellow #EAC473)
+      color = "#EAC473"
+    } else if (ratio < 0.8) {
+      // Main body - Inner (Light Yellow #FFE8CC)
+      color = "#FFE8CC"
+    } else if (ratio < 0.94) {
+      // Special areas - Dark Pink (#FF617A)
+      color = "#FF617A"
     } else {
-      // Heart Highlight (Light Pink)
-      h = 350; s = 100; l = 80 + ((ratio - 0.9) / 0.1) * 20
+      // Special areas - Light Pink (#FFA5B4)
+      color = "#FFA5B4"
     }
 
-    ctx.fillStyle = `hsl(${h}, ${s}%, ${l}%)`
-
+    ctx.fillStyle = color
     ctx.font = `${fontSize * this.scale}px monospace`
     ctx.fillText(char, this.x, this.y)
   }

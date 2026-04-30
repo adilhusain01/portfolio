@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { ArrowLeft, ArrowRight, X } from "lucide-react"
 
 type AchievementGalleryProps = {
@@ -116,50 +117,54 @@ export function AchievementGallery({
       </div>
 
       {isOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8">
-          <div className="absolute inset-0" onClick={closeViewer} />
-          <div className="relative w-full max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-slate-950 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-gray-800 px-4 py-3 sm:px-6">
-              <div className="text-sm text-gray-400">
-                {event} — image {activeIndex + 1} of {gallery.length}
+        createPortal(
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-8">
+            <div className="absolute inset-0 cursor-zoom-out" onClick={closeViewer} />
+            <div className="relative w-fit max-w-[95vw] sm:max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-[#111317] shadow-2xl animate-fade-in-up">
+              <div className="flex items-center justify-between border-b border-gray-800 px-8 py-4 sm:px-10 bg-[#16181d]">
+                <div className="text-xs sm:text-sm text-gray-400 font-mono">
+                  <span className="text-accent mr-2">*</span>
+                  {event} — {activeIndex + 1}/{gallery.length}
+                </div>
+                <button
+                  type="button"
+                  onClick={closeViewer}
+                  className="inline-flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full border border-gray-800 bg-[#1e2128] text-gray-400 transition-colors hover:text-accent hover:border-accent"
+                  aria-label="Close viewer"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={closeViewer}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-800 bg-slate-900 text-gray-400 transition-colors hover:text-white hover:border-accent"
-                aria-label="Close viewer"
-              >
-                <X className="h-4 w-4" />
-              </button>
+
+              <div className="relative flex items-center justify-center overflow-hidden">
+                <button
+                  type="button"
+                  onClick={showPrevious}
+                  className="absolute left-6 sm:left-10 z-10 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-accent shadow-xl"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
+
+                <img
+                  src={gallery[activeIndex]}
+                  alt={`${event} screenshot ${activeIndex + 1}`}
+                  className="max-h-[80vh] w-auto h-auto max-w-full rounded-b-lg object-contain border-x border-b border-gray-800/50"
+                />
+
+                <button
+                  type="button"
+                  onClick={showNext}
+                  className="absolute right-6 sm:right-10 z-10 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-accent shadow-xl"
+                  aria-label="Next image"
+                >
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
-
-            <div className="relative flex items-center justify-center overflow-hidden px-4 py-6 sm:px-6">
-              <button
-                type="button"
-                onClick={showPrevious}
-                className="absolute left-4 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-white"
-                aria-label="Previous image"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
-
-              <img
-                src={gallery[activeIndex]}
-                alt={`${event} screenshot ${activeIndex + 1}`}
-                className="max-h-[80vh] max-w-full rounded-[1.5rem] object-contain"
-              />
-
-              <button
-                type="button"
-                onClick={showNext}
-                className="absolute right-4 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-white"
-                aria-label="Next image"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-        </div>
+          </div>,
+          document.body,
+        )
       ) : null}
     </div>
   )

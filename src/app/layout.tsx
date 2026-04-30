@@ -68,10 +68,12 @@ export default function RootLayout({
         <ClickSound />
         <ScrollMinimap />
         <JellyScroll>
-          <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
+          <div className="max-w-4xl mx-auto px-4 relative z-10 backdrop-blur-[2px] bg-background/20 min-h-screen">
             <Navbar />
-            {children}
-            <Footer />
+            <div className="pb-8">
+              {children}
+              <Footer />
+            </div>
           </div>
         </JellyScroll>
       </body>

@@ -57,21 +57,27 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
       World.add(world, body)
     })
 
-    // Mouse interaction
-    const mouse = Mouse.create(container)
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: { visible: false }
-      }
-    })
-
-    World.add(world, mouseConstraint)
+    // Mouse interaction - only enable on desktop to avoid stealing scroll on mobile
+    const isMobile = window.matchMedia("(max-width: 768px)").matches
+    let mouse: Matter.Mouse | null = null
+    
+    if (!isMobile) {
+      mouse = Mouse.create(container)
+      const mouseConstraint = MouseConstraint.create(engine, {
+        mouse: mouse,
+        constraint: {
+          stiffness: 0.2,
+          render: { visible: false }
+        }
+      })
+      World.add(world, mouseConstraint)
+    }
 
     // Fix for mouseup getting lost outside container
     const handleMouseUp = () => {
-      mouse.button = -1
+      if (mouse) {
+        mouse.button = -1
+      }
     }
     window.addEventListener("mouseup", handleMouseUp)
 

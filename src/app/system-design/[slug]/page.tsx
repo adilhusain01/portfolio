@@ -16,6 +16,7 @@ import ReactMarkdown from "react-markdown"
 import type { Components } from "react-markdown"
 import { ExternalLink } from "lucide-react"
 import { Children, isValidElement, type ComponentPropsWithoutRef } from "react"
+import { ImageModal } from "@/components/image-modal"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -63,7 +64,7 @@ function createMarkdownComponents(context: RepoReadmeContext): Components {
       const resolvedSrc = resolveReadmeUrl(String(src ?? ""), context, "image")
 
       return (
-        <img
+        <ImageModal
           src={resolvedSrc}
           alt={alt ?? "README image"}
           className="rounded-lg border border-gray-800"
