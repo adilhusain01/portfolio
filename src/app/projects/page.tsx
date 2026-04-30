@@ -1,31 +1,35 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { ProjectCard } from "@/components/project-card"
+import { ToolCard } from "@/components/tool-card"
 import { Metadata } from "next"
 import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
 
 export default function ProjectsPage() {
   const sortedProjects = sortProjects(projects)
+  const majorProjects = sortedProjects.filter(p => p.category === "project")
 
   return (
     <main className="animate-fade-in-up">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
-        <span className="text-accent mr-2">*</span>
-        <ScrambleText text="projects" />
-      </h1>
+      <section className="mb-24">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
+          <span className="text-accent mr-2">*</span>
+          <ScrambleText text="major projects" />
+        </h1>
 
-      <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed">
-        A look of my fun projects that I love to do.
-      </p>
+        <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed max-w-2xl">
+          Deep dives into full-scale systems, blockchain protocols, and AI-integrated applications.
+        </p>
 
-      <div className="space-y-12">
-        {sortedProjects.map((project) => (
-          <ProjectCard
-            key={getProjectSlug(project)}
-            {...project}
-            detailHref={`/projects/${getProjectSlug(project)}`}
-          />
-        ))}
-      </div>
+        <div className="space-y-16">
+          {majorProjects.map((project) => (
+            <ProjectCard
+              key={getProjectSlug(project)}
+              {...project}
+              detailHref={`/projects/${getProjectSlug(project)}`}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   )
 }

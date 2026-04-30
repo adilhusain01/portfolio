@@ -10,6 +10,7 @@ export type ProjectEntry = {
   github?: string
   video?: string
   ribbon?: "red" | "gold"
+  category: "tool" | "project" | "design"
 }
 
 export const projects: ProjectEntry[] = [
@@ -31,6 +32,7 @@ export const projects: ProjectEntry[] = [
     ],
     href: "https://cardsflash.vercel.app/",
     github: "https://github.com/adilhusain01/flashcards",
+    category: "tool",
   },
   {
     title: "bookboy",
@@ -51,6 +53,7 @@ export const projects: ProjectEntry[] = [
     ],
     href: "https://bookboy.vercel.app/",
     github: "https://github.com/adilhusain01/bookboy",
+    category: "tool",
   },
   {
     title: "croppy",
@@ -71,6 +74,67 @@ export const projects: ProjectEntry[] = [
     ],
     href: "https://croppy.adilhusain.xyz",
     github: "https://github.com/adilhusain01/croppy",
+    category: "tool",
+  },
+  {
+    title: "spritelab",
+    description:
+      "Built a premium suite of pixel art tools featuring an 'auto-magic' background remover, a high-res to 8-bit sprite converter with adjustable posterization, and a precision editor with full undo/redo and auto-cropping logic.",
+    role: "developer",
+    period: "april 2026",
+    image: "https://spritelab.adilhusain.xyz/og.png",
+    achievements: [],
+    technologies: [
+      "next.js 16",
+      "zustand",
+      "tailwind css v4",
+      "canvas api",
+      "cropper.js",
+      "lucide",
+    ],
+    href: "https://spritelab.adilhusain.xyz",
+    github: "https://github.com/adilhusain01/SpriteLab",
+    category: "tool",
+  },
+  {
+    title: "voxel",
+    description:
+      "Built a high-performance browser-based 3D voxel editor with real-time lighting, advanced brush tools, and optimized mesh exporting for game engines and 3D printing.",
+    role: "developer",
+    period: "april 2026",
+    image: "https://voxel.adilhusain.xyz/og.png",
+    achievements: [],
+    technologies: [
+      "react 19",
+      "three.js",
+      "react-three-fiber",
+      "typescript",
+      "tailwind css",
+    ],
+    href: "https://voxel.adilhusain.xyz/",
+    github: "https://github.com/adilhusain01/voxel",
+    category: "tool",
+  },
+  {
+    title: "takemeds",
+    description:
+      "Built a high-stakes macOS medication adherence app that prevents users from ignoring reminders through an automated escalation system. It progresses from standard notifications to full-screen blocks that can only be dismissed via AI-powered camera verification of hand-to-mouth intake motion. Developed the accompanying marketing site with secure license delivery, Dodo Payments integration, and a private purchase recovery portal.",
+    role: "developer",
+    period: "april 2026",
+    image: "https://takemeds.fit/og.png",
+    achievements: [],
+    technologies: [
+      "next.js 14",
+      "supabase",
+      "dodo payments",
+      "apple vision",
+      "core ml",
+      "resend",
+    ],
+    href: "https://takemeds.fit",
+    github: "https://github.com/adilhusain01/TakeMeds",
+    category: "project",
+    ribbon: 'gold'
   },
   {
     title: "sahar studios",
@@ -78,7 +142,7 @@ export const projects: ProjectEntry[] = [
       "Built a bold, liquid-style creative studio landing experience with cinematic motion, immersive scroll interactions, and polished social preview metadata for high-impact sharing.",
     role: "developer",
     period: "march 2026",
-    image: "https://saharstudios.vercel.app/og.webp",
+    image: "https://saharstudios.adilhusain.xyz/og.webp",
     achievements: [],
     technologies: [
       "next.js 16",
@@ -88,8 +152,47 @@ export const projects: ProjectEntry[] = [
       "framer motion",
       "lenis",
     ],
-    href: "https://saharstudios.vercel.app/",
+    href: "https://saharstudios.adilhusain.xyz",
     github: "https://github.com/adilhusain01/saharstudios",
+    category: "design",
+  },
+  {
+    title: "veilverse",
+    description:
+      "Built an ethereal digital fashion house experience with shimmering textures, minimalist layout, and fluid navigation to showcase high-end virtual couture.",
+    role: "designer and developer",
+    period: "december 2025",
+    image: "https://veilverse.adilhusain.xyz/og.webp",
+    achievements: [],
+    technologies: ["react", "tailwind css", "framer motion", "three.js"],
+    href: "https://veilverse.adilhusain.xyz",
+    github: "https://github.com/adilhusain01/veilverse",
+    category: "design",
+  },
+  {
+    title: "studio peau",
+    description:
+      "Designed and developed a premium skincare creative studio landing page with organic shapes, soft color palettes, and polished interactions for a boutique brand feel.",
+    role: "designer and developer",
+    period: "november 2025",
+    image: "https://studiopeau.adilhusain.xyz/og.png",
+    achievements: [],
+    technologies: ["next.js", "tailwind css", "framer motion"],
+    href: "https://studiopeau.adilhusain.xyz",
+    github: "https://github.com/adilhusain01/StudioPeau",
+    category: "design",
+  },
+  {
+    title: "arbipic",
+    description:
+      "Built a community-driven on-chain art platform on Arbitrum that enables users to mint, trade, and showcase high-resolution digital art with minimal gas fees. Integrated a custom sub-graph for real-time indexing and a smooth, cinematic gallery experience.",
+    role: "developer",
+    period: "december 2025",
+    achievements: ['won $100 cash prize as honourable mention'],
+    technologies: ["react", "solidity", "arbitrum", "ethers.js", "tailwind css"],
+    github: "https://github.com/adilhusain01/arbipic",
+    video: "https://www.youtube.com/watch?v=3cDjSzvppB0",
+    category: "project",
   },
   {
     title: "neverpay",
@@ -112,6 +215,7 @@ export const projects: ProjectEntry[] = [
     github: "https://github.com/adilhusain01/NeverPay",
     video: "https://youtu.be/adcnmsFEAIA",
     ribbon: "gold",
+    category: "project",
   },
   {
     title: "clawpay",
@@ -133,6 +237,7 @@ export const projects: ProjectEntry[] = [
     github: "https://github.com/adilhusain01/clawpay",
     video: "https://youtu.be/Az8vLFKR9r8",
     ribbon: "gold",
+    category: "project",
   },
   {
     title: "campayyn",
@@ -153,6 +258,7 @@ export const projects: ProjectEntry[] = [
     href: "https://campayyn.vercel.app/",
     github: "https://github.com/adilhusain01/campayyn",
     ribbon: "gold",
+    category: "project",
   },
   {
     title: "taas",
@@ -166,6 +272,7 @@ export const projects: ProjectEntry[] = [
     technologies: ["javascript", "react.js", "alphaton chain", "tailwind css"],
     github: "https://github.com/rizwanmoulvi/taas",
     video: "https://youtu.be/Q_XKzGK77GQ",
+    category: "project",
   },
   {
     title: "somany",
@@ -179,6 +286,7 @@ export const projects: ProjectEntry[] = [
     href: "https://somany-nine.vercel.app/",
     github: "https://github.com/adilhusain01/somany",
     video: "https://youtu.be/vqzJIeNt3y4",
+    category: "project",
   },
   {
     title: "hyperswipe",
@@ -200,6 +308,7 @@ export const projects: ProjectEntry[] = [
     github: "https://github.com/adilhusain01/hyperswipe-client",
     video: "https://www.youtube.com/watch?v=PcIxu5QQeYI",
     ribbon: "gold",
+    category: "project",
   },
   {
     title: "catch goofy",
@@ -212,6 +321,7 @@ export const projects: ProjectEntry[] = [
     href: "https://catch-goofy.vercel.app",
     github: "https://github.com/rizwanmoulvi/catch-goofy",
     video: "https://youtu.be/XANNfyc-kpY",
+    category: "project",
   },
   {
     title: "concept bridge",
@@ -232,6 +342,7 @@ export const projects: ProjectEntry[] = [
     href: "https://concept-bridge.vercel.app",
     github: "https://github.com/adilhusain01/concept-bridge-client",
     video: "https://youtu.be/iuxmcOM0nQk",
+    category: "project",
   },
   {
     title: "vibe",
@@ -254,6 +365,7 @@ export const projects: ProjectEntry[] = [
     href: "https://vibe-games.vercel.app/",
     github: "https://github.com/adilhusain01/vibe",
     video: "https://youtu.be/anlJwTk06JE",
+    category: "project",
   },
   {
     title: "air",
@@ -271,6 +383,7 @@ export const projects: ProjectEntry[] = [
       "gemini api",
     ],
     github: "https://github.com/adilhusain01/AIr",
+    category: "project",
   },
 ]
 

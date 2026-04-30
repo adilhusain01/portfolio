@@ -6,6 +6,9 @@ import { useEffect, useState, useRef } from "react"
 import {
   Linkedin,
   ChevronsRight,
+  Home,
+  Image,
+  Trophy,
 } from "lucide-react"
 import { Magnetic } from "./magnetic"
 
@@ -21,7 +24,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
+
       setIsAtTop(currentScrollY < 10)
 
       // If we haven't scrolled much, don't do anything
@@ -36,7 +39,7 @@ export function Navbar() {
         // Scrolling up or at the very top: show
         setIsVisible(true)
       }
-      
+
       setLastScrollY(currentScrollY)
     }
 
@@ -73,6 +76,12 @@ export function Navbar() {
         case "p":
           router.push("/projects")
           break
+        case "t":
+          router.push("/products")
+          break
+        case "d":
+          router.push("/design")
+          break
         case "s":
           router.push("/system-design")
           break
@@ -90,24 +99,24 @@ export function Navbar() {
   }, [router])
 
   return (
-    <div 
-      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
+    <div
+      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
-      <nav className={`flex flex-col mb-6 sm:mb-8 text-sm gap-4 pt-6 pb-4 transition-all duration-300 ${
-        isAtTop 
-          ? "bg-transparent backdrop-blur-none border-transparent" 
-          : "bg-[#111] backdrop-blur-md border-b border-gray-800/50 px-4 -mx-4"
-      }`}>
+      <nav className={`flex flex-col mb-6 sm:mb-8 text-sm gap-4 pt-6 pb-4 transition-all duration-300 ${isAtTop
+        ? "bg-transparent backdrop-blur-none border-transparent"
+        : "bg-[#111] backdrop-blur-md border-b border-gray-800/50 px-4 -mx-4"
+        }`}>
         <div className="relative">
-          <div className="flex overflow-x-auto pb-3 space-x-4 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50 snap-x snap-mandatory pr-8 lg:pr-0 cursor-grab active:cursor-grabbing">
+          <div className="flex overflow-x-auto pb-3 space-x-3 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50 snap-x snap-mandatory pr-8 lg:pr-0 cursor-grab active:cursor-grabbing">
             <Magnetic wrapperClass="snap-start">
               <Link
                 href="/"
                 className="hover:text-accent transition-colors duration-200"
               >
-                [h] home
+                <span className="inline-flex items-center gap-1.5">
+                  [h] <Home className="w-4 h-4" />
+                </span>
               </Link>
             </Magnetic>
             <Magnetic wrapperClass="snap-start">
@@ -115,7 +124,9 @@ export function Navbar() {
                 href="/achievements"
                 className="hover:text-accent transition-colors duration-200"
               >
-                [a] achievements
+                <span className="inline-flex items-center gap-1.5">
+                  [a] <Trophy className="w-4 h-4" />
+                </span>
               </Link>
             </Magnetic>
             <Magnetic wrapperClass="snap-start">
@@ -132,6 +143,22 @@ export function Navbar() {
                 className="hover:text-accent transition-colors duration-200"
               >
                 [p] projects
+              </Link>
+            </Magnetic>
+            <Magnetic wrapperClass="snap-start">
+              <Link
+                href="/products"
+                className="hover:text-accent transition-colors duration-200"
+              >
+                [t] products
+              </Link>
+            </Magnetic>
+            <Magnetic wrapperClass="snap-start">
+              <Link
+                href="/design"
+                className="hover:text-accent transition-colors duration-200"
+              >
+                [d] designs
               </Link>
             </Magnetic>
             <Magnetic wrapperClass="snap-start">
@@ -157,7 +184,9 @@ export function Navbar() {
                 href="/gallery"
                 className="hover:text-accent transition-colors duration-200"
               >
-                [g] gallery
+                <span className="inline-flex items-center gap-1.5">
+                  [g] <Image className="w-4 h-4" />
+                </span>
               </Link>
             </Magnetic>
 
