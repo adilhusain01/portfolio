@@ -14,7 +14,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import type { Components } from "react-markdown"
-import { ExternalLink, Github, Globe, MonitorPlay } from "lucide-react"
+import { ExternalLink, Globe } from "lucide-react"
 import { Children, isValidElement, type ComponentPropsWithoutRef } from "react"
 
 type PageProps = {
@@ -181,7 +181,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               aria-label="Open repository on GitHub"
               className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
             >
-              <Github className="h-4 w-4" />
+              <img src="/gh-shadowed.png" alt="GitHub" className="h-5 w-5 object-contain" />
             </a>
           )}
 
@@ -207,7 +207,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               aria-label="Watch video demo"
               className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
             >
-              <MonitorPlay className="h-4 w-4" />
+              <img src="/yt-shadowed.png" alt="Video Demo" className="h-5 w-5 object-contain" />
             </a>
           )}
         </header>

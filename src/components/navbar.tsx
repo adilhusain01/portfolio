@@ -4,11 +4,7 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 import {
-  Github,
-  Twitter,
   Linkedin,
-  Mail,
-  Instagram,
   ChevronsRight,
 } from "lucide-react"
 import { Magnetic } from "./magnetic"
@@ -138,7 +134,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accent transition-colors duration-200"
             >
-              <Github className="w-4 h-4" />
+              <img src="/gh-shadowed.png" alt="GitHub" className="w-6 h-6 object-contain" />
             </Link>
           </Magnetic>
           <Magnetic padding={20} strength={15}>
@@ -148,7 +144,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accent transition-colors duration-200"
             >
-              <Twitter className="w-4 h-4" />
+              <img src="/x-shadowed.png" alt="X" className="w-6 h-6 object-contain" />
             </Link>
           </Magnetic>
           <Magnetic padding={20} strength={15}>
@@ -158,7 +154,8 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-accent transition-colors duration-200"
             >
-              <Linkedin className="w-4 h-4" />
+              <img src="/in-shadowed.png" alt="Linked-In" className="w-6 h-6 object-contain" />
+
             </Link>
           </Magnetic>
           <Magnetic padding={20} strength={15}>
@@ -169,7 +166,7 @@ export function Navbar() {
               className="text-gray-400 hover:text-accent transition-colors duration-200"
               title="Instagram"
             >
-              <Instagram className="w-4 h-4" />
+              <img src="/ig-shadowed.png" alt="Instagram" className="w-6 h-6 object-contain" />
             </Link>
           </Magnetic>
           <Magnetic padding={20} strength={15}>
@@ -178,7 +175,7 @@ export function Navbar() {
               className="text-gray-400 hover:text-accent transition-colors duration-200"
               title="Email"
             >
-              <Mail className="w-4 h-4" />
+              <img src="/mail-shadowed.png" alt="Email" className="w-6 h-6 object-contain" />
             </Link>
           </Magnetic>
         </div>

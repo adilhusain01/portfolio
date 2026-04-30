@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, MonitorPlay, Github, ArrowRight } from "lucide-react"
+import { Globe, ArrowRight } from "lucide-react"
 
 const FALLBACK_ACCENTS = [
   "#22d3ee",
@@ -314,7 +314,7 @@ export function ProjectCard({
               className="text-gray-400 hover:text-white transition-colors"
               title="View Source Code"
             >
-              <Github className="w-5 h-5" />
+              <img src="/gh-shadowed.png" alt="GitHub" className="w-6 h-6 object-contain" />
             </Link>
           )}
           {video && (
@@ -324,7 +324,7 @@ export function ProjectCard({
               className="text-gray-400 hover:text-accent transition-colors"
               title="Video Demo"
             >
-              <MonitorPlay className="w-5 h-5" />
+              <img src="/yt-shadowed.png" alt="Video Demo" className="w-6 h-6 object-contain" />
             </Link>
           )}
           {href && (
