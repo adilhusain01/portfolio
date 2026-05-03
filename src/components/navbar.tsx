@@ -109,7 +109,7 @@ export function Navbar() {
         }`}>
         <div className="relative">
           <div className="flex overflow-x-auto pb-3 space-x-3 whitespace-nowrap w-full scrollbar-hide border-b border-gray-800/50 snap-x snap-mandatory pr-8 lg:pr-0 cursor-grab active:cursor-grabbing">
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/"
                 className="hover:text-accent transition-colors duration-200"
@@ -119,7 +119,7 @@ export function Navbar() {
                 </span>
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/achievements"
                 className="hover:text-accent transition-colors duration-200"
@@ -129,7 +129,7 @@ export function Navbar() {
                 </span>
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/resume"
                 className="hover:text-accent transition-colors duration-200"
@@ -137,7 +137,7 @@ export function Navbar() {
                 [r] resume
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/projects"
                 className="hover:text-accent transition-colors duration-200"
@@ -145,7 +145,7 @@ export function Navbar() {
                 [p] projects
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/products"
                 className="hover:text-accent transition-colors duration-200"
@@ -153,7 +153,7 @@ export function Navbar() {
                 [t] products
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/design"
                 className="hover:text-accent transition-colors duration-200"
@@ -161,7 +161,7 @@ export function Navbar() {
                 [d] designs
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/system-design"
                 className="hover:text-accent transition-colors duration-200"
@@ -169,7 +169,7 @@ export function Navbar() {
                 [s] system design
               </Link>
             </Magnetic>
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/blog"
                 prefetch={true}
@@ -183,7 +183,7 @@ export function Navbar() {
               </Link>
             </Magnetic>
 
-            <Magnetic wrapperClass="snap-start">
+            <Magnetic wrapperClass="snap-start shrink-0">
               <Link
                 href="/gallery"
                 className="hover:text-accent transition-colors duration-200"
