@@ -15,6 +15,24 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    title: "calchub",
+    description:
+      "Built a comprehensive library of 500+ free, embeddable calculators for finance, health, business, and everyday workflows. Designed with a high-contrast brutalist aesthetic, it features fully responsive mobile layouts, intuitive search functionality, and instant single-line HTML embedding.",
+    role: "developer",
+    period: "may 2026",
+    image: "https://calchub.adilhusain.xyz/og.png",
+    achievements: [],
+    technologies: [
+      "next.js",
+      "react",
+      "tailwind css",
+      "lucide",
+    ],
+    href: "https://calchub.adilhusain.xyz",
+    github: "https://github.com/adilhusain01/CalcHub",
+    category: "tool",
+  },
+  {
     title: "flashcards",
     description:
       "Built a CSV-driven study app with animated 3D card flipping, keyboard navigation, and progress tracking to turn simple question-answer datasets into focused revision sessions.",
