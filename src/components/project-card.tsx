@@ -211,6 +211,7 @@ type ProjectCardProps = {
   github?: string
   video?: string
   ribbon?: "red" | "gold"
+  embedding?: string[]
 }
 
 export function ProjectCard({
@@ -229,6 +230,7 @@ export function ProjectCard({
   github,
   video,
   ribbon,
+  embedding,
 }: ProjectCardProps) {
   const accent = FALLBACK_ACCENTS[hashTitle(title) % FALLBACK_ACCENTS.length]
   const initials = getInitials(title)
@@ -374,6 +376,14 @@ export function ProjectCard({
             ))}
           </div>
         </div>
+
+        {embedding && embedding.length > 0 && (
+            <div className="space-y-4">
+              {embedding.map((embed, index) => (
+                <div key={index} dangerouslySetInnerHTML={{ __html: embed }} />
+              ))}
+            </div>
+        )}
       </div>
 
       {detailHref && (

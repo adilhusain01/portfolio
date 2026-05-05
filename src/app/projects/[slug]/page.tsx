@@ -244,6 +244,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </section>
       )}
 
+      {project.embedding && project.embedding.length > 0 && (
+        <section className="mb-8">
+          <div className="space-y-4">
+            {project.embedding.map((embed, index) => (
+              <div key={index} dangerouslySetInnerHTML={{ __html: embed }} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {readmeForRender ? (
         <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:text-accent hover:prose-a:underline prose-pre:border prose-pre:border-gray-800">
           <ReactMarkdown
