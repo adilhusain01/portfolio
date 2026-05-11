@@ -22,11 +22,7 @@ export const projects: ProjectEntry[] = [
     role: "developer",
     period: "may 2026",
     achievements: [],
-    technologies: [
-      "next.js",
-      "react",
-      "tailwind css",
-    ],
+    technologies: ["next.js", "react", "tailwind css"],
     href: "https://saveposts.xyz",
     image: "https://saveposts.xyz/og.png",
     github: "https://github.com/adilhusain01/SavePosts",
@@ -35,7 +31,7 @@ export const projects: ProjectEntry[] = [
     category: "project",
     embedding: [
       `<div style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; border: 1px solid rgb(224, 224, 224); border-radius: 12px; padding: 20px; max-width: 500px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px;"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;"><img alt="SavePosts" src="https://ph-files.imgix.net/579d2860-72be-49e6-a48f-1c28a8ad1711.png?auto=format&amp;fit=crop&amp;w=80&amp;h=80" style="width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0;"><div style="flex: 1 1 0%; min-width: 0px;"><h3 style="margin: 0px; font-size: 18px; font-weight: 600; color: rgb(26, 26, 26); line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">SavePosts</h3><p style="margin: 4px 0px 0px; font-size: 14px; color: rgb(102, 102, 102); line-height: 1.4; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">One manager for all posts across platforms important to you.</p></div></div><a href="https://www.producthunt.com/products/saveposts?embed=true&amp;utm_source=embed&amp;utm_medium=post_embed" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; padding: 8px 16px; background: rgb(255, 97, 84); color: rgb(255, 255, 255); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">Check it out on Product Hunt →</a></div>`,
-      `<a href="https://www.producthunt.com/products/saveposts?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-saveposts" target="_blank" rel="noopener noreferrer"><img alt="SavePosts - One manager for all posts across platforms important to you. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1139629&amp;theme=light&amp;t=1778015846308"></a>`
+      `<a href="https://www.producthunt.com/products/saveposts?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-saveposts" target="_blank" rel="noopener noreferrer"><img alt="SavePosts - One manager for all posts across platforms important to you. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1139629&amp;theme=light&amp;t=1778015846308"></a>`,
     ],
   },
   {
@@ -46,12 +42,7 @@ export const projects: ProjectEntry[] = [
     period: "may 2026",
     image: "https://calchub.adilhusain.xyz/og.png",
     achievements: [],
-    technologies: [
-      "next.js",
-      "react",
-      "tailwind css",
-      "lucide",
-    ],
+    technologies: ["next.js", "react", "tailwind css", "lucide"],
     href: "https://calchub.adilhusain.xyz",
     github: "https://github.com/adilhusain01/CalcHub",
     category: "tool",
@@ -114,7 +105,7 @@ export const projects: ProjectEntry[] = [
       "react-easy-crop",
       "canvas api",
     ],
-    href: "https://croppy.adilhusain.xyz",
+    href: "https://croppy.xyz",
     github: "https://github.com/adilhusain01/croppy",
     category: "tool",
   },
@@ -176,7 +167,7 @@ export const projects: ProjectEntry[] = [
     href: "https://takemeds.fit",
     github: "https://github.com/adilhusain01/TakeMeds",
     category: "project",
-    ribbon: 'gold'
+    ribbon: "gold",
   },
   {
     title: "sahar studios",
@@ -230,8 +221,14 @@ export const projects: ProjectEntry[] = [
       "Built a community-driven on-chain art platform on Arbitrum that enables users to mint, trade, and showcase high-resolution digital art with minimal gas fees. Integrated a custom sub-graph for real-time indexing and a smooth, cinematic gallery experience.",
     role: "developer",
     period: "december 2025",
-    achievements: ['won $100 cash prize as honourable mention'],
-    technologies: ["react", "solidity", "arbitrum", "ethers.js", "tailwind css"],
+    achievements: ["won $100 cash prize as honourable mention"],
+    technologies: [
+      "react",
+      "solidity",
+      "arbitrum",
+      "ethers.js",
+      "tailwind css",
+    ],
     github: "https://github.com/adilhusain01/arbipic",
     video: "https://www.youtube.com/watch?v=3cDjSzvppB0",
     category: "project",
