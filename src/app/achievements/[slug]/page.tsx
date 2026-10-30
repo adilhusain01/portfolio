@@ -38,7 +38,7 @@ export async function generateMetadata({
         {
           url:
             achievement.image ??
-            "https://adilhusain.me/og/home?title=achievements",
+            "https://adilhusain.dev/og/home?title=achievements",
         },
       ],
     },

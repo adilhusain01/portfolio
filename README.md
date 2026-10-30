@@ -2,7 +2,7 @@
 
 A high-performance, fun-first interactive portfolio built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**. This site serves as a cinematic archive of my engineering journey, featuring a blend of technical precision and creative motion design.
 
-[adilhusain.xyz](https://adilhusain.xyz)
+[adilhusain.dev](https://adilhusain.dev)
 
 ## ✨ Core Experience Features
 

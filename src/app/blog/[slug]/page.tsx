@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: PageProps) {
       description: post.metadata.description,
       publishedTime,
       type: "article",
-      url: `https://adilhusain.me/blog/${post.slug}`,
+      url: `https://adilhusain.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://adilhusain.me/og/blog?title=${post.metadata.title}`,
+          url: `https://adilhusain.dev/og/blog?title=${post.metadata.title}`,
         },
       ],
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: "summary_large_image",
       creator: "@0xAdilHusain",
       images: [
-        `https://adilhusain.me/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://adilhusain.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   }
@@ -76,7 +76,7 @@ export default async function Post({ params }: PageProps) {
               datePublished: post.metadata.date,
               dateModified: post.metadata.date,
               description: post.metadata.description,
-              url: `https://adilhusain.me/blog/${post.slug}`,
+              url: `https://adilhusain.dev/blog/${post.slug}`,
               author: {
                 "@type": "Person",
                 name: "Adil husain",

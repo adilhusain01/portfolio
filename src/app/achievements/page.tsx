@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://adilhusain.me/og/home?title=achievements",
+        url: "https://adilhusain.dev/og/home?title=achievements",
       },
     ],
   },

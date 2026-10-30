@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adilhusain.me"),
+  metadataBase: new URL("https://adilhusain.dev"),
   title: {
     default: "Adil husain",
     template: "%s | Adil husain",
@@ -30,11 +30,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Adil husain",
     description: "Developer",
-    url: "https://adilhusain.xyz",
+    url: "https://adilhusain.dev",
     siteName: "Adil husain",
     locale: "en_US",
     type: "website",
-    images: ["https://adilhusain.xyz/og.png"],
+    images: ["https://adilhusain.dev/og.png"],
   },
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Adil husain",
     card: "summary_large_image",
     creator: "@0xAdilHusain",
-    images: ["https://adilhusain.xyz/og.png"],
+    images: ["https://adilhusain.dev/og.png"],
   },
 }
 

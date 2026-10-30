@@ -41,7 +41,7 @@ export async function GET(request: Request) {
         }}
       >
         <img
-          src="https://adilhusain.me/adil.jpg"
+          src="https://adilhusain.dev/adil.jpg"
           style={{
             position: "absolute",
             bottom: "40px",
