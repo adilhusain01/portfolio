@@ -16,6 +16,50 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    title: "ironclad",
+    description:
+      "Built spending limits for AI agent wallets that are enforced in the key itself. The wallet is a 2-of-3 FROST key in Zcash's shielded pool, and a co-signer signs only payments inside the owner's caps and allow-list, so a hijacked agent can spend no more than the owner allowed. Fixes from the project are merged upstream into zshield-mcp and frost-zec.",
+    role: "developer",
+    period: "november 2026",
+    image:
+      "https://opengraph.githubassets.com/1973ff508bd1bb960a6ecbf999d0aac04b9f5803654c700a8690ed6aa2e3bc1b/adilhusain01/ironclad",
+    achievements: ["won a zcash ecosystem prize at the free society hackathon"],
+    technologies: ["rust", "typescript", "zcash", "frost", "mcp"],
+    github: "https://github.com/adilhusain01/ironclad",
+    video: "https://youtu.be/8QMsMO8Dx6E",
+    ribbon: "gold",
+    category: "project",
+  },
+  {
+    title: "heyterm",
+    description:
+      "Built voice control for coding agents. Every session runs in one window, spoken requests go to the right session, and approvals can be answered by voice. Published on npm with 648 tests and CI on macOS, Linux and Windows.",
+    role: "developer",
+    period: "october 2026",
+    image:
+      "https://opengraph.githubassets.com/19c57e62659c2c087678939d0f112d4ab3a8abe99b02b4d98ba286268038ff0c/adilhusain01/heyterm",
+    achievements: [],
+    technologies: ["typescript", "node.js", "react", "xterm.js", "node-pty"],
+    href: "https://www.npmjs.com/package/heyterm",
+    github: "https://github.com/adilhusain01/heyterm",
+    video: "https://youtu.be/WgMTuj9yA9Y",
+    ribbon: "gold",
+    category: "project",
+  },
+  {
+    title: "payper card",
+    description:
+      "Built a way for AI agents to pay with cards. An agent pays USDC on Sui through an HTTP 402 challenge and gets back a virtual card locked to one merchant and an exact limit, with the Sui transaction as its receipt. Built in four days.",
+    role: "developer",
+    period: "june 2026",
+    achievements: ["won a university award at sui overflow 2026"],
+    technologies: ["next.js", "sui", "usdc", "x402", "lithic api"],
+    href: "https://payper-card-five.vercel.app",
+    github: "https://github.com/adilhusain01/payper-card",
+    ribbon: "gold",
+    category: "project",
+  },
+  {
     title: "saveposts",
     description:
       "Built a platform for saving and organizing social media posts with bookmarking, categorization, and search functionality to help users curate and revisit content across platforms.",
@@ -218,16 +262,17 @@ export const projects: ProjectEntry[] = [
   {
     title: "arbipic",
     description:
-      "Built a community-driven on-chain art platform on Arbitrum that enables users to mint, trade, and showcase high-resolution digital art with minimal gas fees. Integrated a custom sub-graph for real-time indexing and a smooth, cinematic gallery experience.",
+      "Built an on-chain photo authenticity tool against AI-generated fakes. A photo is captured from the webcam, hashed and stored on IPFS, and its proof is recorded on Arbitrum by Rust contracts on Stylus, so anyone can later check whether an image matches the recorded proof.",
     role: "developer",
-    period: "december 2025",
+    period: "january 2026",
     achievements: ["won $100 cash prize as honourable mention"],
     technologies: [
       "react",
-      "solidity",
-      "arbitrum",
-      "ethers.js",
-      "tailwind css",
+      "typescript",
+      "rust",
+      "arbitrum stylus",
+      "ipfs",
+      "wagmi",
     ],
     github: "https://github.com/adilhusain01/arbipic",
     video: "https://www.youtube.com/watch?v=3cDjSzvppB0",

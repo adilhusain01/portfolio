@@ -255,7 +255,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       )}
 
       {readmeForRender ? (
-        <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:text-accent hover:prose-a:underline prose-pre:border prose-pre:border-gray-800">
+        <article className="prose prose-invert max-w-none [overflow-wrap:anywhere] prose-headings:text-white prose-a:text-white hover:prose-a:text-accent hover:prose-a:underline prose-pre:border prose-pre:border-gray-800">
           <ReactMarkdown
             remarkPlugins={README_REMARK_PLUGINS as any}
             rehypePlugins={README_REHYPE_PLUGINS as any}

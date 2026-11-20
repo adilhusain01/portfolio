@@ -13,6 +13,14 @@ import { ScrollScramble } from "@/components/scroll-scramble"
 
 const workItems: Item[] = [
   {
+    title: "synq ai",
+    role: "forward deployed engineer intern",
+    period: "september 2026 - present",
+    description:
+      "Built camera monitoring that runs on a GPU beside the camera and keeps working offline, with person detection, tracking and pose, zones with seven alert rules, Slack alerts with the frame, a cloud dashboard and a daily PDF report with a timelapse; it is live on an office camera. Built voice control for a macOS agent that sees the screen and operates the computer, with hold-to-talk and a task loop that carries out a spoken request one action at a time, shipped in its 1.0 release in September 2026. Automated lead research in about a day: background workers, one driving a real browser, find target companies and read rating agency releases, a model must quote its evidence, and code checks every quote and computes the score; it tracks about 1,000 companies and 2,000 leads, with 677 tests. Developed an AI office layout generator that turns a floor plan and a brief into layouts verified by a rule checker and exported as PDF and DXF, with company sign-in and attack tests from a security audit. Turned the operations team's written process into a full-stack app for office fit-out projects, covering BOQ, quotes, work orders, change log and snag stages, with role-based access, approvals, Excel and PDF exports, and a public demo that resets nightly.",
+    href: "https://www.synqflow.ai",
+  },
+  {
     title: "techbug",
     role: "full stack developer intern",
     period: "july 2024 - october 2024",
@@ -25,7 +33,7 @@ const workItems: Item[] = [
 const skillsByCategory = [
   {
     title: "languages",
-    skills: ["JavaScript", "TypeScript", "Python", "SQL", "Solidity"],
+    skills: ["JavaScript", "TypeScript", "Python", "Swift", "Rust", "SQL", "Solidity"],
   },
   {
     title: "backend",
@@ -34,6 +42,10 @@ const skillsByCategory = [
   {
     title: "frontend",
     skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    title: "ai",
+    skills: ["Computer Vision", "Ollama", "MCP"],
   },
   {
     title: "cloud & tooling",

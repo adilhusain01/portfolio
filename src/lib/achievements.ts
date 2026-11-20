@@ -11,6 +11,38 @@ export type AchievementEntry = {
 
 const achievements: AchievementEntry[] = [
   {
+    event: "Free Society Hackathon",
+    award: "Won a Zcash Ecosystem Prize ($100)",
+    project: "Ironclad",
+    link: "https://luma.com/freesocietyhackathon",
+    date: "november 2026",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ro/839701cf-b32c-4364-a678-487630e2bc82.png",
+    description:
+      "Built Ironclad at the Free Society Hackathon, run by Zcash and Bitrefill during Devcon in Mumbai. It enforces an AI agent wallet's spending limits in the key itself: a 2-of-3 FROST wallet in Zcash's shielded pool whose co-signer signs only payments inside the owner's caps.",
+  },
+  {
+    event: "Sui Overflow 2026",
+    award: "Won a University Award ($2,500)",
+    project: "PayPerCard",
+    link: "https://www.sui.io/blog/sui-overflow-2026-winners",
+    date: "august 2026",
+    image:
+      "https://cdn.prod.website-files.com/693322d04141bcb0ce1ffb7e/6a8f6208b3992ef4d2ae1e91_Blog%20Header_0726_Overflow%202026.avif",
+    description:
+      "Built PayPerCard for Sui Overflow 2026. An AI agent pays USDC on Sui through an HTTP 402 challenge and gets back a virtual card locked to one merchant and an exact limit.",
+  },
+  {
+    event: "Synq-a-thon",
+    award: "Won 2nd Prize, an internship at Synq AI",
+    link: "https://luma.com/fcobxkms",
+    date: "august 2026",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/8g/55329f1c-f456-4ba9-9c17-f2516acecf70.png",
+    description:
+      "Placed 2nd at Synq-a-thon, a one-day solo hackathon in Gurugram with Synq AI as technology partner, and won the forward deployed engineer internship I started in September 2026.",
+  },
+  {
     event: "TRON HackaTron Season 7",
     award: "Grabbed 4th Prize ($8,000) - Artistry Track",
     project: "Vibe",
@@ -81,7 +113,7 @@ const achievements: AchievementEntry[] = [
     award: "Got Honorable Mention Prize ($100)",
     project: "Arbipic",
     link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
-    date: "july 2025",
+    date: "january 2026",
     image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
     gallery: [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619788/61_h6bqj7.jpg",
@@ -95,7 +127,7 @@ const achievements: AchievementEntry[] = [
     event: "Microsoft x InnoQuest",
     award: "Got 2nd Position",
     link: "https://www.reskilll.com/hack/innoquest#schedule-area",
-    date: "june 2025",
+    date: "november 2024",
     image: "https://content.reskilll.com/ABCO3KzcG6.png",
     gallery: [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619670/21_a8meha.jpg",

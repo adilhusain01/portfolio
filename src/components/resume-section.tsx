@@ -3,18 +3,18 @@ import Link from "next/link"
 // Preview the first 2 timeline items — exactly matching resume/page.tsx styling
 const PREVIEW_TIMELINE = [
   {
-    date: "Present '26",
-    title: "Breaking Architecture Limits",
-    role: "Systems Engineering",
+    date: "Sep '26 to now",
+    title: "Synq AI",
+    role: "Gurugram · forward deployed engineer intern",
     active: true,
-    text: "I bypassed the ceiling of single-threaded Node.js and started tearing apart Javascript's internal execution structure. I implemented PM2 clustering, pushed Docker containers to AWS EKS with Horizontal Pod Autoscaling, and benchmarked Rust Axum microservices against Piscina thread pooling. This resulted in scaling architectural throughput to 150,000+ RPS and dropping operational latencies to 6ms using asynchronous Redis/BullMQ task orchestration.",
+    text: "Joined Synq AI as a forward deployed engineer intern after placing 2nd at Synq-a-thon. I build camera monitoring that runs beside the camera and works offline, and voice control for a macOS agent that operates the computer. I also build AI tools that automate the team's work, from lead research to office layouts.",
   },
   {
-    date: "Feb 10–12 2026",
-    title: "Consensus Hong Kong 2026",
-    role: "Hong Kong · conference & hackathon",
+    date: "Nov 2026",
+    title: "Free Society Hackathon",
+    role: "Mumbai · Devcon · Zcash Ecosystem Prize",
     active: false,
-    text: "After a rejection last year, I finally made it into Consensus Hong Kong and the EasyA hackathon. The event was all deal flow, institution-scale Web3 energy, and elite networking at the Hong Kong Convention & Exhibition Centre.",
+    text: "Won a Zcash Ecosystem Prize at the Free Society Hackathon, run by Zcash and Bitrefill during Devcon in Mumbai. I built Ironclad, which enforces an AI agent wallet's spending limits in the key itself: a 2-of-3 FROST wallet in Zcash's shielded pool.",
   },
 ]
 

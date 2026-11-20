@@ -16,12 +16,13 @@ export function Header() {
         </div>
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4" />
-          building @campayn
+          forward deployed engineer @ synq ai
         </div>
       </div>
       <p className="leading-relaxed animate-fade-in-up">
-        i&apos;m a 21 y/o web developer web3 enthusiast, traveller. i love
-        reading books, riding bike, watching shows.
+        i&apos;m a 21 y/o full-stack product engineer. i build computer vision
+        systems, voice-controlled agents, process automation, and paid mac and
+        web apps. i love reading books, riding bike, watching shows.
       </p>
     </header>
   )
