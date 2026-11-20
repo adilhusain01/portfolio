@@ -47,19 +47,6 @@ export const projects: ProjectEntry[] = [
     category: "project",
   },
   {
-    title: "payper card",
-    description:
-      "Built a way for AI agents to pay with cards. An agent pays USDC on Sui through an HTTP 402 challenge and gets back a virtual card locked to one merchant and an exact limit, with the Sui transaction as its receipt. Built in four days.",
-    role: "developer",
-    period: "june 2026",
-    achievements: ["won a university award at sui overflow 2026"],
-    technologies: ["next.js", "sui", "usdc", "x402", "lithic api"],
-    href: "https://payper-card-five.vercel.app",
-    github: "https://github.com/adilhusain01/payper-card",
-    ribbon: "gold",
-    category: "project",
-  },
-  {
     title: "saveposts",
     description:
       "Built a platform for saving and organizing social media posts with bookmarking, categorization, and search functionality to help users curate and revisit content across platforms.",

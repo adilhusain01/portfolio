@@ -22,17 +22,6 @@ const achievements: AchievementEntry[] = [
       "Built Ironclad at the Free Society Hackathon, run by Zcash and Bitrefill during Devcon in Mumbai. It enforces an AI agent wallet's spending limits in the key itself: a 2-of-3 FROST wallet in Zcash's shielded pool whose co-signer signs only payments inside the owner's caps.",
   },
   {
-    event: "Sui Overflow 2026",
-    award: "Won a University Award ($2,500)",
-    project: "PayPerCard",
-    link: "https://www.sui.io/blog/sui-overflow-2026-winners",
-    date: "august 2026",
-    image:
-      "https://cdn.prod.website-files.com/693322d04141bcb0ce1ffb7e/6a8f6208b3992ef4d2ae1e91_Blog%20Header_0726_Overflow%202026.avif",
-    description:
-      "Built PayPerCard for Sui Overflow 2026. An AI agent pays USDC on Sui through an HTTP 402 challenge and gets back a virtual card locked to one merchant and an exact limit.",
-  },
-  {
     event: "Synq-a-thon",
     award: "Won 2nd Prize, an internship at Synq AI",
     link: "https://luma.com/fcobxkms",
