@@ -186,7 +186,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 Open it
               </KeyAnchor>
             ) : null}
-            {project.github ? (
+            {project.github && !project.privateRepo ? (
               <KeyAnchor href={project.github} target="_blank" rel="noopener noreferrer">
                 Code
               </KeyAnchor>
@@ -270,7 +270,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </ReactMarkdown>
           </article>
         </section>
-      ) : project.github ? (
+      ) : project.github && !project.privateRepo ? (
         <p className="pt-12 text-[15px] text-ink-2">
           The README did not load just now.{" "}
           <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-link text-ink">

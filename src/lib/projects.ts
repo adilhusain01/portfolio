@@ -9,6 +9,8 @@ export type ProjectEntry = {
   technologies: string[]
   href?: string
   github?: string
+  // The repo is private: visitors would get a 404, so the page hides the Code key and the GitHub fallback.
+  privateRepo?: boolean
   video?: string
   ribbon?: "red" | "gold"
   category: "tool" | "project" | "design"
@@ -74,6 +76,7 @@ export const projects: ProjectEntry[] = [
     href: "https://saveposts.xyz",
     image: "https://saveposts.xyz/og.png",
     github: "https://github.com/adilhusain01/SavePosts",
+    privateRepo: true,
     video: "https://youtu.be/Nb5oZf5xskI",
     ribbon: "gold",
     category: "project",
@@ -221,6 +224,7 @@ export const projects: ProjectEntry[] = [
     ],
     href: "https://takemeds.fit",
     github: "https://github.com/adilhusain01/TakeMeds",
+    privateRepo: true,
     category: "project",
     ribbon: "gold",
   },
