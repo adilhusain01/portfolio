@@ -1,147 +1,166 @@
-import { Header } from "@/components/header"
-import { Item, SectionList } from "@/components/section-list"
-import { BlogSection } from "@/components/blog-section"
-import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
-import { systemDesign } from "@/lib/system-design"
-import { ProjectCard } from "@/components/project-card"
-import { AchievementsSection } from "@/components/achievements-section"
-import { GallerySection } from "@/components/gallery-section"
-import { ResumeSection } from "@/components/resume-section"
+import Image from "next/image"
 import Link from "next/link"
-import { PhysicsSkills } from "@/components/physics-skills"
-import { ScrollScramble } from "@/components/scroll-scramble"
+import stagePhoto from "../../public/me/demo.webp"
+import { stage as stageShot } from "@/lib/vision"
+import { work } from "@/lib/work"
+import { getProjectBySlug, getProjectSlug, projectName, projectYear, projects, type ProjectEntry } from "@/lib/projects"
+import { getAchievementSlug, getAchievementsByDate } from "@/lib/achievements"
+import { getPosts } from "@/lib/blog"
+import { systemDesign } from "@/lib/system-design"
+import { CameraPrint } from "@/components/home/camera-print"
+import { DelhiLine } from "@/components/home/delhi-time"
+import { Hero } from "@/components/home/hero"
+import { WorkRows } from "@/components/home/work-rows"
+import { CameraRoll } from "@/components/home/camera-roll"
+import { Stack } from "@/components/home/stack"
+import { Note, Section, formatMonth } from "@/components/site/ui"
 
-const workItems: Item[] = [
-  {
-    title: "synq ai",
-    role: "forward deployed engineer intern",
-    period: "september 2026 - present",
-    description:
-      "Built camera monitoring that runs on a GPU beside the camera and keeps working offline, with person detection, tracking and pose, zones with seven alert rules, Slack alerts with the frame, a cloud dashboard and a daily PDF report with a timelapse; it is live on an office camera. Built voice control for a macOS agent that sees the screen and operates the computer, with hold-to-talk and a task loop that carries out a spoken request one action at a time, shipped in its 1.0 release in September 2026. Automated lead research in about a day: background workers, one driving a real browser, find target companies and read rating agency releases, a model must quote its evidence, and code checks every quote and computes the score; it tracks about 1,000 companies and 2,000 leads, with 677 tests. Developed an AI office layout generator that turns a floor plan and a brief into layouts verified by a rule checker and exported as PDF and DXF, with company sign-in and attack tests from a security audit. Turned the operations team's written process into a full-stack app for office fit-out projects, covering BOQ, quotes, work orders, change log and snag stages, with role-based access, approvals, Excel and PDF exports, and a public demo that resets nightly.",
-    href: "https://www.synqflow.ai",
-  },
-  {
-    title: "techbug",
-    role: "full stack developer intern",
-    period: "july 2024 - october 2024",
-    description:
-      "Built and deployed scalable Node.js and React.js applications and CMS dashboards using Docker, AWS EC2/S3, Cloudinary, and Google Analytics. Implemented JWT-based authentication with RBAC, improved API reliability with Redis caching, rate limiting, and optimized queries. Enhanced scalability and response times with server-side pagination, indexing, and Node.js clustering using worker threads. Developed an event-driven email system to automate user and inventory alerts.",
-    href: "https://www.linkedin.com/company/techbug-official",
-  },
-]
+const featured = ["ironclad", "heyterm", "peeker", "saveposts", "bookboy", "croppy"]
 
-const skillsByCategory = [
-  {
-    title: "languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Swift", "Rust", "SQL", "Solidity"],
-  },
-  {
-    title: "backend",
-    skills: ["Node.js", "FastAPI", "PostgreSQL", "MongoDB", "Redis"],
-  },
-  {
-    title: "frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    title: "ai",
-    skills: ["Computer Vision", "Ollama", "MCP"],
-  },
-  {
-    title: "cloud & tooling",
-    skills: ["AWS EC2", "AWS S3", "Docker", "Kubernetes", "Git"],
-  },
+const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/adilhusain01" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/adil-husain" },
+  { label: "X", href: "https://x.com/0xAdilHusain" },
 ]
 
 export default function HomePage() {
-  const topProjects = sortProjects(projects).slice(0, 2)
-
-  const topSystemDesign = [...systemDesign]
-    .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
-    .slice(0, 2)
+  const wins = getAchievementsByDate()
+  const featuredProjects = featured.map((slug) => getProjectBySlug(slug)).filter((p): p is ProjectEntry => Boolean(p))
+  const posts = getPosts()
+    .map((post) => ({ title: post.metadata.title, date: post.metadata.date, href: `/blog/${post.slug}`, kind: "Post" }))
+    .concat(systemDesign.map((entry) => ({ title: entry.title, date: entry.period, href: `/system-design/${entry.slug}`, kind: "System design" })))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return (
-    <>
-      <Header />
+    <main>
+      <Hero />
 
-      <section
-        className="mb-12 sm:mb-16 animate-fade-in-up"
-        style={{ animationDelay: "120ms", animationFillMode: "both" }}
-      >
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> <ScrollScramble text="skills" />
-        </h2>
-
-        <PhysicsSkills skills={skillsByCategory.flatMap(g => g.skills)} />
+      <section aria-label="About" className="grid gap-8 pb-20 pt-14 sm:pb-24 sm:pt-20 lg:grid-cols-[minmax(13rem,22%)_minmax(0,1fr)] lg:gap-14">
+        <div aria-hidden="true" />
+        <div>
+          <p className="max-w-[30ch] font-display text-[clamp(1.6rem,3.2vw,2.75rem)] leading-[1.22] tracking-[-0.015em] text-ink">
+            These days I teach cameras to notice things and computers to take orders by voice. I also make Mac apps people pay for, and I&apos;ve won prizes at{" "}
+            {words[wins.length] ?? wins.length} hackathons.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8">
+            <DelhiLine />
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[15px]">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-link text-ink-2">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <SectionList title="work" items={workItems} />
+      <Section id="work" title="Work" line="Where I've worked.">
+        <WorkRows items={work} />
+      </Section>
 
-      <ResumeSection />
-
-      <AchievementsSection />
-
-      <section
-        className="mb-12 sm:mb-16 animate-fade-in-up"
-        style={{ animationDelay: "200ms", animationFillMode: "both" }}
-      >
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> <ScrollScramble text="latest projects" />
-        </h2>
-        <div className="space-y-6">
-          {topProjects.map((project) => (
-            <ProjectCard
-              key={getProjectSlug(project)}
-              {...project}
-              detailHref={`/projects/${getProjectSlug(project)}`}
-            />
+      <Section id="projects" title="Projects" line="Apps, tools and hackathon builds.">
+        <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <li key={project.title}>
+              <ProjectTile project={project} />
+            </li>
           ))}
-        </div>
-        <div className="mt-6 sm:mt-8 flex justify-end">
-          <Link
-            href="/projects"
-            className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
-          >
-            <span className="transition-colors">show all</span>
-            <span className="ml-2 group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </Link>
-        </div>
-      </section>
+        </ul>
+        <Link href="/projects" className="text-link mt-12 inline-block text-[15px] font-medium text-ink">
+          See all {projects.length} projects
+        </Link>
+      </Section>
 
-      <section
-        className="mb-12 sm:mb-16 animate-fade-in-up"
-        style={{ animationDelay: "300ms", animationFillMode: "both" }}
-      >
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center text-white">
-          <span className="text-accent mr-2">*</span> <ScrollScramble text="system design" />
-        </h2>
-        <div className="space-y-6">
-          {topSystemDesign.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              {...project}
-              coverType="system-design"
-              detailHref={`/system-design/${project.slug}`}
+      <Section
+        id="hackathons"
+        title="Hackathons"
+        line="Every prize so far, newest first."
+        aside={
+          <div className="mt-8 hidden lg:block">
+            <CameraPrint
+              src={stagePhoto}
+              shot={stageShot}
+              alt="Adil presenting at a hackathon, a route map on the projector behind him"
+              tilt={-2}
+              sizes="14rem"
             />
+            <Note className="mt-3 -rotate-2">It thinks the projector is a TV.</Note>
+          </div>
+        }
+      >
+        <ul className="divide-y divide-rule border-b border-rule">
+          {wins.map((win) => (
+            <li key={win.event} className="relative">
+              <Link
+                href={`/achievements/${getAchievementSlug(win)}`}
+                className="group grid gap-x-6 gap-y-1 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,15rem)_5.5rem] sm:items-baseline"
+              >
+                <span className="min-w-0">
+                  <span className="font-semibold text-ink decoration-pen underline-offset-4 [@media(hover:hover)]:group-hover:underline">{win.event}</span>
+                  {win.project ? <span className="ml-2 text-[15px] text-ink-3">with {win.project}</span> : null}
+                </span>
+                <span className="text-[15px] text-ink-2">{win.result}</span>
+                <span className="text-[15px] tabular-nums text-ink-3 sm:text-right">{win.date ? formatMonth(win.date) : ""}</span>
+              </Link>
+            </li>
           ))}
-        </div>
-        <div className="mt-6 sm:mt-8 flex justify-end">
-          <Link
-            href="/system-design"
-            className="group flex items-center text-sm font-mono text-gray-400 hover:text-accent transition-colors"
-          >
-            <span className="transition-colors">show all</span>
-            <span className="ml-2 group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </Link>
-        </div>
-      </section>
+        </ul>
+        <Link href="/achievements" className="text-link mt-8 inline-block text-[15px] font-medium text-ink">
+          Photos and stories from each one
+        </Link>
+      </Section>
 
-      <BlogSection />
+      <Section id="roll" title="Camera roll" line="Hackathon trips and a few days off. Drag them around.">
+        <CameraRoll />
+      </Section>
 
-    </>
+      <Section id="writing" title="Writing" line="Notes from scaling Node.js and taking systems apart.">
+        <ul className="divide-y divide-rule border-b border-rule">
+          {posts.map((post) => (
+            <li key={post.href}>
+              <Link href={post.href} className="group grid gap-x-6 gap-y-1 py-4 sm:grid-cols-[minmax(0,1fr)_8rem_5.5rem] sm:items-baseline">
+                <span className="font-medium text-ink decoration-pen underline-offset-4 first-letter:uppercase [@media(hover:hover)]:group-hover:underline">{post.title}</span>
+                <span className="text-[15px] text-ink-3">{post.kind}</span>
+                <span className="text-[15px] tabular-nums text-ink-3 sm:text-right">{formatMonth(post.date)}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section id="tools" title="Tools" line="What I build with most. Each logo opens its site.">
+        <Stack />
+      </Section>
+    </main>
+  )
+}
+
+function ProjectTile({ project }: { project: ProjectEntry }) {
+  const slug = getProjectSlug(project)
+  return (
+    <Link href={`/projects/${slug}`} className="group block">
+      <span className="relative block aspect-[1200/630] overflow-hidden rounded-xl bg-tray ring-1 ring-inset ring-rule">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={`${projectName(project.title)} preview`}
+            fill
+            sizes="(min-width: 1280px) 26vw, (min-width: 640px) 45vw, 92vw"
+            className="object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.015]"
+          />
+        ) : null}
+        <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-ink/10" />
+      </span>
+      <span className="mt-4 flex items-baseline justify-between gap-4">
+        <span className="text-lg font-semibold text-ink decoration-pen underline-offset-4 [@media(hover:hover)]:group-hover:underline">{projectName(project.title)}</span>
+        <span className="text-[15px] tabular-nums text-ink-3">{projectYear(project)}</span>
+      </span>
+      <span className="mt-1 block text-[15px] leading-relaxed text-ink-2">{project.tagline}</span>
+    </Link>
   )
 }

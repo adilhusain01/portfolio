@@ -1,37 +1,36 @@
-import type { Metadata } from "next"
-import { Geist_Mono } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Geist_Mono, Hanken_Grotesk, Kalam, Young_Serif } from "next/font/google"
 import "./globals.css"
 import "katex/dist/katex.min.css"
 import "highlight.js/styles/github-dark.css"
-import { Navbar } from "../components/navbar"
-import { Footer } from "../components/footer"
-import Head from "next/head"
-import { AsciiBackground } from "../components/ascii-background"
-import { AsciiCat } from "../components/ascii-cat"
-import { AFKTab } from "../components/afk-tab"
-import { ClickSparks } from "../components/click-sparks"
-import { JellyScroll } from "../components/jelly-scroll"
-import { ClickSound } from "../components/click-sound"
-import { ScrollMinimap } from "../components/scroll-minimap"
+import { SiteNav } from "@/components/site/nav"
+import { SiteFooter } from "@/components/site/footer"
+import { AsciiCat } from "@/components/ascii-cat"
+import { AFKTab } from "@/components/afk-tab"
+import { ClickSound } from "@/components/click-sound"
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist-mono",
-})
+// Young Serif for headings, Hanken Grotesk for reading, Kalam (Indian Type Foundry) for the notes in the margin,
+// Geist Mono only for code and the camera's readouts. All self-hosted by next/font.
+const young = Young_Serif({ subsets: ["latin"], weight: "400", variable: "--font-young", display: "swap" })
+const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" })
+const kalam = Kalam({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-kalam", display: "swap" })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" })
+
+const description =
+  "Adil Husain, a 21-year-old product engineer in Delhi. Camera systems, voice control for computers, Mac apps and a pile of hackathon projects."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://adilhusain.dev"),
   title: {
-    default: "Adil husain",
-    template: "%s | Adil husain",
+    default: "Adil Husain",
+    template: "%s | Adil Husain",
   },
-  description: "Developer",
+  description,
   openGraph: {
-    title: "Adil husain",
-    description: "Developer",
+    title: "Adil Husain",
+    description,
     url: "https://adilhusain.dev",
-    siteName: "Adil husain",
+    siteName: "Adil Husain",
     locale: "en_US",
     type: "website",
     images: ["https://adilhusain.dev/og.png"],
@@ -44,38 +43,28 @@ export const metadata: Metadata = {
     "max-snippet": -1,
   },
   twitter: {
-    title: "Adil husain",
+    title: "Adil Husain",
+    description,
     card: "summary_large_image",
     creator: "@0xAdilHusain",
     images: ["https://adilhusain.dev/og.png"],
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: "#F2EBDD",
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistMono.variable} antialiased min-h-screen font-mono`}
-      >
+    <html lang="en" className={`${young.variable} ${hanken.variable} ${kalam.variable} ${geistMono.variable}`}>
+      <body className="paper-grain min-h-screen font-sans text-ink antialiased">
         <AFKTab />
-        <AsciiBackground />
-        <AsciiCat />
-        <ClickSparks />
         <ClickSound />
-        <ScrollMinimap />
-        <JellyScroll>
-          <div className="max-w-4xl mx-auto px-4 relative z-10 backdrop-blur-[2px] bg-background/20 min-h-screen">
-            <Navbar />
-            <div className="pb-8">
-              {children}
-              <Footer />
-            </div>
-          </div>
-        </JellyScroll>
+        <SiteNav />
+        <div className="gutter w-full">{children}</div>
+        <SiteFooter />
+        <AsciiCat />
       </body>
     </html>
   )

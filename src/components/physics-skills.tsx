@@ -9,6 +9,8 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
 
   useEffect(() => {
     if (typeof window === "undefined" || !containerRef.current) return
+    // With reduced motion the keys stay in a plain row instead of falling.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
     const Engine = Matter.Engine,
       Runner = Matter.Runner,
@@ -24,7 +26,7 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
 
     const container = containerRef.current
     const width = container.clientWidth
-    const height = 300 // Height of the playground
+    const height = container.clientHeight
 
     // Boundaries
     const ground = Bodies.rectangle(width / 2, height + 50, width * 2, 100, { isStatic: true })
@@ -43,15 +45,15 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
       const y = Math.random() * 100 + 50
 
       const body = Bodies.rectangle(x, y, elem.offsetWidth, elem.offsetHeight, {
-        restitution: 0.8, // Bouncy
-        friction: 0.05,
+        restitution: 0.45, // A little bounce, like a key landing on a desk
+        friction: 0.3,
         frictionAir: 0.01, // Slight air resistance
-        chamfer: { radius: elem.offsetHeight / 2 }, // Make it a rounded pill to prevent corner sticking
+        chamfer: { radius: 8 }, // Rounded like a keycap so corners do not snag
         render: { visible: false }
       })
 
-      // Random initial rotation
-      Matter.Body.setAngle(body, Math.random() * Math.PI)
+      // A small random tilt as it falls
+      Matter.Body.setAngle(body, (Math.random() - 0.5) * 0.9)
 
       bodiesRef.current.push({ body, elem })
       World.add(world, body)
@@ -63,6 +65,11 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
     
     if (!isMobile) {
       mouse = Mouse.create(container)
+      // Matter's mouse cancels wheel events, which would stop the page scrolling over the tray.
+      const m = mouse as Matter.Mouse & { mousewheel: EventListener }
+      container.removeEventListener("mousewheel", m.mousewheel)
+      container.removeEventListener("DOMMouseScroll", m.mousewheel)
+      container.removeEventListener("wheel", m.mousewheel)
       const mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
@@ -173,25 +180,19 @@ export function PhysicsSkills({ skills }: { skills: string[] }) {
   }, [skills])
 
   return (
-    <div className="mt-6 w-full">
-      <div
-        ref={containerRef}
-        className="relative w-full h-[300px] overflow-hidden rounded-xl border border-neutral-800/80 bg-[#111]/40 cursor-grab active:cursor-grabbing group"
-      >
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity text-sm font-mono tracking-widest text-accent z-0">
-          [ DRAG AND THROW ]
+    <div
+      ref={containerRef}
+      className="relative h-[240px] w-full cursor-grab overflow-hidden rounded-2xl bg-tray shadow-[inset_0_1px_3px_rgb(46_36_20/0.12)] ring-1 ring-inset ring-rule active:cursor-grabbing motion-reduce:flex motion-reduce:h-auto motion-reduce:cursor-auto motion-reduce:flex-wrap motion-reduce:content-start motion-reduce:gap-2.5 motion-reduce:p-4"
+    >
+      {skills.map((skill, i) => (
+        <div
+          key={i}
+          className="skill-tag pointer-events-none absolute left-0 top-0 z-10 select-none whitespace-nowrap rounded-[9px] bg-sheet px-3.5 py-2 text-[14px] font-medium text-ink shadow-key ring-1 ring-inset ring-rule motion-reduce:static"
+          style={{ willChange: "transform" }}
+        >
+          {skill}
         </div>
-
-        {skills.map((skill, i) => (
-          <div
-            key={i}
-            className="skill-tag absolute top-0 left-0 bg-neutral-900 border border-neutral-700 hover:border-accent text-gray-300 hover:text-accent px-4 py-2 rounded-full font-mono text-sm whitespace-nowrap select-none transition-colors z-10 pointer-events-none"
-            style={{ willChange: "transform" }}
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   )
 }

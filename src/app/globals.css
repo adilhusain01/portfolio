@@ -2,37 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #111;
-  --foreground: #d1d5db;
+/* Full width with side margins, the house style's X constant. .bleed undoes it for edge-to-edge pieces. */
+@layer components {
+  .gutter {
+    @apply px-5 sm:px-8 lg:px-16 xl:px-20;
+  }
+  .bleed {
+    @apply -mx-5 sm:-mx-8 lg:-mx-16 xl:-mx-20;
+  }
 }
 
-html,
+/* Anything you can press shows the hand. */
+a[href],
+button:not(:disabled),
+[role="button"],
+summary,
+label[for],
+select {
+  cursor: pointer;
+}
+
+:root {
+  /* The nav wraps to two rows on a phone. */
+  --nav: 5.75rem;
+  --paper: #f2ebdd;
+  --ink: #1f1b16;
+  color-scheme: light;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav: 4.5rem;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  overscroll-behavior: none;
+  color: var(--ink);
+  background-color: var(--paper);
+}
+
+/* The paper: a faint grain and a lighter top, fixed to the viewport so it never seams. */
+.paper-grain {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(120% 90% at 50% 0%, rgb(255 252 244 / 0.55), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-attachment: fixed;
 }
 
 ::selection {
-  background-color: #ff6b35;
-  color: #111;
+  background-color: #dce2f2;
+  color: #1f1b16;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
+:focus-visible {
+  outline: 2px solid #2948a6;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-.shiki,
-.shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A link inside running text: ink with a soft underline that turns blue. */
+.text-link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: #c9bda4;
+  transition: text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1), color 150ms;
+}
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover {
+    color: #2948a6;
+    text-decoration-color: #2948a6;
+  }
+}
+
+/* Long reads: blog posts, project READMEs, system design write-ups. */
+.prose {
+  --tw-prose-body: #3b342b;
+  --tw-prose-headings: #1f1b16;
+  --tw-prose-lead: #4e463a;
+  --tw-prose-links: #1f1b16;
+  --tw-prose-bold: #1f1b16;
+  --tw-prose-counters: #6a6152;
+  --tw-prose-bullets: #b3a68c;
+  --tw-prose-hr: #ddd3bf;
+  --tw-prose-quotes: #1f1b16;
+  --tw-prose-quote-borders: #2948a6;
+  --tw-prose-captions: #6a6152;
+  --tw-prose-code: #1f1b16;
+  --tw-prose-pre-code: #e9e2d2;
+  --tw-prose-pre-bg: #1f1b16;
+  --tw-prose-th-borders: #ddd3bf;
+  --tw-prose-td-borders: #e7decc;
+}
+
+.prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+  font-family: var(--font-young), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .prose a:not(.anchor) {
-  @apply text-accent underline underline-offset-4 decoration-accent/30 hover:decoration-accent transition-colors;
+  @apply text-ink underline underline-offset-4 decoration-[#c9bda4] transition-colors;
+}
+@media (hover: hover) and (pointer: fine) {
+  .prose a:not(.anchor):hover {
+    @apply text-pen decoration-pen;
+  }
 }
 
 .prose a.anchor {
@@ -40,7 +132,7 @@ body {
 }
 
 .prose a.anchor::before {
-  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'];
+  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'] text-ink-3;
 }
 
 .prose a.anchor:hover::before {
@@ -48,11 +140,11 @@ body {
 }
 
 .prose pre {
-  @apply overflow-x-auto border border-neutral-800 bg-[#111] my-4 rounded-none;
+  @apply overflow-x-auto my-6 rounded-xl border border-[#2c2620] bg-ink;
 }
 
 .prose code:not(pre code) {
-  @apply px-1 py-0.5 text-sm border border-gray-700 rounded text-gray-200;
+  @apply px-1.5 py-0.5 text-[0.85em] rounded-md bg-tray text-ink font-medium;
 }
 
 .prose code:not(pre code)::before,
@@ -63,22 +155,39 @@ body {
 .prose pre code {
   @apply p-4 block bg-transparent;
   border: initial;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.prose code span {
-  @apply font-medium text-gray-200;
+.prose img {
+  @apply rounded-xl;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+.prose table {
+  @apply text-sm;
+}
+
+/* Shiki renders with its dark theme inside the ink slab. */
+.shiki,
+.shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* highlight.js (README pages) keeps its own colours on the ink slab. */
+.prose pre code.hljs {
+  background: transparent;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .prose .markdown-alert {
@@ -94,21 +203,21 @@ body {
 }
 
 .prose .markdown-alert-note {
-  @apply border-blue-500 bg-blue-900/20 text-blue-200;
+  @apply border-pen bg-pen-wash/60 text-ink;
 }
 
 .prose .markdown-alert-tip {
-  @apply border-emerald-500 bg-emerald-900/20 text-emerald-200;
+  @apply border-[#36603f] bg-[#dfe8dc] text-ink;
 }
 
 .prose .markdown-alert-important {
-  @apply border-violet-500 bg-violet-900/20 text-violet-200;
+  @apply border-[#5b3f8c] bg-[#e6dff0] text-ink;
 }
 
 .prose .markdown-alert-warning {
-  @apply border-amber-500 bg-amber-900/20 text-amber-200;
+  @apply border-[#8a6418] bg-[#f1e4c4] text-ink;
 }
 
 .prose .markdown-alert-caution {
-  @apply border-red-500 bg-red-900/20 text-red-200;
+  @apply border-[#9a3b2a] bg-[#f1dbd3] text-ink;
 }

@@ -1,6 +1,7 @@
 export type AchievementEntry = {
   event: string
   award: string
+  result: string
   project?: string
   link?: string
   image?: string
@@ -12,6 +13,7 @@ export type AchievementEntry = {
 const achievements: AchievementEntry[] = [
   {
     event: "Free Society Hackathon",
+    result: "Zcash Ecosystem Prize, $100",
     award: "Won a Zcash Ecosystem Prize ($100)",
     project: "Ironclad",
     link: "https://luma.com/freesocietyhackathon",
@@ -23,6 +25,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Synq-a-thon",
+    result: "2nd, an internship at Synq AI",
     award: "Won 2nd Prize, an internship at Synq AI",
     link: "https://luma.com/fcobxkms",
     date: "august 2026",
@@ -33,6 +36,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "TRON HackaTron Season 7",
+    result: "4th in the Artistry track, $8,000",
     award: "Grabbed 4th Prize ($8,000) - Artistry Track",
     project: "Vibe",
     link: "https://hackatron7.devpost.com/",
@@ -50,6 +54,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Somnia DeFi Mini Hackathon",
+    result: "2nd, $1,500",
     award: "Grabbed 2nd Prize ($1,500)",
     project: "Somany",
     link: "https://dorahacks.io/hackathon/defi-mini-hackathon/buidl",
@@ -66,6 +71,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "TOKEN2049 Origins Singapore",
+    result: "3rd, $1,500",
     award: "Grabbed 3rd Prize ($1,500)",
     project: "TaaS",
     link: "https://www.token2049.com/singapore/2049-origins",
@@ -83,6 +89,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Somnia Mini Games Hackathon",
+    result: "2nd, $100",
     award: "Grabbed 2nd Prize ($100)",
     project: "Catch Goofy",
     link: "https://dorahacks.io/hackathon/somnia-minigames/buidl",
@@ -99,6 +106,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Arbitrum APAC Mini Hackathon",
+    result: "Honourable mention, $100",
     award: "Got Honorable Mention Prize ($100)",
     project: "Arbipic",
     link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
@@ -114,6 +122,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Microsoft x InnoQuest",
+    result: "2nd",
     award: "Got 2nd Position",
     link: "https://www.reskilll.com/hack/innoquest#schedule-area",
     date: "november 2024",
@@ -126,6 +135,7 @@ const achievements: AchievementEntry[] = [
   },
   {
     event: "Hack for Humanity 2025",
+    result: "14th",
     award: "Got 14th Position",
     project: "Concept Bridge",
     link: "https://devpost.com/software/concept-bridge-la3cfg",
@@ -155,6 +165,15 @@ export function getAchievementSlug(
 
 export function getAllAchievements() {
   return achievements
+}
+
+export function getAchievementTime(achievement: Pick<AchievementEntry, "date">) {
+  const time = achievement.date ? new Date(achievement.date).getTime() : 0
+  return Number.isNaN(time) ? 0 : time
+}
+
+export function getAchievementsByDate() {
+  return [...achievements].sort((a, b) => getAchievementTime(b) - getAchievementTime(a))
 }
 
 export function getAchievementBySlug(slug: string) {

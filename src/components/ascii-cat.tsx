@@ -98,13 +98,13 @@ export function AsciiCat() {
   }, [])
 
   return (
-    <div className="hidden xl:flex fixed right-12 bottom-12 flex-col items-center justify-end z-20 font-mono text-gray-400 group select-none">
+    <div className="hidden xl:flex fixed right-3 bottom-4 flex-col items-center justify-end z-20 font-mono text-ink-2 group select-none">
       {/* Zzz Animations */}
       <div className="absolute -top-16 -right-4 h-16 w-16 flex flex-col justify-end items-end pointer-events-none">
         {zTexts.map((z, i) => (
           <span
             key={z.id}
-            className="animate-fade-in-up text-sm font-bold absolute text-gray-500"
+            className="animate-rise text-sm font-bold absolute text-ink-3"
             style={{
               bottom: `${i * 16}px`,
               right: `${i * 10}px`,
@@ -118,7 +118,7 @@ export function AsciiCat() {
 
       {/* Cat ASCII Art */}
       <div
-        className="text-sm whitespace-pre leading-tight transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-110 cursor-pointer text-accent hover:text-[#ff8a5c]"
+        className="text-sm whitespace-pre leading-tight transition-transform duration-200 ease-out group-hover:-translate-y-1 cursor-pointer text-ink hover:text-pen"
         onMouseEnter={() => setFace("♥_♥")}
         onMouseLeave={() => setFace("o.o")}
       >
@@ -128,7 +128,7 @@ export function AsciiCat() {
       </div>
 
       {/* Shadow */}
-      <div className="w-12 h-1 bg-black/60 rounded-[100%] mt-2 blur-[2px]"></div>
+      <div className="w-12 h-1 bg-ink/25 rounded-[100%] mt-2 blur-[2px]"></div>
     </div>
   )
 }

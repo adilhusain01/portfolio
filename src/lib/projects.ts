@@ -1,5 +1,6 @@
 export type ProjectEntry = {
   title: string
+  tagline: string
   description: string
   role: string
   period: string
@@ -17,12 +18,13 @@ export type ProjectEntry = {
 export const projects: ProjectEntry[] = [
   {
     title: "ironclad",
+    tagline: "Spending limits for AI agent wallets, enforced in the key itself.",
     description:
       "Built spending limits for AI agent wallets that are enforced in the key itself. The wallet is a 2-of-3 FROST key in Zcash's shielded pool, and a co-signer signs only payments inside the owner's caps and allow-list, so a hijacked agent can spend no more than the owner allowed. Fixes from the project are merged upstream into zshield-mcp and frost-zec.",
     role: "developer",
     period: "november 2026",
-    image:
-      "https://opengraph.githubassets.com/1973ff508bd1bb960a6ecbf999d0aac04b9f5803654c700a8690ed6aa2e3bc1b/adilhusain01/ironclad",
+    image: "https://ironclad.adilhusain.dev/og.png",
+    href: "https://ironclad.adilhusain.dev",
     achievements: ["won a zcash ecosystem prize at the free society hackathon"],
     technologies: ["rust", "typescript", "zcash", "frost", "mcp"],
     github: "https://github.com/adilhusain01/ironclad",
@@ -32,12 +34,12 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "heyterm",
+    tagline: "Voice control for coding agents, with every session in one window.",
     description:
       "Built voice control for coding agents. Every session runs in one window, spoken requests go to the right session, and approvals can be answered by voice. Published on npm with 648 tests and CI on macOS, Linux and Windows.",
     role: "developer",
     period: "october 2026",
-    image:
-      "https://opengraph.githubassets.com/19c57e62659c2c087678939d0f112d4ab3a8abe99b02b4d98ba286268038ff0c/adilhusain01/heyterm",
+    image: "https://heyterm.vercel.app/og.png",
     achievements: [],
     technologies: ["typescript", "node.js", "react", "xterm.js", "node-pty"],
     href: "https://www.npmjs.com/package/heyterm",
@@ -47,7 +49,22 @@ export const projects: ProjectEntry[] = [
     category: "project",
   },
   {
+    title: "peeker",
+    tagline: "Hover over the MacBook notch to open your recent files.",
+    description:
+      "Built a paid macOS menu bar app. Hover over the MacBook notch and a panel of recent files unfolds from the top of the screen, with saved folders, a shelf for keeping files between apps, optional encrypted clipboard history, Command-K search and quick previews. It uses only public macOS frameworks and updates itself with Sparkle. Sold for $19.",
+    role: "developer",
+    period: "september 2026",
+    image: "/projects/peeker.webp",
+    achievements: [],
+    technologies: ["swift", "swiftui", "appkit", "sparkle"],
+    href: "https://peeker-weld.vercel.app",
+    ribbon: "gold",
+    category: "tool",
+  },
+  {
     title: "saveposts",
+    tagline: "Save and sort posts from every social app in one place.",
     description:
       "Built a platform for saving and organizing social media posts with bookmarking, categorization, and search functionality to help users curate and revisit content across platforms.",
     role: "developer",
@@ -67,6 +84,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "calchub",
+    tagline: "Over 500 free calculators you can embed with one line.",
     description:
       "Built a comprehensive library of 500+ free, embeddable calculators for finance, health, business, and everyday workflows. Designed with a high-contrast brutalist aesthetic, it features fully responsive mobile layouts, intuitive search functionality, and instant single-line HTML embedding.",
     role: "developer",
@@ -80,6 +98,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "flashcards",
+    tagline: "Turns a CSV of questions into flip cards for revision.",
     description:
       "Built a CSV-driven study app with animated 3D card flipping, keyboard navigation, and progress tracking to turn simple question-answer datasets into focused revision sessions.",
     role: "developer",
@@ -100,6 +119,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "bookboy",
+    tagline: "A calm PDF reader for close reading, with clipping and brown noise.",
     description:
       "Built an immersive browser-based PDF reader designed for active reading with high-resolution clipping, persistent reading state, paper-grain visuals, and generative brown-noise focus audio.",
     role: "developer",
@@ -121,6 +141,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "croppy",
+    tagline: "Upload one image and export it at every social size.",
     description:
       "Built a client-side social media crop studio that lets users upload once and export multiple platform-specific image sizes with interactive zoom/rotation controls, safe-zone overlays, and high-resolution output formats.",
     role: "developer",
@@ -142,6 +163,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "spritelab",
+    tagline: "Pixel art tools: a background remover, a sprite converter and an editor.",
     description:
       "Built a premium suite of pixel art tools featuring an 'auto-magic' background remover, a high-res to 8-bit sprite converter with adjustable posterization, and a precision editor with full undo/redo and auto-cropping logic.",
     role: "developer",
@@ -162,6 +184,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "voxel",
+    tagline: "A 3D voxel editor in the browser, with exports for games and 3D printing.",
     description:
       "Built a high-performance browser-based 3D voxel editor with real-time lighting, advanced brush tools, and optimized mesh exporting for game engines and 3D printing.",
     role: "developer",
@@ -181,6 +204,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "takemeds",
+    tagline: "A Mac app that will not let you ignore your medicine reminders.",
     description:
       "Built a high-stakes macOS medication adherence app that prevents users from ignoring reminders through an automated escalation system. It progresses from standard notifications to full-screen blocks that can only be dismissed via AI-powered camera verification of hand-to-mouth intake motion. Developed the accompanying marketing site with secure license delivery, Dodo Payments integration, and a private purchase recovery portal.",
     role: "developer",
@@ -202,6 +226,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "sahar studios",
+    tagline: "A liquid, cinematic landing page for a creative studio.",
     description:
       "Built a bold, liquid-style creative studio landing experience with cinematic motion, immersive scroll interactions, and polished social preview metadata for high-impact sharing.",
     role: "developer",
@@ -222,6 +247,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "veilverse",
+    tagline: "A shimmering site for a digital fashion house.",
     description:
       "Built an ethereal digital fashion house experience with shimmering textures, minimalist layout, and fluid navigation to showcase high-end virtual couture.",
     role: "designer and developer",
@@ -235,6 +261,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "studio peau",
+    tagline: "A soft landing page for a skincare studio.",
     description:
       "Designed and developed a premium skincare creative studio landing page with organic shapes, soft color palettes, and polished interactions for a boutique brand feel.",
     role: "designer and developer",
@@ -248,6 +275,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "arbipic",
+    tagline: "Proves a photo is real, with its proof recorded on Arbitrum.",
     description:
       "Built an on-chain photo authenticity tool against AI-generated fakes. A photo is captured from the webcam, hashed and stored on IPFS, and its proof is recorded on Arbitrum by Rust contracts on Stylus, so anyone can later check whether an image matches the recorded proof.",
     role: "developer",
@@ -267,6 +295,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "neverpay",
+    tagline: "Spend the yield on your USDC and keep the principal.",
     description:
       "Built a DeFi-powered platform where users deposit USDC to earn yield from Aave V3 and convert it into platform credits for a native marketplace. Users retain full control of their principal and can withdraw it anytime, while the platform applies a 5% margin to generated yield. Implemented YieldVault smart contracts on Base to automate yield accrual and credit conversion, added LI.FI cross-chain deposit bridging, RainbowKit wallet integration, and secure Gemini API-backed routes.",
     role: "developer",
@@ -290,6 +319,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "clawpay",
+    tagline: "Lets AI agents pay on card websites with single-use virtual cards.",
     description:
       "Created a secure payment layer that lets AI agents make purchases on Visa/Mastercard websites using single-use virtual cards funded by USDC in on-chain escrow on Arbitrum. This removed personal card exposure while enabling pay-as-you-go agent spending under strict limits. Designed Solidity escrow contracts, a FastAPI backend integrated with Lithic for exact spend-limit virtual cards, and MCP server tooling for seamless Claude/OpenClaw agent workflows using ethers.js.",
     role: "developer",
@@ -312,6 +342,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "campayyn",
+    tagline: "Brands fund creator campaigns that earn yield while they run.",
     description:
       "Built an influencer-marketing campaign platform where brands fund creator campaigns in tokens, campaign budgets can earn staking yield while live, and payouts are distributed transparently by performance.",
     role: "developer",
@@ -333,6 +364,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "taas",
+    tagline: "Rental deposits locked in a contract on TON, with no middleman.",
     description:
       "Created a decentralized escrow platform for rental agreements on TON that lets landlords and tenants transact without intermediaries by locking security deposits into smart contracts with automated fund handling. Deposits were held in escrow and deployed for yield generation (~5% APY) during the rental period, then returned to tenants while generated yield was transferred to landlords. Implemented TON escrow smart contracts for agreement enforcement, deposit management, yield allocation, and automated settlement.",
     role: "blockchain developer",
@@ -347,6 +379,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "somany",
+    tagline: "Gathers tokens scattered across chains into one, with a single signature.",
     description:
       "a token aggregator that teleports cross chain fragmented tokens of the user to a single destination in one signature of the user's intent using batch transfer instead of multiple transactions",
     role: "blockchain developer",
@@ -361,6 +394,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "hyperswipe",
+    tagline: "Swipe right to buy and left to sell on Hyperliquid's testnet.",
     description:
       "Built a mobile-first Hyperliquid testnet trading app where users can swipe right to buy and swipe left to sell, with live price data, wallet positions, and real-time market updates.",
     role: "developer",
@@ -383,6 +417,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "catch goofy",
+    tagline: "A bird crash game with betting.",
     description:
       "a fun bird crash game, with high‑stakes betting and adrenaline‑charged experience.",
     role: "developer",
@@ -396,6 +431,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "concept bridge",
+    tagline: "Turns hard topics into knowledge graphs you can explore.",
     description:
       "it's a Web3 learning platform that uses AI and blockchain to turn complex topics into interactive knowledge graphs, offering a gamified, visual, and rewarding learning experience.",
     role: "creator and developer",
@@ -417,6 +453,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "vibe",
+    tagline: "Quiz games made from PDFs, videos and web pages, with crypto rewards.",
     description:
       "Constructed an AI-powered educational gaming platform that generates time-constrained quizzes and fact-checking games from PDFs, text prompts, YouTube links, and web pages using AWS Bedrock LLM APIs. Added a reward system where creators deposit a budget via crypto wallet, dynamically calculated from question count, participants, and score rewards, enabling transparent automated prize distribution. Used Redis caching, rate limiting, and clustering to reduce latency and improve scalability, while Somnia blockchain smart contracts handled game generation, scoring, and rewards.",
     role: "developer",
@@ -440,6 +477,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: "air",
+    tagline: "A real-time chat app with AI reply suggestions.",
     description:
       "Constructed a real-time chat application using Google Gemini API for AI-powered message suggestions, image descriptions, and sentiment analysis.",
     role: "developer",
@@ -499,4 +537,30 @@ export function sortProjects<T extends ProjectEntry>(projectList: T[]) {
 
 export function getProjectBySlug(slug: string): ProjectEntry | null {
   return projects.find((project) => getProjectSlug(project) === slug) ?? null
+}
+
+// How each project writes its own name.
+const displayNames: Record<string, string> = {
+  heyterm: "HeyTerm",
+  saveposts: "SavePosts",
+  calchub: "CalcHub",
+  bookboy: "BookBoy",
+  spritelab: "SpriteLab",
+  takemeds: "TakeMeds",
+  arbipic: "ArbiPic",
+  neverpay: "NeverPay",
+  clawpay: "ClawPay",
+  hyperswipe: "HyperSwipe",
+  taas: "TaaS",
+  air: "AIr",
+  vibe: "VIBE",
+}
+
+export function projectName(title: string) {
+  return displayNames[title] ?? title.replace(/(^|\s)(\S)/g, (_, space, char) => space + char.toUpperCase())
+}
+
+export function projectYear(project: Pick<ProjectEntry, "period">) {
+  const match = project.period.match(/\d{4}/)
+  return match ? match[0] : ""
 }
