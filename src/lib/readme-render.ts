@@ -37,9 +37,12 @@ type RepoApiResponse = {
 const DEFAULT_BRANCH = "main"
 const ABSOLUTE_URL_PATTERN = /^[a-zA-Z][a-zA-Z\d+\-.]*:/
 
-const DEFAULT_HEADERS = {
+// Without a token GitHub allows 60 calls an hour per address, and every project page makes two.
+// Set GITHUB_TOKEN (a fine-grained token with no extra permissions is enough) to lift that to 5,000.
+const DEFAULT_HEADERS: Record<string, string> = {
   Accept: "application/vnd.github+json",
-  "User-Agent": "nexxel.dev",
+  "User-Agent": "adilhusain.dev",
+  ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
 }
 
 const allowedIframeHosts = new Set([
@@ -66,9 +69,27 @@ function parseRepoInfo(githubUrl: string): RepoInfo | null {
   }
 }
 
-// The site uses no emoji, so README headings like "🚀 Getting started" lose the pictograph and its trailing space.
-function stripEmoji(text: string) {
-  return text.replace(/(?![\u00A9\u00AE\u2122])(?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:\uFE0F|\u200D|\p{Extended_Pictographic}|\p{Emoji_Modifier})*[ \t]?/gu, "")
+// The site uses no emoji, so decorative ones go: at the start of a heading, list item or table cell,
+// and at the end of a line. Emoji in the middle of a sentence carry meaning ("3 ➡️ 6", "Click ✂️") and stay,
+// and nothing inside a code fence is touched.
+const EMOJI = String.raw`(?:(?![\u00A9\u00AE\u2122])(?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:\uFE0F|\u200D|\p{Extended_Pictographic}|\p{Emoji_Modifier}|\p{Regional_Indicator})*)`
+const leading = new RegExp(String.raw`^(\s*(?:#{1,6}\s+|[-*+]\s+|\d+\.\s+|>\s*|<h[1-6][^>]*>\s*)?(?:\*\*|__)?)(?:${EMOJI}\s*)+`, "u")
+const trailing = new RegExp(String.raw`[ \t]+${EMOJI}[ \t]*((?:\*\*|__)?)[ \t]*$`, "u")
+const cellStart = new RegExp(String.raw`(\|[ \t]*)(?:${EMOJI}[ \t]*)+`, "gu")
+const cellEnd = new RegExp(String.raw`[ \t]+${EMOJI}([ \t]*\|)`, "gu")
+
+export function stripEmoji(text: string) {
+  let fence = false
+  return text
+    .split("\n")
+    .map((line) => {
+      if (/^\s*(```|~~~)/.test(line)) fence = !fence
+      if (fence || /^\s*(```|~~~)/.test(line)) return line
+      let out = line.replace(leading, "$1").replace(trailing, "$1")
+      if (/^\s*\|/.test(out)) out = out.replace(cellStart, "$1").replace(cellEnd, "$1")
+      return out
+    })
+    .join("\n")
 }
 
 function decodeReadmeContent(data: ReadmeApiResponse) {

@@ -1,68 +1,46 @@
-# Adil Husain — Engineering Archive & Portfolio
+# Adil Husain, portfolio
 
-A high-performance, fun-first interactive portfolio built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**. This site serves as a cinematic archive of my engineering journey, featuring a blend of technical precision and creative motion design.
+The source of [adilhusain.dev](https://adilhusain.dev): my work, projects, hackathon prizes, writing and photos, on a cream page that is meant to feel lived in.
 
-[adilhusain.dev](https://adilhusain.dev)
+The home page opens on a full-height photo of me on a beach. The people in it carry the boxes a person detector drew around them, and a button hides those boxes. Below it sit my work history, projects, every hackathon prize with photos from the day, a camera roll you can drag around, writing, and the tools I use as logos that open each tool's site. Project pages pull their README from GitHub and render it with diagrams, maths and highlighted code.
 
-## ✨ Core Experience Features
+## Stack
 
-- **Interactive ASCII Mascot**: A motion-based ASCII cat that exhibits various emotions and searches for interaction as you navigate.
-- **Physics-driven UI**: 
-  - **Magnetic Links**: Interactive elements that pull towards the cursor using physics-based attraction.
-  - **Jelly Scrolling**: A custom "jelly" elastic scroll effect that makes page transitions feel fluid and tactile.
-  - **Click Sparks**: Dynamic particle effects that respond to every interaction.
-- **Cinematic Design Works**: A curated `/design` showcase featuring liquid-style creative studio experiences with GSAP-powered cinematic motion.
-- **Engineering Archive**: A Markdown-driven system that automatically fetches and renders project READMEs from GitHub, supporting:
-  - **Mermaid Diagrams**: Visualizing system architecture directly in the browser.
-  - **Math Equations**: LaTeX support via KaTeX for technical documentation.
-  - **Syntax Highlighting**: Beautiful code blocks powered by Shiki.
-- **Real-time Technical Details**:
-  - **Scroll Minimap**: A live preview of your position on the page.
-  - **Spatial Sound**: Subtle, click-based audio feedback for a tactile browsing experience.
-  - **AFK Detection**: Smart tab behavior that changes state when you're away.
+Next.js 16 (app router) with React 19 and TypeScript, Tailwind CSS 3 for every style, Framer Motion for the camera roll, MDX for posts, Shiki for code, Mermaid for diagrams and KaTeX for maths. Tool logos are copied from Simple Icons (CC0) into `src/components/home/logos.ts`. Do not import the `simple-icons` package itself: its entry file is one 5 MB module, and it held the dev server at 600% CPU.
 
-## 🛠️ Technology Stack
+## Getting started
 
-- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
-- **Styling**: [Tailwind CSS v3/v4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/), [Lenis](https://github.com/darkroomengineering/lenis)
-- **Physics**: [Matter.js](https://brm.io/matter-js/)
-- **Data & Content**: [MDX](https://mdxjs.com/), [Supabase](https://supabase.com/), [Upstash Redis](https://upstash.com/)
-- **Visuals**: Three.js (for 3D design works), Canvas API, ASCII Art
-- **Icons**: [Lucide React](https://lucide.dev/), Custom Shadowed Pixel Art
-
-## 🚀 Getting Started
-
-First, install the dependencies:
+You need Node.js 20 or later. Nothing else is required. Project pages fetch their README from GitHub, which allows 60 anonymous calls an hour, so for heavy local testing or on the live site you can set `GITHUB_TOKEN` (see `.env.example`) to raise that to 5,000.
 
 ```bash
+git clone git@github.com:adilhusain01/portfolio.git
+cd portfolio
 npm install
-# or
-bun install
+npm run dev
 ```
 
-Then, run the development server:
+Then open http://localhost:3000.
+
+Type errors do not stop `next build` (`typescript.ignoreBuildErrors` is on), so check them yourself before you push:
 
 ```bash
-npm run dev
-# or
-bun dev
+npx tsc --noEmit
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-## 📁 Project Structure
+- `src/app/`: the pages. `page.tsx` is the home page; `projects`, `achievements` (the hackathons), `blog`, `system-design`, `gallery` and `resume` hold the rest. `og/` draws the share cards.
+- `src/components/home/`: the hero, camera roll, tool logos and other home page pieces.
+- `src/components/site/`: the nav, footer, page header, keys, project tiles and the photo viewer shared by every page.
+- `src/lib/`: the content as data. `projects.ts`, `achievements.ts`, `work.ts`, `journey.ts` (the resume story) and `system-design.ts` are where you add or edit entries. `vision.ts` holds the detection boxes and pose points drawn over the hero photo.
+- `posts/`: blog posts in MDX.
+- `public/me/`: the hero photo, its cutout and the face used on share cards. `public/Adil_Husain_Web_Developer_Resume.pdf` is the file the Resume page offers.
 
-- `src/app/`: Next.js App Router pages and layouts.
-- `src/components/`: Reusable UI components (Magnetic, ScrambleText, ASCII elements).
-- `src/lib/`: Core logic for project fetching, README rendering, and data structures.
-- `posts/`: MDX blog content.
-- `public/`: Assets including pixel-art icons and sound effects.
+## Design
 
-## 🎨 Design Philosophy
+Colours, type and shadows come from one set of tokens in `tailwind.config.ts`: paper `#F2EBDD`, sheet `#FAF6EE`, ink `#1F1B16` and one pen blue `#2948A6`, with Young Serif for headings, Hanken Grotesk for text and Kalam for the handwritten notes. Things you can press cast a shadow; things you only read sit flat. Corners are rectangles, never pills, and motion respects reduced-motion settings.
 
-This portfolio follows a **"Engineering Meets Art"** philosophy. It prioritizes performance and technical depth while ensuring the user is "wowed" by micro-animations and physics. The aesthetic is a curated dark mode with gold (`#ff6b35`) accents, focused on high-impact sharing and cinematic storytelling.
+## Deploying
 
----
-
-Built with 🧡 by [Adil Husain](https://x.com/0xAdilHusain)
+Pushes to `main` deploy the live site, so work on a branch. Every branch push gets its own preview.

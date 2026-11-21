@@ -100,7 +100,7 @@ export function AsciiCat() {
   return (
     <div className="hidden xl:flex fixed right-3 bottom-4 flex-col items-center justify-end z-20 font-mono text-ink-2 group select-none">
       {/* Zzz Animations */}
-      <div className="absolute -top-16 -right-4 h-16 w-16 flex flex-col justify-end items-end pointer-events-none">
+      <div className="absolute -top-16 right-0 h-16 w-16 flex flex-col justify-end items-end pointer-events-none">
         {zTexts.map((z, i) => (
           <span
             key={z.id}
