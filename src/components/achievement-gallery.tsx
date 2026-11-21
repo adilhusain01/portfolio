@@ -25,6 +25,22 @@ export const tiles = [
   "",
 ]
 
+// The last few photos of a set get spans that close the grid on a full row, on a phone and on a wide screen.
+const endings: Record<number, string[]> = {
+  1: ["col-span-2 md:col-span-4 row-span-2"],
+  2: ["md:col-span-2 row-span-2", "md:col-span-2 row-span-2"],
+  3: ["col-span-2 row-span-2", "row-span-2", "row-span-2"],
+}
+
+export function tileFor(index: number, total: number) {
+  const full = total - (total % 8)
+  if (index < full) return tiles[index % 8]
+  const rest = total % 8
+  const at = index - full
+  if (rest >= 4 && at < 4) return tiles[at]
+  return endings[rest >= 4 ? rest - 4 : rest]?.[rest >= 4 ? at - 4 : at] ?? ""
+}
+
 export function AchievementGallery({ gallery, event, useTilePattern = false, limit }: Props) {
   const [open, setOpen] = useState<number | null>(null)
   const [all, setAll] = useState(false)
@@ -40,7 +56,7 @@ export function AchievementGallery({ gallery, event, useTilePattern = false, lim
         }
       >
         {shown.map((image, index) => (
-          <li key={image} className={useTilePattern ? tiles[index % tiles.length] : ""}>
+          <li key={image} className={useTilePattern ? tileFor(index, shown.length) : ""}>
             <button
               type="button"
               onClick={() => setOpen(index)}
@@ -51,7 +67,7 @@ export function AchievementGallery({ gallery, event, useTilePattern = false, lim
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={sized(image, useTilePattern && tiles[index % tiles.length].includes("col-span-2") ? 900 : 600)}
+                src={sized(image, useTilePattern && /col-span-[24]/.test(tileFor(index, shown.length)) ? 1200 : 600)}
                 alt=""
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.02]"

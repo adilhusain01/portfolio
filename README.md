@@ -2,7 +2,7 @@
 
 The source of [adilhusain.dev](https://adilhusain.dev): my work, projects, hackathon prizes, writing and photos, on a cream page that is meant to feel lived in.
 
-The home page opens on a full-height photo of me on a beach. The people in it carry the boxes a person detector drew around them, and a button hides those boxes. Below it sit my work history, projects, every hackathon prize with photos from the day, a camera roll you can drag around, writing, and the tools I use as logos that open each tool's site. Project pages pull their README from GitHub and render it with diagrams, maths and highlighted code.
+The home page opens on a full-height photo of me on a beach, with my name set behind me. Below it sit my work history, projects, every hackathon prize with photos from the day, a camera roll you can drag around, writing, and the tools I use as logos that open each tool's site. Project pages pull their README from GitHub and render it with diagrams, maths and highlighted code.
 
 ## Stack
 
@@ -33,7 +33,7 @@ npm run build
 - `src/app/`: the pages. `page.tsx` is the home page; `projects`, `achievements` (the hackathons), `blog`, `system-design`, `gallery` and `resume` hold the rest. `og/` draws the share cards.
 - `src/components/home/`: the hero, camera roll, tool logos and other home page pieces.
 - `src/components/site/`: the nav, footer, page header, keys, project tiles and the photo viewer shared by every page.
-- `src/lib/`: the content as data. `projects.ts`, `achievements.ts`, `work.ts`, `journey.ts` (the resume story) and `system-design.ts` are where you add or edit entries. `vision.ts` holds the detection boxes and pose points drawn over the hero photo.
+- `src/lib/`: the content as data. `projects.ts`, `achievements.ts`, `work.ts`, `journey.ts` (the resume story) and `system-design.ts` are where you add or edit entries. `vision.ts` holds the detection boxes and pose points drawn over the hackathon stage photo.
 - `posts/`: blog posts in MDX.
 - `public/me/`: the hero photo, its cutout and the face used on share cards. `public/Adil_Husain_Web_Developer_Resume.pdf` is the file the Resume page offers.
 

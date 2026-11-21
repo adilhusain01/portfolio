@@ -1,6 +1,6 @@
 "use client"
 
-import { tiles } from "@/components/achievement-gallery"
+import { tileFor } from "@/components/achievement-gallery"
 import Image from "next/image"
 import { useState } from "react"
 import { Lightbox } from "./lightbox"
@@ -16,7 +16,7 @@ export function PhotoGrid({ photos, label }: { photos: { src: string; name: stri
     <>
       <ul className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[210px] md:grid-cols-4">
         {photos.map((photo, index) => (
-          <li key={photo.src} className={tiles[index % tiles.length]}>
+          <li key={photo.src} className={tileFor(index, photos.length)}>
             <button
               type="button"
               onClick={() => setOpen(index)}
