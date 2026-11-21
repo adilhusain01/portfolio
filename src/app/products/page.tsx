@@ -6,7 +6,7 @@ import { ProjectTile } from "@/components/site/project-tile"
 export const metadata: Metadata = {
   title: "Apps and tools",
   description: "Small apps and browser tools by Adil Husain.",
-  openGraph: { images: [{ url: "https://adilhusain.dev/og/home?title=products" }] },
+  openGraph: { images: [{ url: "https://adilhusain.dev/og/home?title=apps%20and%20tools" }] },
 }
 
 export default function Page() {

@@ -120,7 +120,7 @@ export default function HomePage() {
       </Section>
 
       <Section id="writing" title="Writing" line="Notes from scaling Node.js and taking systems apart.">
-        <ul className="divide-y divide-rule border-b border-rule">
+        <ul className="divide-y divide-rule">
           {posts.map((post) => (
             <li key={post.href}>
               <Link href={post.href} className="group grid gap-x-6 gap-y-1 py-4 sm:grid-cols-[minmax(0,1fr)_8rem_5.5rem] sm:items-baseline">

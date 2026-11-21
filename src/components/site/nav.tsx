@@ -5,9 +5,9 @@ import { usePathname, useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 const links = [
-  { href: "/projects", label: "Projects", key: "p" },
+  { href: "/projects", label: "Projects", key: "p", also: ["/products", "/design"] },
   { href: "/achievements", label: "Hackathons", key: "a" },
-  { href: "/blog", label: "Writing", key: "b" },
+  { href: "/blog", label: "Writing", key: "b", also: ["/system-design"] },
   { href: "/resume", label: "Resume", key: "r" },
 ]
 
@@ -40,7 +40,8 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", onKey)
   }, [router])
 
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+  const under = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+  const isCurrent = (link: (typeof links)[number]) => [link.href, ...(("also" in link && link.also) || [])].some(under)
 
   return (
     <header className="gutter flex min-h-[var(--nav)] w-full flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3">
@@ -54,7 +55,7 @@ export function SiteNav() {
       </Link>
       <nav aria-label="Main" className="-mx-2 flex items-center gap-1 sm:mx-0">
         {links.map((link) => {
-          const current = isCurrent(link.href)
+          const current = isCurrent(link)
           return (
             <Link
               key={link.href}

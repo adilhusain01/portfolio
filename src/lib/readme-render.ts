@@ -66,18 +66,22 @@ function parseRepoInfo(githubUrl: string): RepoInfo | null {
   }
 }
 
+// The site uses no emoji, so README headings like "🚀 Getting started" lose the pictograph and its trailing space.
+function stripEmoji(text: string) {
+  return text.replace(/(?![\u00A9\u00AE\u2122])(?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:\uFE0F|\u200D|\p{Extended_Pictographic}|\p{Emoji_Modifier})*[ \t]?/gu, "")
+}
+
 function decodeReadmeContent(data: ReadmeApiResponse) {
   if (!data.content) {
     return null
   }
 
-  if (data.encoding === "base64") {
-    return Buffer.from(data.content.replace(/\n/g, ""), "base64").toString(
-      "utf8",
-    )
-  }
+  const text =
+    data.encoding === "base64"
+      ? Buffer.from(data.content.replace(/\n/g, ""), "base64").toString("utf8")
+      : data.content
 
-  return data.content
+  return stripEmoji(text)
 }
 
 export async function fetchReadmeFromGitHub(

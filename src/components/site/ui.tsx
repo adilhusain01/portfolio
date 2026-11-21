@@ -116,7 +116,7 @@ export function Arrow({ className = "", flip = false }: { className?: string; fl
 export function formatMonth(value: string) {
   const time = new Date(value)
   if (Number.isNaN(time.getTime())) return value
-  return time.toLocaleDateString("en-GB", { month: "short", year: "numeric" })
+  return time.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
 
 export function capitalise(value: string) {

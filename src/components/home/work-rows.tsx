@@ -8,7 +8,7 @@ export function WorkRows({ items, openFirst = false }: { items: WorkEntry[]; ope
   const [open, setOpen] = useState<number | null>(openFirst ? 0 : null)
 
   return (
-    <ul className="divide-y divide-rule border-b border-rule">
+    <ul className="divide-y divide-rule">
       {items.map((item, index) => {
         const isOpen = open === index
         const panelId = `work-${index}`
@@ -23,7 +23,7 @@ export function WorkRows({ items, openFirst = false }: { items: WorkEntry[]; ope
             >
               <span className="min-w-0">
                 <span className="text-lg font-semibold text-ink">{item.company}</span>
-                <span className="ml-2 text-[15px] text-ink-2">{item.role}</span>
+                <span className="block text-[15px] text-ink-2 sm:ml-2 sm:inline">{item.role}</span>
               </span>
               <span className="flex items-center gap-3 text-[15px] tabular-nums text-ink-3">
                 <span className="whitespace-nowrap">

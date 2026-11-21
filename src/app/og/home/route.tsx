@@ -8,6 +8,6 @@ export async function GET(request: Request) {
   return ogCard({
     title,
     line: "Product engineer in Delhi",
-    photo: new URL("/adil.jpg", request.url).toString(),
+    photo: new URL("/me/og-face.jpg", request.url).toString(),
   })
 }

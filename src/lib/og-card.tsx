@@ -14,7 +14,7 @@ async function loadGoogleFont(font: string, text: string) {
 // The share card matches the site: cream paper, ink type in Young Serif, and Adil's photo in the corner.
 export async function ogCard({ title, line, photo }: { title: string; line: string; photo: string }) {
   const display = await loadGoogleFont("Young+Serif", title)
-  const body = await loadGoogleFont("Hanken+Grotesk:wght@500", `${line}Adil Husain`)
+  const body = await loadGoogleFont("Hanken+Grotesk:wght@500", `${line}adilhusain.dev`)
 
   return new ImageResponse(
     (
@@ -32,7 +32,7 @@ export async function ogCard({ title, line, photo }: { title: string; line: stri
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ fontSize: 28, color: "#4E463A" }}>Adil Husain</span>
+          <span style={{ fontSize: 28, color: "#4E463A" }}>adilhusain.dev</span>
           <img src={photo} width={96} height={96} style={{ borderRadius: 18, objectFit: "cover", border: "6px solid #FAF6EE" }} />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

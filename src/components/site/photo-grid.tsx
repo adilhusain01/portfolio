@@ -1,19 +1,10 @@
 "use client"
 
+import { tiles } from "@/components/achievement-gallery"
 import Image from "next/image"
 import { useState } from "react"
 import { Lightbox } from "./lightbox"
 
-const tiles = [
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
-  "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1",
-]
 
 // The originals are phone photos of several megabytes, so both the grid and the viewer ask Next for resized copies.
 const large = (src: string) => `/_next/image?url=${encodeURIComponent(src)}&w=1920&q=80`
@@ -23,7 +14,7 @@ export function PhotoGrid({ photos, label }: { photos: { src: string; name: stri
 
   return (
     <>
-      <ul className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[210px] md:grid-cols-4 xl:grid-cols-6">
+      <ul className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[210px] md:grid-cols-4">
         {photos.map((photo, index) => (
           <li key={photo.src} className={tiles[index % tiles.length]}>
             <button

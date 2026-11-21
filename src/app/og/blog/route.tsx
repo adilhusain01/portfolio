@@ -5,6 +5,6 @@ export async function GET(request: Request) {
   return ogCard({
     title: params.get("title") ?? "Writing",
     line: params.get("top") ?? "Writing by Adil Husain",
-    photo: new URL("/adil.jpg", request.url).toString(),
+    photo: new URL("/me/og-face.jpg", request.url).toString(),
   })
 }

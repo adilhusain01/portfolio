@@ -19,7 +19,7 @@ function TerminalWindow({ children, title = "zsh" }: { children: React.ReactNode
         <span className="flex-1 text-center font-mono text-[12px] text-paper/60">{title}</span>
         <span className="w-[42px]" aria-hidden="true" />
       </div>
-      <div className="overflow-x-auto p-4 font-mono text-[13.5px] leading-relaxed text-paper/90 [&_code]:!p-0 [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0">
+      <div className="overflow-x-auto whitespace-pre-line p-4 font-mono text-[13.5px] leading-relaxed text-paper/90 [&_code]:!p-0 [&_p+p]:mt-3 [&_p]:m-0 [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0">
         {children}
       </div>
     </div>
@@ -37,7 +37,7 @@ function CodeGroupItem({ title, children, isOptimized = false }: { title: string
         <span>{title}</span>
         {isOptimized ? <span className="rounded-[4px] bg-pen px-1.5 py-0.5 text-[11px] text-sheet">Faster</span> : null}
       </div>
-      <div className="flex-1 overflow-auto p-4 text-[13.5px] [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0">{children}</div>
+      <div className="flex-1 overflow-auto text-[13.5px] [&_.code-block]:!m-0 [&_.code-block]:!rounded-none [&_.code-head]:hidden [&_pre]:!m-0 [&_pre]:!bg-transparent">{children}</div>
     </div>
   )
 }
@@ -146,8 +146,11 @@ async function Pre({
     })
 
     return (
-      <div className="not-prose group relative mb-5 mt-6 overflow-hidden rounded-xl bg-ink">
-        <CopyButton text={rawCode} />
+      <div className="code-block not-prose mb-5 mt-6 overflow-hidden rounded-xl bg-ink">
+        <div className="code-head flex items-center justify-between gap-3 border-b border-paper/10 py-1.5 pl-4 pr-1.5">
+          <span className="font-mono text-[12px] text-paper/55">{lang}</span>
+          <CopyButton text={rawCode} />
+        </div>
         <div
           dangerouslySetInnerHTML={{ __html: html }}
           className="overflow-x-auto text-[13.5px] leading-relaxed [&>pre]:!m-0 [&>pre]:!rounded-none [&>pre]:!bg-transparent [&>pre]:p-5"

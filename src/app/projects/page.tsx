@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 const groups = [
-  { id: "builds", title: "Projects", line: "Bigger builds, from products to hackathon entries.", category: "project" },
+  { id: "builds", title: "Builds", line: "Bigger builds, from products to hackathon entries.", category: "project" },
   { id: "tools", title: "Apps and tools", line: "Small apps and tools that each do one job.", category: "tool" },
   { id: "design", title: "Design", line: "Sites where the look was the brief.", category: "design" },
 ] as const

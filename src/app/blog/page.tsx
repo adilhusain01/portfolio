@@ -3,7 +3,6 @@ import Link from "next/link"
 import { getPosts } from "@/lib/blog"
 import { systemDesign } from "@/lib/system-design"
 import { PageHead, formatMonth } from "@/components/site/ui"
-import { sentence } from "@/lib/projects"
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const entries = getPosts()
     .map((post) => ({ title: post.metadata.title, line: post.metadata.description, date: post.metadata.date, href: `/blog/${post.slug}`, kind: "Post" }))
-    .concat(systemDesign.map((entry) => ({ title: sentence(entry.title), line: entry.description, date: entry.period, href: `/system-design/${entry.slug}`, kind: "System design" })))
+    .concat(systemDesign.map((entry) => ({ title: entry.title, line: entry.description, date: entry.period, href: `/system-design/${entry.slug}`, kind: "System design" })))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return (

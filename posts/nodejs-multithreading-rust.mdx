@@ -67,7 +67,7 @@ app.get('/heavy', async (req, res) => {
 </Step>
 
 <Step number="2" title="The Traffic Cop (Piscina Thread Pooling)">
-Instead of wild threading, we introduce a bounded, static capacity using `piscina`. It boots up a strictly limited **Pool of 8 Threads**—matching the physical CPU cores perfectly—and queues the rest in memory.
+Instead of wild threading, we introduce a bounded, static capacity using `piscina`. It boots up a strictly limited **Pool of 8 Threads**, matching the physical CPU cores perfectly, and queues the rest in memory.
 
 Here, 8 requests run, while the other 92 wait completely safely in line.
 
@@ -104,9 +104,15 @@ graph LR
 <Step number="4" title="Enterprise Event-Driven Queue (BullMQ + Redis)">
 How is operations clustering *actually* handled in Enterprise production for tasks taking anywhere from 5 seconds to 5 hours? They decouple the web application completely via **Async Queuing**.
 
-<TerminalWindow title="docker-compose.yml">
-  version: '3.8' services: redis: image: redis:6-alpine ports: - "6379:6379"
-</TerminalWindow>
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+```
 
 <Callout type="info" title="Decoupled Architecture Flow">
   <ol>

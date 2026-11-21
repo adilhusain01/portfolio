@@ -12,7 +12,7 @@ export type SystemDesignEntry = {
 export const systemDesign: SystemDesignEntry[] = [
   {
     slug: "enterprise-nodejs-scaling-aws-eks",
-    title: "enterprise node.js scaling to aws eks",
+    title: "Enterprise Node.js scaling to AWS EKS",
     description:
       "A complete guide and implementation for scaling a monolith Node.js API to AWS EKS. Includes Dockerization, Kubernetes manifests, CI/CD with GitHub Actions, and load testing.",
     role: "developer",
@@ -30,7 +30,7 @@ export const systemDesign: SystemDesignEntry[] = [
   },
   {
     slug: "high-performance-nodejs-multithreading-rust",
-    title: "high-performance node.js: multithreading & rust",
+    title: "High-performance Node.js: multithreading and Rust",
     description:
       "Architectural implementation of advanced Node.js performance patterns using Worker Threads, Clusters, and Rust WebAssembly via Neon. Includes detailed benchmarks.",
     role: "developer",

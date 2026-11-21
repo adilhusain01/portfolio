@@ -50,7 +50,7 @@ const achievements: AchievementEntry[] = [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619438/14_gxmzcz.jpg",
     ],
     description:
-      "Built Vibe for TRON HackaTron Season 7 — a reward-driven quiz platform with NFT-inspired visuals and gamified learning mechanics that earned a strong placement in the artistry track.",
+      "Built Vibe for TRON HackaTron Season 7, a reward-driven quiz platform with NFT-inspired visuals and gamified learning mechanics that earned a strong placement in the artistry track.",
   },
   {
     event: "Somnia DeFi Mini Hackathon",
@@ -85,7 +85,7 @@ const achievements: AchievementEntry[] = [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619731/52_iqfbl8.jpg",
     ],
     description:
-      "Built TaaS for TOKEN2049 Origins Singapore — a trustless rental staking protocol that turns deposits into passive yield while securing both landlord and tenant interests with transparent escrow automation.",
+      "Built TaaS for TOKEN2049 Origins Singapore, a trustless rental staking protocol that turns deposits into passive yield while securing both landlord and tenant interests with transparent escrow automation.",
   },
   {
     event: "Somnia Mini Games Hackathon",
@@ -119,7 +119,7 @@ const achievements: AchievementEntry[] = [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619791/62_ljrcd6.jpg",
     ],
     description:
-      "Built Arbipic for Arbitrum APAC — an on-chain image verification and sharing experience that combined discoverability with secure tokenized user interaction.",
+      "Built Arbipic for Arbitrum APAC, an on-chain image verification and sharing experience that combined discoverability with secure tokenized user interaction.",
   },
   {
     event: "Microsoft x InnoQuest",

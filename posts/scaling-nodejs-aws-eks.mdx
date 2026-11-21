@@ -42,9 +42,10 @@ graph LR
 <Step number="2" title="Vertical Scaling (PM2)">
 To fix the single-thread limit running on one single machine (like a laptop or dedicated VM), we use <TechBadge text="PM2" />. Instead of writing complex `node:cluster` branching logic in Javascript, PM2 automatically spawns multiple instances of the exact app to map beautifully across all available physical CPU cores!
 
-<TerminalWindow title="bash">
-  $ npm install -g pm2 $ pm2 start index.js -i max
-</TerminalWindow>
+```bash
+npm install -g pm2
+pm2 start index.js -i max
+```
 
 <Callout type="warning" title="The Hardware Wall">
   PM2 handles zero-downtime restarts and distributes the load flawlessly.
@@ -99,11 +100,16 @@ The burst-load limit on those servers caused Kubernetes to lock 8 of our Pods in
 
 I rapidly destroyed the burstable workers and provisioned unthrottled, heavily-optimized AWS EC2 nodes (`c5.xlarge`):
 
-<TerminalWindow title="aws-cli">
-  # Provision the heavy-duty EC2 workers $ eksctl create nodegroup \ --cluster
-  production-node-cluster \ --region us-east-1 \ --name compute-monsters \
-  --node-type c5.xlarge \ --nodes 4 \ --managed
-</TerminalWindow>
+```bash
+# Provision the heavy-duty EC2 workers
+eksctl create nodegroup \
+  --cluster production-node-cluster \
+  --region us-east-1 \
+  --name compute-monsters \
+  --node-type c5.xlarge \
+  --nodes 4 \
+  --managed
+```
 
 ### The Results
 

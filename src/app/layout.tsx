@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Adil Husain",
     locale: "en_US",
     type: "website",
-    images: ["https://adilhusain.dev/og.png"],
+    images: [{ url: "/og/home", width: 1200, height: 630, alt: "Adil Husain, product engineer in Delhi" }],
   },
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description,
     card: "summary_large_image",
     creator: "@0xAdilHusain",
-    images: ["https://adilhusain.dev/og.png"],
+    images: [{ url: "/og/home", width: 1200, height: 630, alt: "Adil Husain, product engineer in Delhi" }],
   },
 }
 

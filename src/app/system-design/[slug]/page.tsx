@@ -1,5 +1,5 @@
 import { getSystemDesignBySlug, systemDesign } from "@/lib/system-design"
-import { sentence, techName } from "@/lib/projects"
+import { techName } from "@/lib/projects"
 import { KeyAnchor, PageHead, capitalise } from "@/components/site/ui"
 import { preserveAsciiDiagrams } from "@/lib/readme-markdown"
 import {
@@ -111,7 +111,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${sentence(entry.title)} | Writing`,
+    title: `${entry.title} | Writing`,
     description: entry.description,
   }
 }
@@ -132,7 +132,7 @@ export default async function SystemDesignDetailPage({ params }: PageProps) {
   return (
     <main className="pb-16">
       <PageHead
-        title={sentence(entry.title)}
+        title={entry.title}
         line={entry.description}
         back={{ href: "/blog", label: "All writing" }}
         meta={<span>System design, {capitalise(entry.period)}</span>}

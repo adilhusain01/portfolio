@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps) {
       url: `https://adilhusain.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://adilhusain.dev/og/blog?title=${post.metadata.title}`,
+          url: `https://adilhusain.dev/og/blog?title=${encodeURIComponent(post.metadata.title)}`,
         },
       ],
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: "summary_large_image",
       creator: "@0xAdilHusain",
       images: [
-        `https://adilhusain.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://adilhusain.dev/og/blog?title=${encodeURIComponent(post.metadata.title)}`,
       ],
     },
   }

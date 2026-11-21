@@ -598,6 +598,7 @@ export function projectCover(project: ProjectEntry) {
 
 // Technology names as their makers write them. Anything not listed just gets a capital first letter.
 const techNames: Record<string, string> = {
+  "aws eks": "AWS EKS", "github actions": "GitHub Actions", webassembly: "WebAssembly", "alphaton chain": "AlphaTON chain", "sepolia chain": "Sepolia", "somnia chain": "Somnia",
   typescript: "TypeScript", javascript: "JavaScript", mcp: "MCP", frost: "FROST", "node.js": "Node.js", "react.js": "React",
   "next.js": "Next.js", "next.js 14": "Next.js 14", "next.js 16": "Next.js 16", "tailwind css": "Tailwind CSS", "tailwind css v4": "Tailwind CSS v4",
   swiftui: "SwiftUI", appkit: "AppKit", "framer motion": "Framer Motion", "three.js": "Three.js", "canvas api": "Canvas API",

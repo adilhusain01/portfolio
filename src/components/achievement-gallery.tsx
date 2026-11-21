@@ -13,15 +13,16 @@ type Props = {
   limit?: number
 }
 
-const tiles = [
+// Eight tiles fill four rows of a four-column grid with no holes, and four rows of two on a phone.
+export const tiles = [
   "col-span-2 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
-  "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
+  "row-span-2",
+  "",
+  "",
+  "row-span-2",
   "col-span-2 row-span-2",
-  "col-span-1 row-span-1",
+  "",
+  "",
 ]
 
 export function AchievementGallery({ gallery, event, useTilePattern = false, limit }: Props) {
@@ -50,7 +51,7 @@ export function AchievementGallery({ gallery, event, useTilePattern = false, lim
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={sized(image, useTilePattern && index % 8 === 0 ? 900 : 600)}
+                src={sized(image, useTilePattern && tiles[index % tiles.length].includes("col-span-2") ? 900 : 600)}
                 alt=""
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.02]"
