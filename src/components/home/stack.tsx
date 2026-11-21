@@ -24,13 +24,13 @@ import {
   siTanstack,
   siTypescript,
   siZcash,
-  type SimpleIcon,
-} from "simple-icons"
+} from "./logos"
 import { awsPath } from "./aws-path"
+import type { Logo } from "./logos"
 
 // The same list as the old site and the CV, drawn as logos. Brand logos come from Simple Icons (CC0).
 // SQL and computer vision have no brand, so they get a plain drawn mark in the same weight.
-type Tool = { name: string; href: string; icon?: SimpleIcon; path?: string; stroke?: string }
+type Tool = { name: string; href: string; icon?: Logo; path?: string; stroke?: string }
 
 const SQL_MARK = "M5 6c0-1.66 3.13-3 7-3s7 1.34 7 3-3.13 3-7 3-7-1.34-7-3Zm0 0v12c0 1.66 3.13 3 7 3s7-1.34 7-3V6M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"
 const VISION_MARK = "M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3M9 9.5h6v6H9z"

@@ -30,7 +30,6 @@
     "remark-github-blockquote-alert": "^2.1.0",
     "remark-math": "^6.0.0",
     "shiki": "^1.22.2",
-    "simple-icons": "^16.38.0",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
