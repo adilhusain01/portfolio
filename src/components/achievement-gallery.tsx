@@ -1,171 +1,74 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
-import { createPortal } from "react-dom"
-import { ArrowLeft, ArrowRight, X } from "lucide-react"
+import { useState } from "react"
+import { Lightbox } from "@/components/site/lightbox"
+import { sized } from "@/lib/cloudinary"
 
-type AchievementGalleryProps = {
+type Props = {
   gallery: string[]
   event: string
+  // The resume's journey uses a denser grid with a few large tiles.
   useTilePattern?: boolean
+  // Long sets show this many first, with a key to open the rest. Nothing is dropped.
+  limit?: number
 }
 
-export function AchievementGallery({
-  gallery,
-  event,
-  useTilePattern = false,
-}: AchievementGalleryProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [activeIndex, setActiveIndex] = useState(0)
+const tiles = [
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1",
+]
 
-  const openViewer = useCallback((index: number) => {
-    setActiveIndex(index)
-    setIsOpen(true)
-  }, [])
-
-  const closeViewer = useCallback(() => {
-    setIsOpen(false)
-  }, [])
-
-  const showPrevious = useCallback(() => {
-    setActiveIndex((current) => (current - 1 + gallery.length) % gallery.length)
-  }, [gallery.length])
-
-  const showNext = useCallback(() => {
-    setActiveIndex((current) => (current + 1) % gallery.length)
-  }, [gallery.length])
-
-  const getSpan = (index: number) => {
-    const patterns = [
-      "md:col-span-2 md:row-span-2 col-span-2 row-span-2",
-      "md:col-span-1 md:row-span-2 col-span-1 row-span-2",
-      "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
-      "md:col-span-2 md:row-span-1 col-span-2 row-span-1",
-      "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
-      "md:col-span-1 md:row-span-2 col-span-1 row-span-2",
-      "md:col-span-2 md:row-span-2 col-span-2 row-span-2",
-      "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
-    ]
-    return patterns[index % patterns.length]
-  }
-
-  useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeViewer()
-      }
-
-      if (event.key === "ArrowLeft") {
-        showPrevious()
-      }
-
-      if (event.key === "ArrowRight") {
-        showNext()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [isOpen, closeViewer, showNext, showPrevious])
+export function AchievementGallery({ gallery, event, useTilePattern = false, limit }: Props) {
+  const [open, setOpen] = useState<number | null>(null)
+  const [all, setAll] = useState(false)
+  const shown = limit && !all ? gallery.slice(0, limit) : gallery
 
   return (
-    <div className="space-y-4">
-      <div
+    <>
+      <ul
         className={
           useTilePattern
-            ? "grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[200px] grid-flow-dense"
-            : "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            ? "grid grid-flow-dense auto-rows-[140px] grid-cols-2 gap-3 md:auto-rows-[190px] md:grid-cols-4"
+            : "grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3"
         }
       >
-        {gallery.map((image, index) => (
-          <button
-            key={image}
-            type="button"
-            onClick={() => openViewer(index)}
-            className={`overflow-hidden rounded-lg border border-gray-800 bg-slate-950 transition-shadow hover:shadow-[0_0_0_2px_rgba(16,185,129,0.15)] ${
-              useTilePattern ? getSpan(index) : ""
-            }`}
-          >
-            {useTilePattern ? (
-              <div className="w-full h-full">
-                <img
-                  src={image}
-                  alt={`${event} screenshot ${index + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ) : (
-              <div className="w-full" style={{ aspectRatio: "4 / 3" }}>
-                <img
-                  src={image}
-                  alt={`${event} screenshot ${index + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-          </button>
+        {shown.map((image, index) => (
+          <li key={image} className={useTilePattern ? tiles[index % tiles.length] : ""}>
+            <button
+              type="button"
+              onClick={() => setOpen(index)}
+              aria-label={`Open ${event}, photo ${index + 1}`}
+              className={`group block w-full overflow-hidden rounded-[10px] bg-tray ring-1 ring-inset ring-rule transition-transform duration-150 ease-out active:scale-[0.98] ${
+                useTilePattern ? "h-full" : "aspect-[4/3]"
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={sized(image, useTilePattern && index % 8 === 0 ? 900 : 600)}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.02]"
+              />
+            </button>
+          </li>
         ))}
-      </div>
-
-      {isOpen ? (
-        createPortal(
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-8">
-            <div className="absolute inset-0 cursor-zoom-out" onClick={closeViewer} />
-            <div className="relative w-fit max-w-[95vw] sm:max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-[#111317] shadow-2xl animate-fade-in-up">
-              <div className="flex items-center justify-between border-b border-gray-800 px-8 py-4 sm:px-10 bg-[#16181d]">
-                <div className="text-xs sm:text-sm text-gray-400 font-mono">
-                  <span className="text-accent mr-2">*</span>
-                  {event} — {activeIndex + 1}/{gallery.length}
-                </div>
-                <button
-                  type="button"
-                  onClick={closeViewer}
-                  className="inline-flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full border border-gray-800 bg-[#1e2128] text-gray-400 transition-colors hover:text-accent hover:border-accent"
-                  aria-label="Close viewer"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-
-              <div className="relative flex items-center justify-center overflow-hidden">
-                <button
-                  type="button"
-                  onClick={showPrevious}
-                  className="absolute left-6 sm:left-10 z-10 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-accent shadow-xl"
-                  aria-label="Previous image"
-                >
-                  <ArrowLeft className="h-5 w-5" />
-                </button>
-
-                <img
-                  src={gallery[activeIndex]}
-                  alt={`${event} screenshot ${activeIndex + 1}`}
-                  className="max-h-[80vh] w-auto h-auto max-w-full rounded-b-lg object-contain border-x border-b border-gray-800/50"
-                />
-
-                <button
-                  type="button"
-                  onClick={showNext}
-                  className="absolute right-6 sm:right-10 z-10 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gray-800 bg-black/60 text-gray-300 transition-colors hover:border-accent hover:text-accent shadow-xl"
-                  aria-label="Next image"
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-          </div>,
-          document.body,
-        )
+      </ul>
+      {limit && gallery.length > limit ? (
+        <button
+          type="button"
+          onClick={() => setAll((value) => !value)}
+          className="mt-4 rounded-[10px] bg-sheet px-4 py-2.5 text-[15px] font-medium text-ink shadow-key ring-1 ring-inset ring-rule transition-transform duration-150 ease-out active:scale-[0.97]"
+        >
+          {all ? "Show fewer photos" : `Show all ${gallery.length} photos`}
+        </button>
       ) : null}
-    </div>
+      {open !== null ? <Lightbox images={gallery.map((image) => sized(image, 1920))} index={open} label={event} onClose={() => setOpen(null)} onIndex={setOpen} /> : null}
+    </>
   )
 }

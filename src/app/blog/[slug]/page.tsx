@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug, getPosts } from "@/lib/blog"
 import { ProgressBar } from "./progress-bar"
-import { BackButton } from "@/components/back-button"
+import Link from "next/link"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -64,7 +64,7 @@ export default async function Post({ params }: PageProps) {
   return (
     <>
       <ProgressBar />
-      <section className="animate-fade-in-up">
+      <section>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -79,60 +79,36 @@ export default async function Post({ params }: PageProps) {
               url: `https://adilhusain.dev/blog/${post.slug}`,
               author: {
                 "@type": "Person",
-                name: "Adil husain",
+                name: "Adil Husain",
               },
             }),
           }}
         />
 
-        <div className="flex flex-col lg:flex-row gap-2 md:gap-12 relative items-start">
-          <div className="flex-1 w-full min-w-0">
-            <BackButton className="mb-6 inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-accent transition-colors" />
+        <header className="pb-10 pt-10 sm:pb-14 sm:pt-16">
+          <Link href="/blog" className="text-link mb-8 inline-block text-[15px] text-ink-2">
+            All writing
+          </Link>
+          <h1 className="max-w-[24ch] font-display text-[clamp(2.1rem,4.6vw,3.4rem)] leading-[1.08] tracking-[-0.02em] text-ink [overflow-wrap:anywhere]">
+            {post.metadata.title}
+          </h1>
+          {post.metadata.description ? <p className="mt-5 max-w-measure text-lg leading-relaxed text-ink-2">{post.metadata.description}</p> : null}
+        </header>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-              {post.metadata.title}
-            </h1>
-
-            <div className="my-6 flex flex-wrap items-center gap-4 text-xs md:text-sm text-gray-400 font-mono">
-              <span className="flex items-center">
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  ></path>
-                </svg>
-                {formatDate(post.metadata.date)}
-              </span>
-              <span className="text-gray-700">|</span>
-              <span className="flex items-center text-accent font-semibold tracking-wide">
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                {readingTimeMins} MIN READ
-              </span>
+        <div className="grid gap-8 border-t border-rule pt-10 lg:grid-cols-[minmax(13rem,22%)_minmax(0,1fr)] lg:gap-14 lg:pt-14">
+          <dl className="flex gap-8 text-[15px] lg:sticky lg:top-10 lg:flex-col lg:gap-4 lg:self-start">
+            <div>
+              <dt className="text-ink-3">Published</dt>
+              <dd className="text-ink">{formatDate(post.metadata.date)}</dd>
             </div>
-
-            <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:text-accent hover:prose-a:underline prose-pre:border prose-pre:border-gray-800 lg:prose-h2:scroll-mt-[5rem] lg:prose-h3:scroll-mt-[5rem]">
-              <MDX source={post.content} />
-            </article>
-          </div>
+            <div>
+              <dt className="text-ink-3">Reading time</dt>
+              <dd className="text-ink">{readingTimeMins} minutes</dd>
+            </div>
+          </dl>
+          <article className="prose prose-lg min-w-0 max-w-[72ch] pb-16 [overflow-wrap:anywhere] lg:prose-h2:scroll-mt-[5rem] lg:prose-h3:scroll-mt-[5rem]">
+            <MDX source={post.content} />
+          </article>
         </div>
       </section>
     </>
@@ -140,7 +116,7 @@ export default async function Post({ params }: PageProps) {
 }
 
 function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-US", {
+  return new Date(date).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",

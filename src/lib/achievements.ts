@@ -111,7 +111,8 @@ const achievements: AchievementEntry[] = [
     project: "Arbipic",
     link: "https://www.hackquest.io/hackathons/Arbitrum-APAC-Mini-Hackathon",
     date: "january 2026",
-    image: "https://assets.hackquest.io/hackathons/Okk6ISYxL77bLYAqPu6C6.png",
+    // The organiser's banner (assets.hackquest.io) no longer loads, so the first photo from the day stands in.
+    image: "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619788/61_h6bqj7.jpg",
     gallery: [
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619788/61_h6bqj7.jpg",
       "https://res.cloudinary.com/djxuqljgr/image/upload/v1776619793/63_wepd1i.jpg",

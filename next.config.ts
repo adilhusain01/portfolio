@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "croppy.xyz" },
       { protocol: "https", hostname: "res.cloudinary.com", pathname: "/djxuqljgr/**" },
       { protocol: "https", hostname: "raw.githubusercontent.com", pathname: "/adilhusain01/**" },
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
     ],
   },
 }

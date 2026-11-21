@@ -1,45 +1,26 @@
-import { ScrambleText } from "@/components/scramble-text"
-import { ToolCard } from "@/components/tool-card"
-import { Metadata } from "next"
-import { getProjectSlug, projects, sortProjects } from "@/lib/projects"
+import type { Metadata } from "next"
+import { byNewest, projects } from "@/lib/projects"
+import { PageHead } from "@/components/site/ui"
+import { ProjectTile } from "@/components/site/project-tile"
 
 export const metadata: Metadata = {
-  title: "Products",
-  description: "Focused, high-performance browser tools and products designed to solve specific problems.",
-  openGraph: {
-    images: [
-      {
-        url: "https://adilhusain.dev/og/home?title=products",
-      },
-    ],
-  },
+  title: "Apps and tools",
+  description: "Small apps and browser tools by Adil Husain.",
+  openGraph: { images: [{ url: "https://adilhusain.dev/og/home?title=products" }] },
 }
 
-export default function ProductsPage() {
-  const sortedProjects = sortProjects(projects)
-  const products = sortedProjects.filter(p => p.category === "tool")
-
+export default function Page() {
+  const list = byNewest(projects.filter((p) => p.category === "tool"))
   return (
-    <main className="animate-fade-in-up">
-      <div className="flex flex-col mb-10 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8">
-          <span className="text-accent mr-2">*</span>
-          <ScrambleText text="products" />
-        </h1>
-        <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-2xl">
-          A collection of focused, high-performance browser tools and standalone products I've built to solve specific technical challenges.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        {products.map((product) => (
-          <ToolCard
-            key={getProjectSlug(product)}
-            {...product}
-            detailHref={`/projects/${getProjectSlug(product)}`}
-          />
+    <main className="pb-16">
+      <PageHead title="Apps and tools" line="Small apps and tools that each do one job." back={{ href: "/projects", label: "All projects" }} />
+      <ul className="grid gap-x-8 gap-y-12 border-t border-rule pt-14 sm:grid-cols-2 xl:grid-cols-3">
+        {list.map((project) => (
+          <li key={project.title}>
+            <ProjectTile project={project} />
+          </li>
         ))}
-      </div>
+      </ul>
     </main>
   )
 }

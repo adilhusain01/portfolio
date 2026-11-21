@@ -1,6 +1,7 @@
-import { getProjectBySlug, getProjectSlug, projects } from "@/lib/projects"
+import Image from "next/image"
+import { getProjectBySlug, getProjectSlug, projectCover, projectName, projects, sentence, techName } from "@/lib/projects"
+import { KeyAnchor, PageHead, capitalise } from "@/components/site/ui"
 import { preserveAsciiDiagrams } from "@/lib/readme-markdown"
-import { BackButton } from "@/components/back-button"
 import {
   fetchReadmeFromGitHub,
   getSafeIframeSrc,
@@ -14,7 +15,6 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import type { Components } from "react-markdown"
-import { ExternalLink } from "lucide-react"
 import { Children, isValidElement, type ComponentPropsWithoutRef } from "react"
 import { ImageModal } from "@/components/image-modal"
 
@@ -87,8 +87,7 @@ function createMarkdownComponents(context: RepoReadmeContext): Components {
           href={resolvedHref}
           target={!isHashLink && isExternal ? "_blank" : undefined}
           rel={!isHashLink && isExternal ? "noopener noreferrer" : undefined}
-          className="underline underline-offset-4 decoration-gray-700 hover:decoration-accent transition-colors"
-          {...props}
+                    {...props}
         />
       )
     },
@@ -99,7 +98,7 @@ function createMarkdownComponents(context: RepoReadmeContext): Components {
         <ImageModal
           src={resolvedSrc}
           alt={alt ?? "README image"}
-          className="rounded-lg border border-gray-800"
+          className="rounded-[10px] ring-1 ring-rule"
           {...props}
         />
       )
@@ -117,7 +116,7 @@ function createMarkdownComponents(context: RepoReadmeContext): Components {
         <iframe
           src={safeSrc}
           title={title ?? "Embedded content"}
-          className="w-full min-h-[360px] rounded-lg border border-gray-800 bg-black"
+          className="min-h-[360px] w-full rounded-[10px] bg-tray ring-1 ring-rule"
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
           sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
@@ -144,8 +143,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} | Projects`,
-    description: project.description,
+    title: `${projectName(project.title)} | Projects`,
+    description: project.tagline,
   }
 }
 
@@ -165,132 +164,121 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     ? preserveAsciiDiagrams(readmeData.content)
     : null
 
+  const name = projectName(project.title)
+  const cover = projectCover(project)
+
   return (
-    <main className="animate-fade-in-up">
-      <div className="mb-6 flex items-center justify-between gap-3">
-        <BackButton className="inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-accent transition-colors" />
+    <main className="pb-16">
+      <PageHead
+        title={name}
+        line={project.tagline}
+        back={{ href: "/projects", label: "All projects" }}
+        meta={
+          <>
+            <span>{capitalise(project.period)}</span>
+            <span>{capitalise(project.role)}</span>
+          </>
+        }
+        actions={
+          <>
+            {project.href ? (
+              <KeyAnchor href={project.href} target="_blank" rel="noopener noreferrer" variant="ink">
+                Open it
+              </KeyAnchor>
+            ) : null}
+            {project.github ? (
+              <KeyAnchor href={project.github} target="_blank" rel="noopener noreferrer">
+                Code
+              </KeyAnchor>
+            ) : null}
+            {project.video && !videoEmbedUrl ? (
+              <KeyAnchor href={project.video} target="_blank" rel="noopener noreferrer">
+                Watch the demo
+              </KeyAnchor>
+            ) : null}
+          </>
+        }
+      />
 
-        <header className="flex items-center gap-2 text-[11px] sm:text-sm font-mono text-gray-500 shrink-0">
-          <span>{project.period}</span>
-
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Open repository"
-              aria-label="Open repository on GitHub"
-              className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
-            >
-              <img src="/gh-shadowed.png" alt="GitHub" className="h-5 w-5 object-contain" />
-            </a>
-          )}
-
-          {project.href && (
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Open live project"
-              aria-label="Open live project"
-              className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
-            >
-              <img src="/globe-shadowed.png" alt="Website" className="h-5 w-5 object-contain" />
-            </a>
-          )}
-
-          {project.video && (
-            <a
-              href={project.video}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Watch video demo"
-              aria-label="Watch video demo"
-              className="inline-flex items-center justify-center rounded-md border border-gray-800 p-1.5 text-gray-400 hover:text-accent hover:border-gray-700 transition-colors"
-            >
-              <img src="/yt-shadowed.png" alt="Video Demo" className="h-5 w-5 object-contain" />
-            </a>
-          )}
-        </header>
+      <div className="overflow-hidden rounded-2xl bg-tray ring-1 ring-inset ring-rule">
+        {videoEmbedUrl ? (
+          <iframe
+            src={videoEmbedUrl}
+            title={`${name} demo video`}
+            className="aspect-video h-auto w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        ) : cover ? (
+          <div className="relative aspect-[1200/630]">
+            <Image src={cover} alt={`${name} preview`} fill priority sizes="(min-width: 1280px) 85vw, 100vw" className="object-cover" />
+          </div>
+        ) : null}
       </div>
 
-      {project.video && (
-        <section className="mb-8">
-          {videoEmbedUrl ? (
-            <div
-              className="w-full overflow-hidden rounded-lg border border-gray-800 bg-black"
-              style={{ aspectRatio: "16 / 9" }}
-            >
-              <iframe
-                src={videoEmbedUrl}
-                title={`${project.title} video demo`}
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          ) : (
-            <a
-              href={project.video}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-mono text-gray-300 hover:text-accent transition-colors"
-            >
-              watch video demo
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          )}
-        </section>
-      )}
-
-      {project.embedding && project.embedding.length > 0 && (
-        <section className="mb-8">
-          <div className="space-y-4">
-            {project.embedding.map((embed, index) => (
-              <div key={index} dangerouslySetInnerHTML={{ __html: embed }} />
+      <section className="grid gap-8 border-b border-rule py-12 sm:py-16 lg:grid-cols-[minmax(13rem,22%)_minmax(0,1fr)] lg:gap-14">
+        <div className="lg:order-2">
+          <h2 className="sr-only">About {name}</h2>
+          <p className="max-w-measure text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{project.description}</p>
+          {project.achievements.length > 0 ? (
+            <ul className="mt-8 space-y-2">
+              {project.achievements.map((item) => (
+                <li key={item} className="flex gap-3 text-[15px] text-ink">
+                  <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-pen" />
+                  {sentence(item)}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+        <div className="lg:order-1">
+          <h2 className="text-[15px] text-ink-3">Built with</h2>
+          <ul className="mt-3 divide-y divide-rule border-y border-rule">
+            {project.technologies.map((tech) => (
+              <li key={tech} className="py-2.5 text-[15px] text-ink">
+                {techName(tech)}
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+      </section>
+
+      {project.embedding && project.embedding.length > 0 ? (
+        <section className="space-y-4 pt-12">
+          {project.embedding.map((embed, index) => (
+            <div key={index} dangerouslySetInnerHTML={{ __html: embed }} />
+          ))}
         </section>
-      )}
+      ) : null}
 
       {readmeForRender ? (
-        <article className="prose prose-invert max-w-none [overflow-wrap:anywhere] prose-headings:text-white prose-a:text-white hover:prose-a:text-accent hover:prose-a:underline prose-pre:border prose-pre:border-gray-800">
-          <ReactMarkdown
-            remarkPlugins={README_REMARK_PLUGINS as any}
-            rehypePlugins={README_REHYPE_PLUGINS as any}
-            components={
-              readmeData ? createMarkdownComponents(readmeData.context) : {}
-            }
-          >
-            {readmeForRender}
-          </ReactMarkdown>
-        </article>
-      ) : (
-        <section className="rounded-lg border border-gray-800 bg-gray-900/30 p-5 sm:p-6">
-          {project.github ? (
-            <>
-              <p className="text-gray-300 mb-4">
-                Could not fetch the README right now. You can open it directly
-                on GitHub.
-              </p>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-mono text-gray-300 hover:text-accent transition-colors"
-              >
-                open on github
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </>
-          ) : (
-            <p className="text-gray-300">
-              No repository is linked for this project.
-            </p>
-          )}
+        <section aria-labelledby="readme-title" className="grid gap-8 pt-12 sm:pt-16 lg:grid-cols-[minmax(13rem,22%)_minmax(0,1fr)] lg:gap-14">
+          <div className="lg:sticky lg:top-10 lg:self-start">
+            <h2 id="readme-title" className="font-display text-[1.75rem] leading-tight text-ink">
+              README
+            </h2>
+            <p className="mt-2 text-[15px] text-ink-3">Straight from the repository.</p>
+          </div>
+          <article className="prose min-w-0 max-w-[75ch] [overflow-wrap:anywhere]">
+            <ReactMarkdown
+              remarkPlugins={README_REMARK_PLUGINS as any}
+              rehypePlugins={README_REHYPE_PLUGINS as any}
+              components={readmeData ? createMarkdownComponents(readmeData.context) : {}}
+            >
+              {readmeForRender}
+            </ReactMarkdown>
+          </article>
         </section>
-      )}
+      ) : project.github ? (
+        <p className="pt-12 text-[15px] text-ink-2">
+          The README did not load just now.{" "}
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-link text-ink">
+            Read it on GitHub
+          </a>
+          .
+        </p>
+      ) : null}
     </main>
   )
 }

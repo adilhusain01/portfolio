@@ -1,80 +1,52 @@
-import { ScrambleText } from "@/components/scramble-text"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { getAchievementSlug, getAllAchievements } from "@/lib/achievements"
+import { getAchievementSlug, getAchievementsByDate } from "@/lib/achievements"
+import { PageHead, formatMonth } from "@/components/site/ui"
 
 export const metadata: Metadata = {
-  title: "Achievements",
-  description: "Hackathons and technical achievements.",
-  openGraph: {
-    images: [
-      {
-        url: "https://adilhusain.dev/og/home?title=achievements",
-      },
-    ],
-  },
+  title: "Hackathons",
+  description: "Every hackathon prize Adil Husain has won, newest first, with photos from each one.",
+  openGraph: { images: [{ url: "https://adilhusain.dev/og/home?title=hackathons" }] },
 }
 
-const achievements = getAllAchievements()
-
 export default function AchievementsPage() {
+  const wins = getAchievementsByDate()
   return (
-    <main className="animate-fade-in-up">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">
-        <span className="text-accent mr-2">*</span>
-        <ScrambleText text="achievements" />
-      </h1>
-
-      <p className="text-sm sm:text-base text-gray-400 mb-10 sm:mb-12 leading-relaxed tracking-wide">
-        Some of my little achievements which means alot to me.
-      </p>
-
-      <div className="space-y-6">
-        {achievements.map((item) => (
-          <div
-            key={getAchievementSlug(item)}
-            className="group border border-gray-800 transition-colors hover:border-accent/50 flex flex-col overflow-hidden"
-          >
-            {item.image && (
-              <div className="w-full overflow-hidden border-b border-gray-800 group-hover:border-accent/50 transition-colors">
-                <div className="w-full" style={{ aspectRatio: "1200 / 630" }}>
+    <main className="pb-16">
+      <PageHead title="Hackathons" line="Every prize so far, newest first. Each one opens to what I built and photos from the day." />
+      <ul className="divide-y divide-rule border-y border-rule">
+        {wins.map((win) => (
+          <li key={win.event}>
+            <Link
+              href={`/achievements/${getAchievementSlug(win)}`}
+              className="group grid items-center gap-x-8 gap-y-4 py-6 sm:grid-cols-[13rem_minmax(0,1fr)] lg:grid-cols-[16rem_minmax(0,1fr)_auto]"
+            >
+              <span className="relative block aspect-[1200/630] overflow-hidden rounded-[10px] bg-tray ring-1 ring-inset ring-rule">
+                {win.image ? (
+                  // Event banners live on each organiser's own site.
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={item.image}
-                    alt={item.event}
+                    src={win.image}
+                    alt=""
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    className="h-full w-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.02]"
                   />
-                </div>
-              </div>
-            )}
-            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div className="flex justify-between items-start gap-2 sm:gap-4">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-lg md:text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors">
-                    {item.event}
-                  </h3>
-                  <div className="flex items-center flex-wrap gap-2">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs sm:text-sm font-semibold text-accent bg-accent/10 border border-accent/40">
-                      {item.award}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center pt-1 shrink-0">
-                <Link
-                  href={`/achievements/${getAchievementSlug(item)}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-300 bg-gray-800/60 px-3 py-2 rounded-md hover:bg-accent/15 hover:text-white transition-colors"
-                >
-                  view details
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
+                ) : null}
+              </span>
+              <span className="min-w-0">
+                <span className="block text-lg font-semibold text-ink decoration-pen underline-offset-4 [@media(hover:hover)]:group-hover:underline">
+                  {win.event}
+                </span>
+                <span className="mt-1 block text-[15px] text-ink-2">
+                  {win.result}
+                  {win.project ? <span className="text-ink-3">, with {win.project}</span> : null}
+                </span>
+              </span>
+              <span className="text-[15px] tabular-nums text-ink-3 lg:text-right">{win.date ? formatMonth(win.date) : ""}</span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </main>
   )
 }

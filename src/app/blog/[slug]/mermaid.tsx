@@ -10,9 +10,31 @@ export function Mermaid({ code }: { code: string }) {
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
-      theme: "dark",
+      // Drawn in the site's own ink and paper, with blue for the lines between boxes.
+      theme: "base",
+      themeVariables: {
+        background: "#FAF6EE",
+        primaryColor: "#FAF6EE",
+        primaryBorderColor: "#4E463A",
+        primaryTextColor: "#1F1B16",
+        secondaryColor: "#E7DECC",
+        tertiaryColor: "#F2EBDD",
+        lineColor: "#2948A6",
+        textColor: "#1F1B16",
+        mainBkg: "#FAF6EE",
+        nodeBorder: "#4E463A",
+        clusterBkg: "#F2EBDD",
+        clusterBorder: "#DDD3BF",
+        edgeLabelBackground: "#F2EBDD",
+        actorBkg: "#FAF6EE",
+        actorBorder: "#4E463A",
+        signalColor: "#2948A6",
+        noteBkgColor: "#E7DECC",
+        noteBorderColor: "#DDD3BF",
+        fontSize: "15px",
+      },
       securityLevel: "loose",
-      fontFamily: "inherit",
+      fontFamily: "var(--font-hanken), system-ui, sans-serif",
     })
 
     const renderChart = async () => {
@@ -31,7 +53,7 @@ export function Mermaid({ code }: { code: string }) {
   return (
     <div 
       ref={ref} 
-      className="my-10 flex justify-center p-6 bg-gray-900/30 border border-gray-800 rounded-xl overflow-x-auto shadow-sm"
+      className="not-prose my-10 flex justify-center overflow-x-auto rounded-xl bg-sheet p-6 ring-1 ring-inset ring-rule"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   )

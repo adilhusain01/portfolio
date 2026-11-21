@@ -1,9 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 import stagePhoto from "../../public/me/demo.webp"
 import { stage as stageShot } from "@/lib/vision"
 import { work } from "@/lib/work"
-import { getProjectBySlug, getProjectSlug, projectName, projectYear, projects, type ProjectEntry } from "@/lib/projects"
+import { getProjectBySlug, projects, type ProjectEntry } from "@/lib/projects"
 import { getAchievementSlug, getAchievementsByDate } from "@/lib/achievements"
 import { getPosts } from "@/lib/blog"
 import { systemDesign } from "@/lib/system-design"
@@ -14,6 +13,7 @@ import { WorkRows } from "@/components/home/work-rows"
 import { CameraRoll } from "@/components/home/camera-roll"
 import { Stack } from "@/components/home/stack"
 import { Note, Section, formatMonth } from "@/components/site/ui"
+import { ProjectTile } from "@/components/site/project-tile"
 
 const featured = ["ironclad", "heyterm", "peeker", "saveposts", "bookboy", "croppy"]
 
@@ -137,30 +137,5 @@ export default function HomePage() {
         <Stack />
       </Section>
     </main>
-  )
-}
-
-function ProjectTile({ project }: { project: ProjectEntry }) {
-  const slug = getProjectSlug(project)
-  return (
-    <Link href={`/projects/${slug}`} className="group block">
-      <span className="relative block aspect-[1200/630] overflow-hidden rounded-xl bg-tray ring-1 ring-inset ring-rule">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={`${projectName(project.title)} preview`}
-            fill
-            sizes="(min-width: 1280px) 26vw, (min-width: 640px) 45vw, 92vw"
-            className="object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-[1.015]"
-          />
-        ) : null}
-        <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-ink/10" />
-      </span>
-      <span className="mt-4 flex items-baseline justify-between gap-4">
-        <span className="text-lg font-semibold text-ink decoration-pen underline-offset-4 [@media(hover:hover)]:group-hover:underline">{projectName(project.title)}</span>
-        <span className="text-[15px] tabular-nums text-ink-3">{projectYear(project)}</span>
-      </span>
-      <span className="mt-1 block text-[15px] leading-relaxed text-ink-2">{project.tagline}</span>
-    </Link>
   )
 }

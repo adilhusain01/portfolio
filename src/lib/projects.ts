@@ -25,7 +25,7 @@ export const projects: ProjectEntry[] = [
     period: "november 2026",
     image: "https://ironclad.adilhusain.dev/og.png",
     href: "https://ironclad.adilhusain.dev",
-    achievements: ["won a zcash ecosystem prize at the free society hackathon"],
+    achievements: ["Won a Zcash Ecosystem Prize at the Free Society Hackathon"],
     technologies: ["rust", "typescript", "zcash", "frost", "mcp"],
     github: "https://github.com/adilhusain01/ironclad",
     video: "https://youtu.be/8QMsMO8Dx6E",
@@ -280,7 +280,7 @@ export const projects: ProjectEntry[] = [
       "Built an on-chain photo authenticity tool against AI-generated fakes. A photo is captured from the webcam, hashed and stored on IPFS, and its proof is recorded on Arbitrum by Rust contracts on Stylus, so anyone can later check whether an image matches the recorded proof.",
     role: "developer",
     period: "january 2026",
-    achievements: ["won $100 cash prize as honourable mention"],
+    achievements: ["Won a $100 cash prize as an honourable mention"],
     technologies: [
       "react",
       "typescript",
@@ -385,7 +385,7 @@ export const projects: ProjectEntry[] = [
     role: "blockchain developer",
     period: "september 2025",
     image: "https://somany-nine.vercel.app/somany-og.webp",
-    achievements: ["won $1.5k as 2nd prize in somnia defi mini hackathon"],
+    achievements: ["Won $1.5k as 2nd prize in the Somnia DeFi Mini Hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://somany-nine.vercel.app/",
     github: "https://github.com/adilhusain01/somany",
@@ -422,7 +422,7 @@ export const projects: ProjectEntry[] = [
       "a fun bird crash game, with high‑stakes betting and adrenaline‑charged experience.",
     role: "developer",
     period: "august 2025",
-    achievements: ["won $100 as 2nd prize in somnia mini games hackathon"],
+    achievements: ["Won $100 as 2nd prize in the Somnia Mini Games Hackathon"],
     technologies: ["javascript", "somnia chain", "react.js", "tailwind css"],
     href: "https://catch-goofy.vercel.app",
     github: "https://github.com/rizwanmoulvi/catch-goofy",
@@ -436,7 +436,7 @@ export const projects: ProjectEntry[] = [
       "it's a Web3 learning platform that uses AI and blockchain to turn complex topics into interactive knowledge graphs, offering a gamified, visual, and rewarding learning experience.",
     role: "creator and developer",
     period: "january 2025",
-    achievements: ["won 14th prize in hack for humanity 2025 hackathon"],
+    achievements: ["Won 14th prize in the Hack for Humanity 2025 hackathon"],
     technologies: [
       "javascript",
       "sepolia chain",
@@ -563,4 +563,58 @@ export function projectName(title: string) {
 export function projectYear(project: Pick<ProjectEntry, "period">) {
   const match = project.period.match(/\d{4}/)
   return match ? match[0] : ""
+}
+
+// Projects carry their period as "month year", so "1 april 2026" parses in every browser and on the server.
+export function projectTime(project: ProjectEntry) {
+  const time = new Date(`1 ${project.period}`).getTime()
+  return Number.isNaN(time) ? 0 : time
+}
+
+export function byNewest<T extends ProjectEntry>(list: T[]) {
+  return [...list].sort((a, b) => projectTime(b) - projectTime(a))
+}
+
+export function youTubeId(url?: string) {
+  if (!url) return null
+  try {
+    const parsed = new URL(url)
+    if (parsed.hostname.includes("youtu.be")) return parsed.pathname.slice(1) || null
+    if (parsed.searchParams.get("v")) return parsed.searchParams.get("v")
+    const parts = parsed.pathname.split("/").filter(Boolean)
+    const at = parts.findIndex((part) => part === "embed" || part === "shorts")
+    return at >= 0 ? parts[at + 1] ?? null : null
+  } catch {
+    return null
+  }
+}
+
+// A project without its own preview image borrows its demo video's thumbnail.
+export function projectCover(project: ProjectEntry) {
+  if (project.image) return project.image
+  const id = youTubeId(project.video)
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null
+}
+
+// Technology names as their makers write them. Anything not listed just gets a capital first letter.
+const techNames: Record<string, string> = {
+  typescript: "TypeScript", javascript: "JavaScript", mcp: "MCP", frost: "FROST", "node.js": "Node.js", "react.js": "React",
+  "next.js": "Next.js", "next.js 14": "Next.js 14", "next.js 16": "Next.js 16", "tailwind css": "Tailwind CSS", "tailwind css v4": "Tailwind CSS v4",
+  swiftui: "SwiftUI", appkit: "AppKit", "framer motion": "Framer Motion", "three.js": "Three.js", "canvas api": "Canvas API",
+  "xterm.js": "xterm.js", "node-pty": "node-pty", mongodb: "MongoDB", html: "HTML", "pdf.js": "PDF.js", "web audio api": "Web Audio API",
+  "svg filters": "SVG filters", "react-easy-crop": "react-easy-crop", "cropper.js": "Cropper.js", "react-three-fiber": "React Three Fiber",
+  "core ml": "Core ML", gsap: "GSAP", ipfs: "IPFS", aavev3: "Aave v3", "li.fi": "LI.FI", fastapi: "FastAPI", "lithic api": "Lithic API",
+  openclaw: "OpenClaw", "ethers.js": "ethers.js", "aws bedrock": "AWS Bedrock", "tron chain": "TRON chain", sqlite: "SQLite",
+  websocket: "WebSocket", "gemini api": "Gemini API", "google gemini": "Google Gemini", "dodo payments": "Dodo Payments",
+  "arbitrum stylus": "Arbitrum Stylus", "apple vision": "Apple Vision", "papa parse": "Papa Parse", "base sepolia": "Base Sepolia",
+  viem: "viem", wagmi: "wagmi",
+}
+
+export function techName(tech: string) {
+  const key = tech.toLowerCase()
+  return techNames[key] ?? key.charAt(0).toUpperCase() + key.slice(1)
+}
+
+export function sentence(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1)
 }

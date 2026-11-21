@@ -28,7 +28,6 @@ const socials = [
 const more = [
   { label: "Products", href: "/products" },
   { label: "Design", href: "/design" },
-  { label: "System design", href: "/system-design" },
   { label: "Gallery", href: "/gallery" },
 ]
 

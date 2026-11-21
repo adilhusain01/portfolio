@@ -27,7 +27,8 @@ export function ProgressBar() {
   return (
     <div
       style={{ width: `${scrollWidth}%` }}
-      className="fixed top-0 left-0 h-1 bg-accent z-50 transition-all duration-150 ease-out glow-bar"
+      aria-hidden="true"
+      className="fixed left-0 top-0 z-50 h-[3px] bg-pen"
     />
   )
 }

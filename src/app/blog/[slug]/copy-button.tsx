@@ -17,10 +17,10 @@ export function CopyButton({ text }: { text: string }) {
     <button
       disabled={isCopied}
       onClick={copy}
-      className="absolute top-3 right-3 p-2 bg-gray-800/80 hover:bg-gray-700/80 text-gray-300 rounded-md transition-all z-10 font-sans text-xs border border-gray-700 flex items-center justify-center backdrop-blur-sm"
+      className="absolute right-3 top-3 z-10 rounded-[6px] bg-paper/10 px-2 py-1 font-sans text-[12px] text-paper/80 transition-colors duration-150 ease-out hover:bg-paper/20 hover:text-paper disabled:cursor-default"
       aria-label="Copy to clipboard"
     >
-      {isCopied ? "Copied! ✔" : "Copy"}
+      {isCopied ? "Copied" : "Copy"}
     </button>
   )
 }

@@ -6,29 +6,20 @@ import { Mermaid } from "./mermaid"
 import { CopyButton } from "./copy-button"
 import { ImageModal } from "@/components/image-modal"
 
-// NEW COMPONENTS
-function TerminalWindow({
-  children,
-  title = "zsh",
-}: {
-  children: React.ReactNode
-  title?: string
-}) {
+// Code stays on dark ink slabs; everything else sits on the paper like the rest of the site.
+function TerminalWindow({ children, title = "zsh" }: { children: React.ReactNode; title?: string }) {
   return (
-    <div className="rounded-xl overflow-hidden border border-gray-800 bg-[#0d1117] my-8 shadow-2xl">
-      {/* Mac window header */}
-      <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-gray-800">
-        <div className="flex space-x-2 mr-4">
-          <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-        </div>
-        <div className="text-xs font-mono text-gray-400 select-none flex-1 text-center font-semibold">
-          {title}
-        </div>
+    <div className="not-prose my-8 overflow-hidden rounded-xl bg-ink shadow-print">
+      <div className="flex items-center gap-3 border-b border-paper/10 px-4 py-2.5">
+        <span aria-hidden="true" className="flex gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-paper/20" />
+          <span className="h-2.5 w-2.5 rounded-full bg-paper/20" />
+          <span className="h-2.5 w-2.5 rounded-full bg-paper/20" />
+        </span>
+        <span className="flex-1 text-center font-mono text-[12px] text-paper/60">{title}</span>
+        <span className="w-[42px]" aria-hidden="true" />
       </div>
-      {/* Terminal Body */}
-      <div className="p-4 overflow-x-auto text-sm font-mono text-green-400 [&_pre]:!bg-transparent [&_pre]:!m-0 [&_code]:!p-0">
+      <div className="overflow-x-auto p-4 font-mono text-[13.5px] leading-relaxed text-paper/90 [&_code]:!p-0 [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0">
         {children}
       </div>
     </div>
@@ -36,91 +27,54 @@ function TerminalWindow({
 }
 
 function CodeGroup({ children }: { children: React.ReactNode }) {
+  return <div className="not-prose my-8 grid grid-cols-1 gap-4 md:grid-cols-2">{children}</div>
+}
+
+function CodeGroupItem({ title, children, isOptimized = false }: { title: string; children: React.ReactNode; isOptimized?: boolean }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 not-prose">
-      {children}
+    <div className="flex flex-col overflow-hidden rounded-xl bg-ink">
+      <div className="flex items-center justify-between gap-3 border-b border-paper/10 px-4 py-2 text-[12px] text-paper/70">
+        <span>{title}</span>
+        {isOptimized ? <span className="rounded-[4px] bg-pen px-1.5 py-0.5 text-[11px] text-sheet">Faster</span> : null}
+      </div>
+      <div className="flex-1 overflow-auto p-4 text-[13.5px] [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0">{children}</div>
     </div>
   )
 }
 
-function CodeGroupItem({
-  title,
-  children,
-  isOptimized = false,
-}: {
-  title: string
-  children: React.ReactNode
-  isOptimized?: boolean
-}) {
-  return (
-    <div
-      className={`bg-[#0d1117] border rounded-lg overflow-hidden flex flex-col ${isOptimized ? "border-green-900/50" : "border-gray-800"}`}
-    >
-      <div
-        className={`text-xs px-4 py-2 border-b font-bold tracking-wider uppercase ${isOptimized ? "bg-green-900/20 text-green-400 border-green-900/50" : "bg-gray-900/50 text-gray-400 border-gray-800"}`}
-      >
-        {title}
-      </div>
-      <div className="p-4 overflow-auto flex-1 [&_pre]:!m-0 [&_pre]:!bg-transparent text-sm">
-        {children}
-      </div>
-    </div>
-  )
-}
-
-function TechBadge({
-  text,
-  bg = "bg-gray-800",
-}: {
-  text: string
-  bg?: string
-}) {
-  return (
-    <span
-      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${bg} border border-gray-700 shadow-sm text-gray-200 uppercase tracking-widest mx-1 align-middle`}
-    >
-      {text}
-    </span>
-  )
+function TechBadge({ text }: { text: string; bg?: string }) {
+  return <span className="mx-0.5 inline-block rounded-[5px] bg-tray px-1.5 py-0.5 align-middle font-mono text-[0.8em] text-ink ring-1 ring-inset ring-rule">{text}</span>
 }
 
 function KeyTakeaway({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border-l-4 border-gray-600 bg-gray-900/30 p-6 my-8 rounded-r-lg">
-      <h3 className="text-lg font-bold text-gray-200 mb-3 m-0 flex items-center">
-        <span className="text-gray-400 mr-2 text-xl">💡</span>
-        Key Takeaway
-      </h3>
-      <div className="text-base text-gray-300 leading-relaxed z-10 relative">
-        {children}
-      </div>
-    </div>
+    <aside className="not-prose my-8 rounded-r-xl border-l-[3px] border-pen bg-tray px-6 py-5">
+      <p className="font-display text-lg text-ink">Key takeaway</p>
+      <div className="mt-2 text-[1.05rem] leading-relaxed text-ink-2 [&>p]:m-0">{children}</div>
+    </aside>
   )
 }
 
 function Table({ data }: { data?: { headers: string[]; rows: string[][] } }) {
   if (!data) return null
-  let headers = data.headers.map((header, index) => (
-    <th key={index} className="p-2 text-left">
-      {header}
-    </th>
-  ))
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex} className="p-2 text-left">
-          {cell}
-        </td>
-      ))}
-    </tr>
-  ))
-
   return (
-    <table className="w-full border-collapse">
+    <table>
       <thead>
-        <tr>{headers}</tr>
+        <tr>
+          {data.headers.map((header, index) => (
+            <th key={index}>{header}</th>
+          ))}
+        </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <tbody>
+        {data.rows.map((row, index) => (
+          <tr key={index}>
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex}>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
@@ -129,8 +83,7 @@ function CustomLink({
   href,
   ...props
 }: React.ComponentProps<typeof Link> & { href: string }) {
-  const commonClasses =
-    "underline underline-offset-4 decoration-gray-700 hover:decoration-accent transition-colors"
+  const commonClasses = ""
 
   if (href.startsWith("/")) {
     return (
@@ -156,7 +109,7 @@ function CustomLink({
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
-  return <ImageModal alt={props.alt} className="rounded-lg" {...props} />
+  return <ImageModal alt={props.alt} className="rounded-[10px]" {...props} />
 }
 
 async function Pre({
@@ -193,11 +146,11 @@ async function Pre({
     })
 
     return (
-      <div className="relative group relative-code-block mb-4 mt-6 rounded-lg overflow-hidden border border-gray-800">
+      <div className="not-prose group relative mb-5 mt-6 overflow-hidden rounded-xl bg-ink">
         <CopyButton text={rawCode} />
         <div
           dangerouslySetInnerHTML={{ __html: html }}
-          className="[&>pre]:!m-0 [&>pre]:!rounded-none"
+          className="overflow-x-auto text-[13.5px] leading-relaxed [&>pre]:!m-0 [&>pre]:!rounded-none [&>pre]:!bg-transparent [&>pre]:p-5"
         />
       </div>
     )
@@ -235,119 +188,61 @@ function createHeading(level: number) {
   return HeadingComponent
 }
 
-function Callout({
-  type = "info",
-  title,
-  children,
-}: {
-  type?: "info" | "warning" | "danger" | "success"
-  title?: string
-  children: React.ReactNode
-}) {
-  const styles = {
-    info: "bg-blue-900/20 border-blue-500 text-blue-200",
-    warning: "bg-yellow-900/20 border-yellow-500 text-yellow-200",
-    danger: "bg-red-900/20 border-red-500 text-red-200",
-    success: "bg-green-900/20 border-green-500 text-green-200",
-  }
-
-  const icons = {
-    info: "💡",
-    warning: "⚠️",
-    danger: "🚨",
-    success: "✅",
-  }
-
+function Callout({ type = "info", title, children }: { type?: "info" | "warning" | "danger" | "success"; title?: string; children: React.ReactNode }) {
+  // Each kind gets its own edge colour; the text stays ink so it reads the same on every kind.
+  const edge = { info: "border-pen", warning: "border-[#A0670F]", danger: "border-[#A63D2C]", success: "border-[#3E7A4B]" }[type]
   return (
-    <div className={`border-l-4 p-4 my-6 rounded-r-lg ${styles[type]}`}>
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-xl">{icons[type]}</span>
-        {title && <strong className="block font-bold text-lg">{title}</strong>}
-      </div>
-      <div className="m-0 [&>p]:m-0">{children}</div>
-    </div>
+    <aside className={`not-prose my-7 rounded-r-xl border-l-[3px] bg-tray px-5 py-4 ${edge}`}>
+      {title ? <p className="mb-1.5 font-semibold text-ink">{title}</p> : null}
+      <div className="text-[1.02rem] leading-relaxed text-ink-2 [&>p]:m-0 [&>p+p]:mt-3">{children}</div>
+    </aside>
   )
 }
 
 function Metrics({ data }: { data?: { label: string; value: string }[] }) {
   if (!data) return null
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 not-prose">
+    <dl className="not-prose my-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-rule ring-1 ring-rule md:grid-cols-4">
       {data.map((item, i) => (
-        <div
-          key={i}
-          className="bg-gray-900/50 border border-gray-800 p-4 rounded-lg text-center flex flex-col justify-center shadow-sm"
-        >
-          <div className="text-sm font-medium text-gray-400 mb-1">
-            {item.label}
-          </div>
-          <div className="text-2xl font-bold tracking-tight text-white mb-1">
-            <span className="text-accent mr-1">*</span>
-            {item.value}
-          </div>
+        <div key={i} className="bg-sheet px-4 py-5">
+          <dt className="text-[13px] text-ink-3">{item.label}</dt>
+          <dd className="mt-1 font-display text-2xl tabular-nums text-ink">{item.value}</dd>
         </div>
       ))}
-    </div>
+    </dl>
   )
 }
 
 function ProsCons({ pros, cons }: { pros?: string[]; cons?: string[] }) {
+  const column = (title: string, items: string[], dot: string) => (
+    <div className="rounded-xl bg-sheet p-5 ring-1 ring-inset ring-rule">
+      <p className="mb-3 font-semibold text-ink">{title}</p>
+      <ul className="m-0 space-y-2.5">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-ink-2">
+            <span aria-hidden="true" className={`mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
   return (
-    <div className="grid md:grid-cols-2 gap-4 my-8 not-prose">
-      {pros && pros.length > 0 && (
-        <div className="bg-gray-900/40 border border-gray-800 rounded-lg p-5">
-          <h4 className="text-green-400 font-semibold mb-4 flex items-center text-lg">
-            <span className="mr-2">✓</span> Pros
-          </h4>
-          <ul className="space-y-3 m-0">
-            {pros.map((pro, i) => (
-              <li key={i} className="flex items-start text-base text-gray-300">
-                <span className="text-green-500 mr-2 mt-0.5">•</span>
-                <span>{pro}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {cons && cons.length > 0 && (
-        <div className="bg-gray-900/40 border border-gray-800 rounded-lg p-5">
-          <h4 className="text-red-400 font-semibold mb-4 flex items-center text-lg">
-            <span className="mr-2">✕</span> Cons
-          </h4>
-          <ul className="space-y-3 m-0">
-            {cons.map((con, i) => (
-              <li key={i} className="flex items-start text-base text-gray-300">
-                <span className="text-red-500 mr-2 mt-0.5">•</span>
-                <span>{con}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+    <div className="not-prose my-8 grid gap-4 md:grid-cols-2">
+      {pros && pros.length > 0 ? column("Pros", pros, "bg-[#3E7A4B]") : null}
+      {cons && cons.length > 0 ? column("Cons", cons, "bg-[#A63D2C]") : null}
     </div>
   )
 }
 
-function Step({
-  number,
-  title,
-  children,
-}: {
-  number: string | number
-  title: string
-  children: React.ReactNode
-}) {
+function Step({ number, title, children }: { number: string | number; title: string; children: React.ReactNode }) {
   return (
-    <div className="flex border-l-2 border-gray-800 ml-3 md:ml-4 pb-8 last:border-none last:pb-0 relative mt-8">
-      <div className="absolute -left-[17px] bg-gray-950 border-2 border-gray-800 h-8 w-8 rounded-full flex items-center justify-center text-accent font-bold text-sm">
+    <div className="relative ml-4 mt-8 border-l border-rule pb-8 pl-9 last:border-transparent last:pb-0">
+      <span className="absolute -left-4 top-0 grid h-8 w-8 place-items-center rounded-full bg-sheet font-semibold text-pen shadow-key ring-1 ring-inset ring-rule">
         {number}
-      </div>
-      <div className="ml-8 w-full">
-        <h3 className="text-2xl font-bold text-white mt-0.5 mb-4">{title}</h3>
-        <div className="text-gray-300 m-0 [&>*:first-child]:mt-0">
-          {children}
-        </div>
-      </div>
+      </span>
+      <h3 className="!mb-3 !mt-0.5">{title}</h3>
+      <div className="[&>*:first-child]:mt-0">{children}</div>
     </div>
   )
 }
